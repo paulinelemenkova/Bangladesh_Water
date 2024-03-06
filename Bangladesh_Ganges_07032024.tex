@@ -87,7 +87,15 @@ The repetitive floods in Ganges Delta negatively impact social-natural systems c
 
 \subsection{Current landscape}
 
-The Ganges Delta is the world's largest river delta with hundreds of millions people living around. Located in the region with monsoon climate and seasonally changing environmental setting, it is subject to regular floods, occasional tropical cyclones, tidal waves and related inundations \cite{Bhardwaj2022}. Complex hydrology of the Ganges Delta increases the consequences of floods through dense network of streams, rivers and tributaries where water remains for a longer period \cite{Islam}. Alluvial clayey sediments dominating in the riverbed of the contribute to the stagnation of water during flood which accumulated in the connected numerous channels, inner lakes, wetlands and flood plains of the Ganges River Delta \cite{Datta,KHAN201927,Lemenkova202029}. The monsoon climate regulates the repeatability of rainfalls and floods in Ganges Delta which normally augment between the months of March and September. 
+This study presents a case of the Ganges River Delta, located in southern Bangladesh, Figure \ref{01}. The Ganges Delta is the world's largest river delta with hundreds of millions people living around. Located in the region with monsoon climate and seasonally changing environmental setting, it is subject to regular floods, occasional tropical cyclones, tidal waves and related inundations \cite{Bhardwaj2022}. Complex hydrology of the Ganges Delta increases the consequences of floods through dense network of streams, rivers and tributaries where water remains for a longer period \cite{Islam}. Alluvial clayey sediments dominating in the riverbed of the contribute to the stagnation of water during flood which accumulated in the connected numerous channels, inner lakes, wetlands and flood plains of the Ganges River Delta \cite{Datta,KHAN201927,Lemenkova202029}. The monsoon climate regulates the repeatability of rainfalls and floods in Ganges Delta which normally augment between the months of March and September. 
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_01.jpg}
+    \end{center}
+    \caption{Topographic map of Bangladesh with depicted study area showing the placement of the Landsat data over the Ganges River Delta. Software: GMT. Map source: author.}
+    \label{fig01}
+\end{figure}
 
 \subsection{Gap and motivation}
 Currently, the cartographic monitoring of flood in Ganges Delta presents efforts on GIS-based mapping which raised the question of need for operative and accurate data processing for flood prediction and management \cite{Sanyal2023,ISLAM2023167,RANA2023}. Nevertheless, operative monitoring of floods require advanced machine learning techniques and programming approach to support real-time flood prognosis systems through the algorithms of artificial intelligence \cite{ZHAO2021126777}. Identifying landscape patterns within coastal and tidal areas, estuary and delta is challenging due to the obscurity and ambiguity of land cover types. Accurate classification of the satellite images for environmental mapping requires advanced methods of scripting languages which aim at robust detecting of the patterns \cite{YANG2020100413,Lemenkova202322,BEVERIDGE2020104843,Lemenkova202229,SADIQ2023111233,Lemenkova202227}. Existing state-of-the-art methods mostly use the traditional GIS for image processing which may lead to misclassification and inaccurate labelling of pixels. 
@@ -104,6 +112,10 @@ Of the existing ML methods, the most widely used approach is the Deep Learning (
 
 %----------- section ----------->
 \section{Materials and Methods}
+%----------- subsection ----------->
+\subsection{Implementation}
+
+The following is an outline of the essential details regarding the approaches and techniques of the algorithm that compose the GRASS GIS framework using for image analysis. For details, full codes are presented below and explained with essential details. In all the GRASS GIS modules and functions and post-processing of the satellite images using DL approach, it is necessary to apply the module which implement the required functionality for data processing for each image in terms of the identifiers of functions and parameters of image processing. For this purpose, we adopted and modified the approaches of ML modules (libraries) of GRASS GIS which rely on using the Python's Scikit-Learn library for DL techniques.
 
 \begin{figure}[H]
   \centering
@@ -143,9 +155,6 @@ Of the existing ML methods, the most widely used approach is the Deep Learning (
   \label{fig01}
 \end{figure}
 
-%----------- subsection ----------->
-\subsection{Clustering}
-
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
@@ -153,26 +162,41 @@ Of the existing ML methods, the most widely used approach is the Deep Learning (
     \small (a): March 2014: Bands 3-4-7 
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_02b.jpg} \\
-    \small (b): March 2014: MaxLike Classification 
-  \end{tabular}
-    \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_02c.jpg} \\
-    \small (c): March 2014: Accuracy assessment
-  \end{tabular}
-  \begin{tabular}[b]{c}
     \includegraphics[width=6.4cm]{Fig_02d.jpg} \\
     \small (d): November 2014: Bands 3-4-5 
+  \end{tabular}
+  \caption{Created colour composites using multispectral bands of Landsat 8 OLI/TIRS scene on March and November 2014 by GRASS GIS r.composite module. Here band numbers correspond to the following Landsat channels: Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2)}
+  \label{fig02}
+\end{figure}
+
+%----------- subsection ----------->
+\subsection{Clustering}
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_02b.jpg} \\
+    \small (b): March 2014: MaxLike Classification 
   \end{tabular}
    \begin{tabular}[b]{c}
     \includegraphics[width=6.4cm]{Fig_02e.jpg} \\
     \small (e): November 2014: MaxLike Classification 
   \end{tabular}
+  \caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method.}
+  \label{fig02}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_02c.jpg} \\
+    \small (c): March 2014: Accuracy assessment
+  \end{tabular}
   \begin{tabular}[b]{c}
     \includegraphics[width=6.4cm]{Fig_02f.jpg} \\
     \small (f): November 2014: Accuracy assessment
   \end{tabular}
-  \caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method and created colour composites using multispectral bands of Landsat images.}
+  \caption{Accuracy assessment of image classification of the Landsat 8 OLI/TIRS scenes on March and November 2014.}
   \label{fig02}
 \end{figure}
 
@@ -303,9 +327,11 @@ GIS & Geographic Information System \\
 Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
 ML & Machine Learning \\
 MLP & MultiLayer Perceptron \\
+NIR & Near Infrared \\ 
 RF & Random Forest \\
 RS & Remote Sensing \\
 SVM & Support Vector Machines \\
+SWIR & Shortwave Infrared \\
 USGS & United States Geological Survey \\
 UTM & Universal Transverse Mercator \\
 WGS84 & World Geodetic System 84\\
