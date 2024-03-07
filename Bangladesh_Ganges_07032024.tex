@@ -353,26 +353,26 @@ The results of the colour composites are demonstrated in Figure \ref{fig05}.
 	\begin{subfigure}[b]{.45\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_05a.jpg}
-		\caption{March 2014}
+		\caption{Bands 3-4-7}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.45\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_05b.jpg}
-		\caption{November 2014}
+		\caption{Bands 3-4-5}
 	\end{subfigure}
 		\hfill
 		\vspace{1em}
 	\begin{subfigure}[b]{.45\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_05c.jpg}
-		\caption{November 2014}
+		\caption{Bands 2-4-7}
 	\end{subfigure}
 	\begin{subfigure}[b]{.45\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_05d.jpg}
-		\caption{November 2014}
+		\caption{Bands 3-7-4}
 	\end{subfigure}
-\caption{Examples of different colour composites created using multispectral bands of Landsat 8 OLI/TIRS scene on March and November 2014 by GRASS GIS 'r.composite' module. Here the band numbers correspond to the following Landsat channels: Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2).}\label{fig05}
+\caption{Examples of different false colour composites generated using the multispectral bands of the Landsat 8-9 OLI/TIRS scenes by GRASS GIS 'r.composite' module. Here the band numbers correspond to the following channels of the Landsat 8-9 OLI/TIRS images: Band 2 -- Blue; Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2).}\label{fig05}
 \end{figure}
 
 The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. technically, it was performed using the modules 'i.group', 'i.cluster ' and 'i.maxlik' which creates the signature file and performs accuracy assessment using 'reject' function that evaluates rejection probability of the pixels using chi-square test. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst02}.
@@ -500,7 +500,51 @@ The maps are generated using classified images for March showing the flooding ev
 %----------- subsection ----------->
 \subsection{Deep Learning outcomes}
 
-The supervised learning models of GRASS GIS based on the MLPClassifier demonstrated accurate mapping and refined visualisation functionality, Figure \ref{fig10} and Figure \ref{fig11}. While this method was developed to serve a specific goal of image processing, its purpose is applicable as solutions to environmental monitoring with outcomes of detected flooded areas as presented above. Hence, the research outcomes have provided insights into the changing landscapes of the post-flooded period of Ganges Delta. Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
+The supervised learning models of GRASS GIS based on the MLPClassifier demonstrated accurate mapping and refined visualisation functionality, Figure \ref{fig10} and Figure \ref{fig11}. While this method was developed to serve a specific goal of image processing, its purpose is applicable as solutions to environmental monitoring with outcomes of detected flooded areas as presented above. Hence, the research outcomes have provided insights into the changing landscapes of the post-flooded period of Ganges Delta. 
+
+Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.98\textwidth]{Fig_10a.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_10b.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_10c.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig10}
+\end{figure}
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.98\textwidth]{Fig_11a.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_11b.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_11c.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig11}
+\end{figure}
 
 \begin{table}[H]
   \centering
@@ -534,49 +578,7 @@ The supervised learning models of GRASS GIS based on the MLPClassifier demonstra
   \label{tab02}
 \end{table}
 
-\begin{figure}[H]
-\hspace{50pt}\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-			\includegraphics[width=0.98\textwidth]{Fig_10a.jpg}
-		\caption{2021}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.98\textwidth]{Fig_10b.jpg}
-		\caption{2022}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.98\textwidth]{Fig_10c.jpg}
-		\caption{2023}
-	\end{subfigure}%
-}
-\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig10}
-\end{figure}
-
 The corrections of the presented framework and Python-based algorithm of GRASS GIS using machine learning (ML) approach which uses MLPClassifier of Deep Learning (DL) presents an advanced tool for automated recognition of land cover types on the satellite images and monitoring floods in the prone to floods regions of the southern Bangladesh. The percentage of the correctly classified images was calculated and summarised in the matrices showing classes separability (Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3} for years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
-
-\begin{figure}[H]
-\hspace{50pt}\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-			\includegraphics[width=0.98\textwidth]{Fig_11a.jpg}
-		\caption{2021}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.98\textwidth]{Fig_11b.jpg}
-		\caption{2022}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.40\textwidth}
-		\centering
-		\includegraphics[width=0.98\textwidth]{Fig_11c.jpg}
-		\caption{2023}
-	\end{subfigure}%
-}
-\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig11}
-\end{figure}
 
 Class separability matrices of land cover classes identified over Ganges River Delta which are presented in the matrices below: Matrix \ref{eq1} shows class separability matrices for March and November 2021; Matrix \ref{eq2} shows class separability matrices for March and November 2022, and Matrix \ref{eq3} shows class separability matrices for March and November 2023. Class separability matrices evaluated the assignment of the pixels distributed to various land cover classes over the landscapes of Ganges River Delta, hence it serves as a function of the regularisation parameters used for distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform an iterative search for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
 
@@ -682,11 +684,15 @@ Class separability matrices of land cover classes identified over Ganges River D
 %----------- section ----------->
 \section{Discussion and Conclusions}
 
-Floods in Ganges River Delta present the most catastrophic problems at the national level in Bangladesh \cite{Szabo}. Preventive mapping of flooded areas presents the societal importance for the social system and maintaining the sustainability of both natural landscapes and social infrastructure. Advanced DL methods for operative mapping of flooded areas result in publicly accessible, modifiable, and distributable open-source cartographic products which aims at prognosis of flood events through machine-based modelling. Hence, operative monitoring and forecasting of natural hazards can effectively reduce the catastrophic consequences of floods in Ganges River Delta. Awareness of flood hazards based on maps is an essential tool in addressing environmental challenges through visualization of areas at risks, cartographic display of inundated coastal and prognosis of flood in deltaic areas based on time series analysis. 
+Floods in Ganges River Delta present the most catastrophic problems at the national level in Bangladesh \cite{Szabo}. Preventive mapping of flooded areas presents the societal importance for the social system and maintaining the sustainability of both natural landscapes and social infrastructure. Advanced DL methods for operative mapping of flooded areas result in publicly accessible, modifiable, and distributable open-source cartographic products which aims at prognosis of flood events through machine-based modelling. Hence, operative monitoring and forecasting of natural hazards can effectively reduce the catastrophic consequences of floods in Ganges River Delta. 
 
-With this regards, advanced methods of deep learning (DL) for accurate satellite image processing possible using open-source GRASS GIS present effective method to retrieve geo-information. Deep learning in GIS domain enables to increase the accuracy and automation of mapping through the algorithms of artificial intelligence employed in the cartographic workflow. Hence, this research has demonstrated an example of using such approach in cartography and remote sensing data processing. Thus, it has led to a greater understanding of the importance of using advanced methods of machine learning for environmental monitoring and mapping. The application of the ANN, presented here as a case of Multilayer perceptron classifier algorithms (MLPC) demonstrates that this technique can be successfully applied in similar studies which require remote sensing data for spatio-temporal analysis. Thus, the displayed time series of maps on Ganges Delta showing floods in March and post-flooded landscapes in November highlighted the benefits achieved by remote sensing data visualization for analysis of flood extent and comparison of climatic effects by recent consecutive years: 2021, 2022 and 2023. 
+Awareness of flood hazards based on maps is an essential tool in addressing environmental challenges through visualization of areas at risks, cartographic display of inundated coastal and prognosis of flood in deltaic areas based on time series analysis. Land cover changes in the Ganges River Delta were determined over the evaluated period using time series analysis of the satellite images Landsat, and compared for flood- and post-flood periods. The results indicated the increase in wetlands and inundated areas during the post-flood period and demonstrated the effectiveness of the DL approach integrating GRASS GIS and scripting cartographic approaches in tasks of environmental monitoring in tropical regions, such as coastal regions of Bangladesh. 
 
-This study demonstrates the capacity of sequential analysis of the remote sensing data to identify changes in the coastal and wetland landscapes of Ganges River Delta over the last three years (2021-2023) for comparison of flood event with post-flood landscapes, illustrates how the satellite images can help identify extent of floods, and affected areas, and shows what role deep learning techniques of the GRASS GIS can play in the future technology landscapes in similar studies on vulnerability assessment and mapping floods. Importantly, this paper presented a case of flood mapping in Ganges Delta using the integration of open source data and methods: the dataset was obtained from the publicly available repository of the USGS and processed using freely available GRASS GIS software. Such approach is essential for the environmentalists from the developing countries such as Bangladesh, because open source data and tools can motivate researchers to continue and expand research using the proposed techniques. In future directions, this works can be extended for further environmental monitoring of the Ganges Delta by producing maps on other periods using other EO datasets. 
+Advanced methods of deep learning (DL) for accurate satellite image processing possible using open-source GRASS GIS present effective method to retrieve geo-information. Deep learning in GIS domain enables to increase the accuracy and automation of mapping through the algorithms of artificial intelligence employed in the cartographic workflow. Hence, this research has demonstrated an example of using such approach in cartography and remote sensing data processing. Thus, it has led to a greater understanding of the importance of using advanced methods of machine learning for environmental monitoring. 
+
+The application of the ANN as a branch of machine learning methods, presented here as a case of MLP classifier algorithm demonstrated that such technique can be successfully applied in similar studies which require RS data for spatio-temporal analysis. Thus, the displayed time series of maps on Ganges Delta showing floods in March and post-flooded landscapes in November highlighted the benefits achieved by remote sensing data visualization for analysis of flood extent and comparison of climatic effects by recent consecutive years: 2021, 2022 and 2023. The spectral properties of the multispectral satellite images Landsat OLI/TIRS  were evaluated with regards to the land cover change development in the inundated areas of the Ganges River Delta during the period of flood and the post-restoration period. Using ML methods of GRASS GIS remote sensing software demonstrated a fine perspectives for image processing and environmental data analysis. We evaluated the proposed ML framework of GRASS GIS on the Landsat scenes, however, other satellite images can also be applied in future similar studies.
+
+To conclude, this study demonstrates the capacity of sequential analysis of the remote sensing data to identify changes in the coastal and wetland landscapes of Ganges River Delta over the last three years (2021-2023) for comparison of flood event with post-flood landscapes, illustrates how the satellite images can help identify extent of floods, and affected areas, and shows what role deep learning techniques of the GRASS GIS can play in the future technology landscapes in similar studies on vulnerability assessment and mapping floods. Importantly, this paper presented a case of flood mapping in Ganges Delta using the integration of open source data and methods: the dataset was obtained from the publicly available repository of the USGS and processed using freely available GRASS GIS software. Such approach is essential for the environmentalists from the developing countries such as Bangladesh, because open source data and tools can motivate researchers to continue and expand research using the proposed techniques. In future directions, this works can be extended for further environmental monitoring of the Ganges Delta by producing maps on other periods using other EO datasets. 
 
 %----------- section ----------->
 
