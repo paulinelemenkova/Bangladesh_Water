@@ -312,6 +312,8 @@ The workflow used in this research employs a chain of modules that use scripting
 
 %----------- subsection ----------->
 \subsection{Implementation}
+We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
+
 The following is an outline of the essential details regarding the approaches and techniques of the algorithm that compose the GRASS GIS framework using for image analysis. For details, full codes are presented below and explained with essential details. In all the GRASS GIS modules and functions and post-processing of the satellite images using DL approach, it is necessary to apply the module which implement the required functionality for data processing for each image in terms of the identifiers of functions and parameters of image processing. For this purpose, we adopted and modified the approaches of ML modules (libraries) of GRASS GIS which rely on using the Python's Scikit-Learn library for DL techniques.
 
 %----------- subsection ----------->
@@ -345,23 +347,7 @@ d.rast L8_2023_N_234
 d.out.file output=Bangladesh_J_234 format=jpg --overwrite
 \end{lstlisting}
 
-The results of the colour composites are demonstrated in Figure \ref{fig05}. The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. technically, it was performed using the modules 'i.group', 'i.cluster ' and 'i.maxlik' which creates the signature file and performs accuracy assessment using 'reject' function that evaluates rejection probability of the pixels using chi-square test. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst02}.
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst02}]
-g.region raster=L8_2023_N_01 -p
-i.group group=L8_2023_N subgroup=res_30m \
-  input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
-# Clustering: generating signature file and report using k-means clustering algorithm
-i.cluster group=L8_2023_N subgroup=res_30m \
-  signaturefile=cluster_L8_2023_N \
-  classes=10 reportfile=rep_clust_L8_2023_N.txt --overwrite
-# Classification by i.maxlik module
-i.maxlik group=L8_2023_N subgroup=res_30m \
-  signaturefile=cluster_L8_2023_N \
-  output=L8_2023_N_cluster_classes reject=L8_2023_N_cluster_reject --overwrite
-\end{lstlisting}
-
-The results of this step are demonstrated in Figure \ref{fig06} and are used as training data for supervised classification using deep learning approach. Moreover, the selected example of accuracy analysis for 2014 which was used as training data set is shown in Figure  \ref{fig07}. 
+The results of the colour composites are demonstrated in Figure \ref{fig05}. 
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{.45\textwidth}
@@ -389,9 +375,23 @@ The results of this step are demonstrated in Figure \ref{fig06} and are used as 
 \caption{Examples of different colour composites created using multispectral bands of Landsat 8 OLI/TIRS scene on March and November 2014 by GRASS GIS 'r.composite' module. Here the band numbers correspond to the following Landsat channels: Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2).}\label{fig05}
 \end{figure}
 
-This step includes the procedures of clustering that generated signature file and report which was performed using k-means algorithm using 'i.cluster' module. The unsupervised classification was done using the 'i.maxlik' module. The results of this step are presented in Figure \ref{fig02} and provided the seed data and training map for the next step of DL modelling. 
+The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. technically, it was performed using the modules 'i.group', 'i.cluster ' and 'i.maxlik' which creates the signature file and performs accuracy assessment using 'reject' function that evaluates rejection probability of the pixels using chi-square test. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst02}.
 
-Deep learning (DL) analysis is performed using algorithm of Multilayer Perceptron (MLPClassifier) for automated classification of the series of satellite images. First, the spatial region extent was defined using 'g.region' module which sets up the coordinates of the maps within the project using the target map. Afterwards, the training pixels from an older (2014) land cover classification were generated using 'r.random' module of GRASS GIS and used as seeds. Next, the imagery group with all Landsat-8 OLI/TIRS bands was created to include all multispectral bands (we do not need panchromatic bands in this case). Then the training pixels were applied to perform a classification using 'MLPClassifier' of deep learning approach on recent Landsat (in the presented code below -- the image on November 2023). This method trains a MLPClassifier model using 'r.learn.train. 
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst02}]
+g.region raster=L8_2023_N_01 -p
+i.group group=L8_2023_N subgroup=res_30m \
+  input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
+# Clustering: generating signature file and report using k-means clustering algorithm
+i.cluster group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  classes=10 reportfile=rep_clust_L8_2023_N.txt --overwrite
+# Classification by i.maxlik module
+i.maxlik group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  output=L8_2023_N_cluster_classes reject=L8_2023_N_cluster_reject --overwrite
+\end{lstlisting}
+
+The results of this step are demonstrated in Figure \ref{fig06} and are used as training data for supervised classification using deep learning approach. Moreover, the selected example of accuracy analysis for 2014 which was used as training data set is shown in Figure  \ref{fig07}. This step includes the procedures of clustering that generated signature file and report which was performed using k-means algorithm using 'i.cluster' module. The unsupervised classification was done using the 'i.maxlik' module. The results of this step are presented in Figure \ref{fig02} and provided the seed data and training map for the next step of DL modelling. 
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{.50\textwidth}
@@ -421,6 +421,8 @@ Deep learning (DL) analysis is performed using algorithm of Multilayer Perceptro
 \caption{Accuracy assessment of image classification of the Landsat 8 OLI/TIRS scenes: \textbf{(a)}: March 2014; \textbf{(b)}: November 2014.}\label{fig07}
 \end{figure}
 
+Deep learning (DL) analysis is performed using algorithm of Multilayer Perceptron (MLPClassifier) for automated classification of the series of satellite images. First, the spatial region extent was defined using 'g.region' module which sets up the coordinates of the maps within the project using the target map. Afterwards, the training pixels from an older (2014) land cover classification were generated using 'r.random' module of GRASS GIS and used as seeds. Next, the imagery group with all Landsat-8 OLI/TIRS bands was created to include all multispectral bands (we do not need panchromatic bands in this case). Then the training pixels were applied to perform a classification using 'MLPClassifier' of deep learning approach on recent Landsat (in the presented code below -- the image on November 2023). This method trains a MLPClassifier model using 'r.learn.train. 
+
 After this step, the prediction of the pixel assignments to each land cover class over the Ganges Delta River was performed using 'r.learn.predict' module. The raster categories were automatically applied to the classification output and checked again using the 'r.category' module. Then, the color scheme was assigned from the land class training map to result and visulised using the modules 'r.colors' and 'd.rast'. Technically, the DL approach was realised using the 'r.learn.train' module of GRASS GIS and demonstrated in script of Listing \ref{lst03}.
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst03}]
@@ -438,6 +440,8 @@ d.legend raster=mlpc_classification_Ganges title="MLPClassifier: 11/2023" title_
 d.out.file output=MLPC_2023_11 format=jpg --overwrite
 \end{lstlisting}
 
+Each image of the produced dataset contained seven multispectral bands processed automatically by GRASS GIS modules 'r.learn.train' and 'r.learn.predict' for each image. The total time processing for one image is ca. 30 minutes, which demonstrates a high time efficiency of the proposed GRASS GIS algorithm of deep learning. The algorithm of MLPClassifier was tested initially on a single image processed as a complete workflow for datasets on March and November 2021, 2022 and 2023 and then analysed for changes in the evaluated period. Changes detected using the repeatability pattern of land cover types over the Ganges River Delta were evaluated for the flood- and post-flood periods. Noise background related to cloudiness is ignored since the images were collected with a high visibility (below 10\% of cloudiness) quality which ensured that land cover types are clearly visible and identified by the ML algorithm. 
+
 %----------- section ----------->
 %\pagebreak
 \section{Results}
@@ -445,7 +449,9 @@ d.out.file output=MLPC_2023_11 format=jpg --overwrite
 %----------- subsection ----------->
 \subsection{K-means classification outcomes}
 
-Flooded areas in Ganges River Delta detected and mapped using MaxLike methods are presented as a series of the resulting maps in Figure \ref{fig08} and Figure \ref{fig09} and deep learning (DL) is presented in Figure \ref{fig10} and Figure \ref{fig11}. The maps are generated using classified images for March showing the flooding event (in Figure \ref{fig08}) and Figure \ref{fig10}, as well as for November (Figure \ref{fig09} and Figure \ref{fig11}) showing the post-flood landscapes, respectively. 
+Flooded areas in Ganges River Delta detected and mapped using MaxLike methods are presented as a series of the resulting maps in Figure \ref{fig08} and Figure \ref{fig09} and deep learning (DL) is presented in Figure \ref{fig10} and Figure \ref{fig11}. Maps of floods can be used as a broad base of environmental applications and flood hazard assessment. Their application can range from academia and research, industry and development, to governmental and social services for risk prevention. The findings presented in the study revealed a changing pattern of expanded floods in the post-flood period in Ganges Delta, and inequality in distribution of inundated areas covered by water by consequent years (2021, 2022 and 2023). 
+
+The maps are generated using classified images for March showing the flooding event (in Figure \ref{fig08}) and Figure \ref{fig10}, as well as for November (Figure \ref{fig09} and Figure \ref{fig11}) showing the post-flood landscapes, respectively. Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.} The information regarding the land cover types is derived from the existing works \cite{Rahman2020,rs13234799,Paszkowski2021} and adopted to the extent of the current study area.
 
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
@@ -468,8 +474,6 @@ Flooded areas in Ganges River Delta detected and mapped using MaxLike methods ar
 \caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig08}
 \end{figure}
 
-Maps of floods can be used as a broad base of environmental applications and flood hazard assessment. Their application can range from academia and research, industry and development, to governmental and social services for risk prevention. The findings presented in the study revealed a changing pattern of expanded floods in the post-flood period in Ganges Delta, and inequality in distribution of inundated areas covered by water by consequent years (2021, 2022 and 2023). Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.} The information regarding the land cover types is derived from the existing works \cite{Rahman2020,rs13234799,Paszkowski2021} and adopted to the extent of the current study area.
-
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.40\textwidth}
@@ -490,6 +494,11 @@ Maps of floods can be used as a broad base of environmental applications and flo
 }
 \caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig09}
 \end{figure}
+
+%----------- subsection ----------->
+\subsection{Deep Learning outcomes}
+
+The supervised learning models of GRASS GIS based on the MLPClassifier demonstrated accurate mapping and refined visualisation functionality, Figure \ref{fig10} and Figure \ref{fig11}. While this method was developed to serve a specific goal of image processing, its purpose is applicable as solutions to environmental monitoring with outcomes of detected flooded areas as presented above. Hence, the research outcomes have provided insights into the changing landscapes of the post-flooded period of Ganges Delta. Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
 
 \begin{table}[H]
   \centering
@@ -522,11 +531,6 @@ Maps of floods can be used as a broad base of environmental applications and flo
   \caption{Post-flood period: estimated classes of land cover types for November period for years 2021, 2022 and 2023 in Ganges River Delta}
   \label{tab02}
 \end{table}
-
-%----------- subsection ----------->
-\subsection{Deep Learning outcomes}
-
-The supervised learning models of GRASS GIS based on the MLPClassifier demonstrated accurate mapping and refined visualisation functionality, Figure \ref{fig10} and Figure \ref{fig11}. While this method was developed to serve a specific goal of image processing, its purpose is applicable as solutions to environmental monitoring with outcomes of detected flooded areas as presented above. Hence, the research outcomes have provided insights into the changing landscapes of the post-flooded period of Ganges Delta. Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
 
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
