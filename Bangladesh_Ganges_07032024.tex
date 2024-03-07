@@ -478,7 +478,7 @@ The supervised learning models of GRASS GIS based on the MLPClassifier demonstra
 \caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig11}
 \end{figure}
 
-Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping. 
+Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
 
 Class separability matrices of land cover classes identified over Ganges River Delta which are presented in the matrices below: Matrix \ref{eq1} shows class separability matrices for March and November 2021; Matrix \ref{eq2} shows class separability matrices for March and November 2022,
  and Matrix \ref{eq3} shows class separability matrices for March and November 2023. Class separability matrices evaluated the assignment of the pixels distributed to various land cover classes over the landscapes of Ganges River Delta, hence it serves as a function of the regularisation parameters used for distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform an iterative search for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
@@ -537,15 +537,15 @@ Class separability matrices of land cover classes identified over Ganges River D
  \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 1 & 0 &  &  &  &  &  &  &  &  &  \\
-2 & X & 0 &  &  &  &  &  &  &  &  \\
-3 & X & X & 0 &  &  &  &  &  &  &  \\
-4 & X & X & X & 0 &  &  &  &  &  &  \\
-5 & X & X & X & X & 0 &  &  &  &  &  \\
-6 & X & X & X & X & X & 0 &  &  &  &  \\  
-7 & X & X & X & X & X & X & 0 &  &  &  \\  
-8 & X & X & X & X & X & X & X & 0 &  &  \\
-9 & X & X & X & X & X & X & X & X & 0 &  \\   
-10 & X & X & X & X & X & X & X & X & X & 0 \\       
+2 & 1.8 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.4 & 1.8 & 0 &  &  &  &  &  &  &  \\
+4 & 2.7 & 0.9 & 1.3 & 0 &  &  &  &  &  &  \\
+5 & 3.8 & 1.8 & 1.4 & 0.8 & 0 &  &  &  &  &  \\
+6 & 4.5 & 2.2 & 1.8 & 1.3 & 0.6 & 0 &  &  &  &  \\  
+7 & 4.1 & 2.5 & 1.5 & 1.7 & 1.3 & 1.0 & 0 &  &  &  \\  
+8 & 4.1 & 2.5 & 1.0 & 1.5 & 1.1 & 1.2 & 0.7 & 0 &  &  \\
+9 & 3.9 & 2.9 & 0.8 & 2.3 & 2.2 & 2.3 & 1.4 & 1.2 & 0 &  \\   
+10 & 3.0 & 2.8 & 1.2 & 2.3 & 2.3 & 2.4 & 1.8 & 1.7 & 0.8 & 0 \\       
  \end{vmatrix} 
 \end{equation}
 
