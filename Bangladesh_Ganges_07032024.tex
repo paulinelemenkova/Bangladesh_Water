@@ -480,11 +480,11 @@ The supervised learning models of GRASS GIS based on the MLPClassifier demonstra
 
 Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping. 
 
-Class separability matrices of land cover classes identified over Ganges River Delta which are presented in the matrices below: Matrix \ref{eq1} shows class separability matrices for March and November 2021; 
-
-Matrix \ref{eq2} shows class separability matrices for March and November 2022 and Matrix \ref{eq3} shows class separability matrices for March and November 2023. Class separability matrices evaluated the assignment of the pixels distributed to various land cover classes over the landscapes of Ganges River Delta, hence it serves as a function of the regularisation parameters used for distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform an iterative search for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
+Class separability matrices of land cover classes identified over Ganges River Delta which are presented in the matrices below: Matrix \ref{eq1} shows class separability matrices for March and November 2021; Matrix \ref{eq2} shows class separability matrices for March and November 2022,
+ and Matrix \ref{eq3} shows class separability matrices for March and November 2023. Class separability matrices evaluated the assignment of the pixels distributed to various land cover classes over the landscapes of Ganges River Delta, hence it serves as a function of the regularisation parameters used for distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform an iterative search for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
 
 \begin{equation}\label{eq1}
+\setlength\arraycolsep{3pt}
 \footnotesize
 \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
@@ -500,7 +500,7 @@ Matrix \ref{eq2} shows class separability matrices for March and November 2022 a
 10 & 3.8 & 2.2 & 2.8 & 2.8 & 2.0 & 2.7 & 3.0 & 1.8 & 1.1 & 0 \\      
 \end{vmatrix}
  %
- \hspace{3pt}
+ \hspace{10pt}
  \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 1 & 0 &  &  &  &  &  &  &  &  &  \\
@@ -517,6 +517,7 @@ Matrix \ref{eq2} shows class separability matrices for March and November 2022 a
 \end{equation}
 
 \begin{equation}\label{eq2}
+\setlength\arraycolsep{3pt}
 \footnotesize
 \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
@@ -532,7 +533,7 @@ Matrix \ref{eq2} shows class separability matrices for March and November 2022 a
 10 & X & X & X & X & X & X & X & X & X & 0 \\      
 \end{vmatrix}
  %
- \hspace{3pt}
+ \hspace{10pt}
  \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 1 & 0 &  &  &  &  &  &  &  &  &  \\
@@ -549,6 +550,7 @@ Matrix \ref{eq2} shows class separability matrices for March and November 2022 a
 \end{equation}
 
 \begin{equation}\label{eq3}
+\setlength\arraycolsep{3pt}
 \footnotesize
 \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
@@ -564,7 +566,7 @@ Matrix \ref{eq2} shows class separability matrices for March and November 2022 a
 10 & X & X & X & X & X & X & X & X & X & 0 \\      
 \end{vmatrix}
  %
- \hspace{3pt}
+ \hspace{10pt}
  \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 1 & 0 &  &  &  &  &  &  &  &  &  \\
