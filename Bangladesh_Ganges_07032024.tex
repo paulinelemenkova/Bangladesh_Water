@@ -446,6 +446,8 @@ Each image of the produced dataset contained seven multispectral bands processed
 %\pagebreak
 \section{Results}
 
+Satellite images Landsat evaluated in this study cover the regions of southern Bangladesh and cover periods of March and November for years 2021, 2022 and 2023. Land cover changes during flood- and post-flood periods were measured using the advanced 'MLPClassifeir' approach of Deep Learning, developed by GRASS GIS which employs the Pythons's algorithms of Scikit-Learn library of machine learning. The increase of flooded inundated areas in the wetlands of the Ganges, the development of mangrove forests and the fragmentations of the forest land cover types were detected on the images for scenes processed with DL modules of GRASS GIS. The tested images included multispectral bands, and were collected on the cloud-free dates. The notable changes in the flooded areas were shown by the year 2021 with properties of land cover types evaluated with image classification methods after seven flooding period which is impacted by the monsoon effects in southern Bangladesh.
+
 %----------- subsection ----------->
 \subsection{K-means classification outcomes}
 
@@ -553,6 +555,8 @@ The supervised learning models of GRASS GIS based on the MLPClassifier demonstra
 \caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig10}
 \end{figure}
 
+The corrections of the presented framework and Python-based algorithm of GRASS GIS using machine learning (ML) approach which uses MLPClassifier of Deep Learning (DL) presents an advanced tool for automated recognition of land cover types on the satellite images and monitoring floods in the prone to floods regions of the southern Bangladesh. The percentage of the correctly classified images was calculated and summarised in the matrices showing classes separability (Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3} for years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
+
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.40\textwidth}
@@ -573,8 +577,6 @@ The supervised learning models of GRASS GIS based on the MLPClassifier demonstra
 }
 \caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig11}
 \end{figure}
-
-The corrections of the presented framework and Python-based algorithm of GRASS GIS using machine learning (ML) approach which uses MLPClassifier of Deep Learning (DL) presents an advanced tool for automated recognition of land cover types on the satellite images and monitoring floods in the prone to floods regions of the southern Bangladesh. The percentage of the correctly classified images was calculated and summarised in the matrices showing classes separability (Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3} for years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
 
 Class separability matrices of land cover classes identified over Ganges River Delta which are presented in the matrices below: Matrix \ref{eq1} shows class separability matrices for March and November 2021; Matrix \ref{eq2} shows class separability matrices for March and November 2022, and Matrix \ref{eq3} shows class separability matrices for March and November 2023. Class separability matrices evaluated the assignment of the pixels distributed to various land cover classes over the landscapes of Ganges River Delta, hence it serves as a function of the regularisation parameters used for distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform an iterative search for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
 
