@@ -93,7 +93,7 @@ This study presents a case of the Ganges River Delta, located in southern Bangla
     \begin{center}
 	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_01.jpg}
     \end{center}
-    \caption{Topographic map of Bangladesh with depicted study area showing the placement of the Landsat data over the Ganges River Delta. Software: GMT. Map source: author.}
+    \caption{Topographic map of Bangladesh with depicted study area showing the placement of the Landsat data over the Ganges River Delta. Software: GMT version 6.4.0. Map source: author.}
     \label{fig01}
 \end{figure}
 
@@ -111,18 +111,18 @@ Evaluating degree and rates of floods and effectiveness of flood prediction can 
 %----------- subsection ----------->
 \subsection{Deep Learning}
 
-As a branch of Machine learning (ML), Deep learning (DL) is increasingly used in Earth science for automatic processing of geospatial data. The problem remains with the technical approach of such methods, especially in Remote Sensing (RS) data processing. DL approaches can be applied by a variety of tools, using programming libraries, embedded plugins and modules in Geographic Information Systems (GIS) software. Amongst geoinformation software, GRASS GIS proposes effective solutions to satellite image processing with the option to utilise diverse choices of models for classification of RS data, Figure \ref{fig04}.
+As a branch of Machine learning (ML), Deep learning (DL) is increasingly used in Earth science for automatic processing of geospatial data. The problem remains with the technical approach of such methods, especially in Remote Sensing (RS) data processing. DL approaches can be applied by a variety of tools, using programming libraries, embedded plugins and modules in Geographic Information Systems (GIS) software. Amongst geoinformation software, GRASS GIS proposes effective solutions to satellite image processing with the option to utilise diverse choices of models for classification of RS data, Figure \ref{fig02}.
 
 \begin{figure}[H]
     \begin{center}
 %    \setlength{\unitlength}{0.5cm}
 	\hspace{-35pt}\includegraphics[width=8.0cm]{Fig_02.jpg}
     \end{center}
-    \caption{Conceptual structure of the ML and DL algorithms in geospatial data analysis and image processing by GRASS GIS. Graphical software: GIMP. Scheme source: author.}
-    \label{fig04}
+    \caption{Conceptual structure of the ML and DL algorithms in geospatial data analysis and image processing by GRASS GIS. Graphical software: Inkscape version 1.2. Scheme source: author.}
+    \label{fig02}
 \end{figure}
 
-Of the existing ML methods, the most widely used approach is the Deep Learning (DL) with many examples of applications for image processing in environmental studies \cite{10441152,AHMED2024167234,HASSAN2023100399}. DL presents advanced technique for evaluating the environmental dynamics during the climate changes assessed from image analysis \cite{10441576}. There are many categories of DL algorithms which have various setting parameters and functionality for measurements of pixels values in the image and classification. Overall, DL algorithms train the computer model using knowledge derived from the input layers and processed in hidden layers which results in accurate modelling as a result of data processing, Figure \ref{fig04}.
+Of the existing ML methods, the most widely used approach is the Deep Learning (DL) with many examples of applications for image processing in environmental studies \cite{10441152,AHMED2024167234,HASSAN2023100399}. DL presents advanced technique for evaluating the environmental dynamics during the climate changes assessed from image analysis \cite{10441576}. There are many categories of DL algorithms which have various setting parameters and functionality for measurements of pixels values in the image and classification. Overall, DL algorithms train the computer model using knowledge derived from the input layers and processed in hidden layers which results in accurate modelling as a result of data processing.
 
 The existing algorithms use Neural Networks (NN) to learn semantic representations of features as indicated by pixels on the images hence derived directly from Earth Observation (EO) data. This enables to evaluate landscapes properties and dynamics of the environmental properties \cite{BISWAS2023e21245}, using such methods as segmentation \cite{Lemenkova202320}, feature extraction, and classification \cite{RAISA2024101128}. Further development of DL methods aims at achieving high precision of the image processing as signals obtained from the spectral reflectances of the land cover types detected on the space borne images, as well as the use of complex programming algorithms, for instance, such as in NN \cite{RUDRA2023e16459}. 
 
@@ -139,57 +139,129 @@ While the purpose of Earth observation (EO) data is to provide information on ob
 
 %----------- subsection ----------->
 \subsection{Theoretical fundamentals of MLP}
-The Multilayer perceptron is a class of DL and a conceptual theoretical background to data analysis performed in this study which should be briefly discussed. A multilayer perceptron (MLP) presents a feedforward Artificial Neural Network (ANN), a branch of DL methods \cite{su151813786}. It consists of fully connected neurons with a nonlinear activation function that is organised in at least three layers, Figure \ref{fig04}. 
+The Multilayer perceptron is a class of DL and a conceptual theoretical background to data analysis performed in this study which should be briefly discussed. A multilayer perceptron (MLP) presents a feedforward Artificial Neural Network (ANN), a branch of DL methods \cite{su151813786}. It consists of fully connected neurons with a nonlinear activation function that is organised in at least three layers, Figure \ref{fig03}. 
 
 \begin{figure}[H]
     \begin{center}
-	\includegraphics[width=14.0cm]{Fig_04.jpg}
+	\includegraphics[width=14.0cm]{Fig_03.jpg}
     \end{center}
     \caption{General methodological scheme for the Deep Learning (DL) approach used for satellite image classification and EO data processing. Software: R, library 'grViz'. Diagram source: author.}
-    \label{fig04}
+    \label{fig03}
 \end{figure}
 
 These layers are being able to distinguish data that is not linearly separable and, for time series of satellite images, the variables that are varying in time. This results in different values of pixels as Digital Number (DN) recognised by the model. Such characteristics is caused by the spatio-temporal variability on spectral reflectance of pixels that constitute the image as raster matrix according to the physical properties of landscape and vegetation patches \cite{rs16010184,HUANG20181915,YIN2021102514}. 
 
 \subsection{Data}
-Satellite images present a reliable source of information for detecting the extent of floods and visualising inundated areas using time series analysis. Their applications is reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. In this study, we used four Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of Ganges Delta, Bangladesh. The data are available freely from the United States Geological Survey (USGS) repository were used in this work, Figure \ref{fig01}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) and Worldwide Reference System (WRS). 
+ In this study, we used four Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of Ganges Delta, Bangladesh. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in day time. The Landsat Collection Category T1, Number 2 for all the scenes. Landsat Station Identifier is LGN. Sensor Identifier is Landsat OLI TIRS for all the images, Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images is summarised in Table \ref{tab01}.
+
+\begin{table}[H]
+\footnotesize
+\caption{Metadata for the Landsat 8-9 OLI/TIRS images obtained from the USGS} \label{tab01}
+\begin{adjustwidth}{-\extralength}{0cm}
+    \begin{tabularx}{\fulllength}{llll}
+    \toprule
+       	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        \textbf{Landsat Scene Identifier} & LC81370442023066LGN00 & LC81370442022079LGN00 & LC81370442021076LGN00 \\ \hline
+        \textbf{Date Acquired} & \textbf{2023/03/07} & \textbf{2022/03/20} & \textbf{2021/03/17} \\ \hline
+        \textbf{Roll Angle} & -1 & 0 & 0 \\ \hline
+        \textbf{Start Time} & 2023-03-07 04:24:33 & 2022-03-20 04:24:26.058914 & 2021-03-17 04:24:23.120295 \\ \hline
+        \textbf{Stop Time} & 2023-03-07 04:25:05 & 2022-03-20 04:24:57.828914 & 2021-03-17 04:24:54.890294 \\ \hline
+        \textbf{Land Cloud Cover} & 3.12 & 0.01 & 0.03 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 2.97 & 0.01 & 0.03 \\ \hline
+        \textbf{Ground Control Points Model} & 732 & 771 & 776 \\ \hline
+        \textbf{Ground Control Points Version} & 5 & 5 & 5 \\ \hline
+        \textbf{Geometric RMSE Model} & 5683 & 5615 & 5694 \\ \hline
+        \textbf{Geometric RMSE Model X} & 3887 & 3857 & 3585 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 4146 & 4081 & 4424 \\ \hline
+        \textbf{Processing Software Version} & LPGS\_16.2.0 & LPGS\_15.6.0 & LPGS\_15.4.0 \\ \hline
+        \textbf{Sun Elevation L0RA} & 51.70012312 & 56.10505202 & 55.19368850 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 134.86314148 & 129.90704446 & 131.01649112 \\ \hline
+        \textbf{TIRS SSM Model} & FINAL & FINAL & FINAL \\ \hline
+        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        \textbf{Satellite} & 8 & 8 & 8 \\ \hline
+        \textbf{Scene Center Lat DMS} & "23°06'46.58""N" & "23°06'45.29""N" & "23°06'46.01""N" \\ \hline
+        \textbf{Scene Center Long DMS} & "90°23'29.83""E" & "90°23'14.57""E" & "90°24'53.42""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "24°09'00.29""N" & "24°09'00""N" & "24°09'02.38""N" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "89°13'54.73""E" & "89°13'44.11""E" & "89°15'19.58""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "24°11'21.62""N" & "24°11'21.52""N" & "24°11'22.45""N" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "91°30'23.18""E" & "91°30'12.56""E" & "91°31'48.22""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "22°01'28.45""N" & "22°01'28.20""N" & "22°01'30.32""N" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "89°17'26.70""E" & "89°17'16.22""E" & "89°18'50.22""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "22°03'36.04""N" & "22°03'35.93""N" & "22°03'36.76""N" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "91°31'47.39""E" & "91°31'36.95""E" & "91°33'11.12""E" \\ \hline
+        \midrule
+        \textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        \textbf{Landsat Scene Identifier} & LC91370442023330LGN00 & LC91370442022327LGN01 & LC81370442021332LGN00 \\ \hline
+        \textbf{Date Acquired} & \textbf{2023/11/26} & \textbf{2022/11/23} & \textbf{2021/11/28} \\ \hline
+        \textbf{Roll Angle} & 0 & 0 & 0 \\ \hline
+        \textbf{Start Time} & 2023-11-26 04:24:51 & 2022-11-23 04:25:01 & 2021-11-28 04:24:54.925489 \\ \hline
+        \textbf{Stop Time} & 2023-11-26 04:25:23 & 2022-11-23 04:25:32 & 2021-11-28 04:25:26.695489 \\ \hline
+        \textbf{Land Cloud Cover} & 0.02 & 0.20 & 0.40 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 0.02 & 0.19 & 0.38 \\ \hline
+        \textbf{Ground Control Points Model} & 750 & 782 & 768 \\ \hline
+        \textbf{Ground Control Points Version} & 5 & 5 & 5 \\ \hline
+        \textbf{Geometric RMSE Model} & 6651 & 6490 & 6697 \\ \hline
+        \textbf{Geometric RMSE Model X} & 4185 & 4191 & 4329 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 5170 & 4955 & 5110 \\ \hline
+        \textbf{Processing Software Version} & LPGS\_16.3.1 & LPGS\_16.2.0 & LPGS\_15.5.0 \\ \hline
+        \textbf{Sun Elevation L0RA} & 41.83496249 & 42.43660966 & 41.36291892 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 154.44654325 & 154.42300606 & 154.52745495 \\ \hline
+        \textbf{TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
+        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        \textbf{Satellite} & 9 & 9 & 8 \\ \hline
+        \textbf{Scene Center Lat DMS} & "23°06'45.65""N" & "23°06'46.48""N" & "23°06'45.22""N" \\ \hline
+        \textbf{Scene Center Long DMS} & "90°22'20.75""E" & "90°23'11.94""E" & "90°24'08.21""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "24°08'48.98""N" & "24°08'50.28""N" & "24°09'01.33""N" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "89°12'51.37""E" & "89°13'44.40""E" & "89°14'37.14""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "24°11'11.26""N" & "24°11'11.80""N" & "24°11'22.06""N" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "91°29'19.50""E" & "91°30'12.67""E" & "91°31'05.70""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "22°01'27.01""N" & "22°01'28.20""N" & "22°01'19.67""N" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "89°16'24.02""E" & "89°17'16.22""E" & "89°18'08.71""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "22°03'35.46""N" & "22°03'35.93""N" & "22°03'26.64""N" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "91°30'44.60""E" & "91°31'36.95""E" & "91°32'29.36""E" \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+The selection of these data is explained by the reputation and reliability of the Landsat imagery widely used for environmental studies. Besides, the Landsat images are available free of charge, have high repeatability of coverage and high quality. Hence, satellite images present a reliable source of information for detecting the extent of floods and visualising inundated areas using time series analysis. Their applications is reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. The data were collected from the available freely from the United States Geological Survey (USGS) repository EarthExplorer. The original data are visualised in Figure \ref{fig04}. 
 
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03a.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04a.jpg} \\
     \small (a): March 2014
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03b.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04b.jpg} \\
     \small (b): November 2014
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03c.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04c.jpg} \\
     \small (c): March 2021
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03d.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04d.jpg} \\
     \small (d): November 2021
   \end{tabular}
    \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03e.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04e.jpg} \\
     \small (e): March 2022
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03f.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04f.jpg} \\
     \small (f): November 2022
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03g.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04g.jpg} \\
     \small (g): March 2023
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_03h.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_04h.jpg} \\
     \small (h:) November 2023
   \end{tabular}
   \caption{Data sources: Landsat 8-9 OLI/TIRS images on Ganges Delta, Bangladesh, collected during the flood period (March) and post-flood period (November) on years 2014, 2021, 2022 and 2023, used for analysis of flood dynamics. Data source: USGS. Compilation source: author.}
-  \label{fig01}
+  \label{fig04}
 \end{figure}
 
 \subsection{Software}
@@ -312,7 +384,39 @@ Flooded areas in Ganges River Delta detected and mapped using MaxLike methods ar
 \caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig09}
 \end{figure}
 
-Maps of floods can be used as a broad base of environmental applications and flood hazard assessment. Their application can range from academia and research, industry and development, to governmental and social services for risk prevention. The findings presented in the study revealed a changing pattern of expanded floods in the post-flood period in Ganges Delta, and inequality in distribution of inundated areas covered by water by consequent years (2021, 2022 and 2023). Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. 
+Maps of floods can be used as a broad base of environmental applications and flood hazard assessment. Their application can range from academia and research, industry and development, to governmental and social services for risk prevention. The findings presented in the study revealed a changing pattern of expanded floods in the post-flood period in Ganges Delta, and inequality in distribution of inundated areas covered by water by consequent years (2021, 2022 and 2023). Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.} The information regarding the land cover types is derived from the existing works \cite{Rahman2020,rs13234799,Paszkowski2021} and adopted to the extent of the current study area.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
+  \toprule
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in March: Ganges-Brahmaputra River Delta} \\
+     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    \textbf{2021} & 717 & 252 & 434 & 758 & 1005 & 1035 & 758 & 744 & 927 & 219 \\
+    \textbf{2022} &  749 & 236 & 489 & 803 & 1030 & 1100 & 557 & 744 & 800 & 336 \\
+     \textbf{2023} &  707 & 343 & 1055 & 381 & 1032 & 997 & 702 & 649 & 796 & 180 \\
+\bottomrule
+\end{tabularx}
+  \caption{Flood period: estimated classes of land cover types for March period for years 2021, 2022 and 2023 in Ganges River Delta}
+  \label{tab02}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
+  \toprule
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in November: Ganges-Brahmaputra River Delta} \\
+     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    \textbf{2021} & 689 & 402 & 579 & 565 & 1228 & 1109 & 571 & 849 & 647 & 208 \\
+    \textbf{2022} & 700 & 468 & 365 & 587 & 1066 & 1048 & 683 & 942 & 683 & 326 \\
+     \textbf{2023} & 715 & 511 & 231 & 599 & 1351 & 1132 & 718 & 707 & 685 & 310 \\
+\bottomrule
+\end{tabularx}
+  \caption{Post-flood period: estimated classes of land cover types for November period for years 2021, 2022 and 2023 in Ganges River Delta}
+  \label{tab02}
+\end{table}
 
 %----------- subsection ----------->
 \subsection{Deep Learning outcomes}
