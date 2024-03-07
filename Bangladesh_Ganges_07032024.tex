@@ -47,6 +47,36 @@
 \usepackage{multirow}
 \usepackage{adjustbox}
 
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepblue},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 %=================================================================
 % Full title of the paper (Capitalized)
 \Title{Deep Learning Methods for Satellite Image Processing to Monitor Flood Dynamics in Ganges Delta, Bangladesh}
@@ -146,9 +176,7 @@ When applied to a series of satellite images, ML methods can effectively discove
 %----------- subsection ----------->
 
 \subsection{Workflow}
-The methodological workflow employed in this study consisted of several steps and processes which aimed at analysis of geospatial information and image processing. It also included diverse data obtained from different sources of information. 
-
-While the purpose of Earth observation (EO) data is to provide information on objects and features visible from space, choice of methods serves varied purposes that accommodate specific DL algorithms and techniques of image processing \cite{4736879,5070195}. Among the available methods, this paper employs the available DL solutions of GRASS GIS for satellite image processing for detecting flooded areas in Ganges River Delta, southern Bangladesh. 
+The methodological workflow employed in this study consisted of several steps and processes which aimed at analysis of geospatial information and image processing. It also included diverse data obtained from different sources of information. While the purpose of Earth observation (EO) data is to provide information on objects and features visible from space, choice of methods serves varied purposes that accommodate specific DL algorithms and techniques of image processing \cite{4736879,5070195}. Among the available methods, this paper employs the available DL solutions of GRASS GIS for satellite image processing for detecting flooded areas in Ganges River Delta, southern Bangladesh. 
 
 %----------- subsection ----------->
 \subsection{Theoretical fundamentals of MLP}
@@ -286,7 +314,52 @@ The following is an outline of the essential details regarding the approaches an
 
 %----------- subsection ----------->
 \subsection{Image processing}
-The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. The results of this step are used as training data for supervised classification using deep learning approach. This includes the procedures of clustering that generated signature file and report which was performed using k-means algorithm using 'i.cluster' module. The unsupervised classification was done using the 'i.maxlik' module. The results of this step are presented in Figure \ref{fig02} and provided the seed data and training map for the next step of DL modelling. Deep learning (DL) analysis is performed using algorithm of Multilayer Perceptron (MLPClassifier) for automated classification of the series of satellite images. Technically, the DL approach was realised using the 'r.learn.train' module of GRASS GIS. 
+The images were first imported into the GRASS GIS system using 'r.import' module and colour composites are created using 'r.composite'. The images were then displayed using the combination of modules 'd.mon' and 'd.rast'. The files are then saved to the bitmap format using the 'd.out.file' module. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst01}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for data import and creating colour composites algorithm,style=mystyle,label={lst01}]
+#importing the image subset with 7 Landsat bands and display the raster map
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B1.TIF output=L8_2023_N_01 extent=region resolution=region --overwrite
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B2.TIF output=L8_2023_N_02 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B3.TIF output=L8_2023_N_03 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B4.TIF output=L8_2023_N_04 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B5.TIF output=L8_2023_N_05 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B6.TIF output=L8_2023_N_06 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B7.TIF output=L8_2023_N_07 extent=region resolution=region
+g.list rast
+# false color
+r.composite blue=L8_2023_N_07 green=L8_2023_N_05 red=L8_2023_N_03 output=L8_2023_N_753
+d.mon wx0
+d.rast L8_2023_N_753
+d.out.file output=Bangladesh_753 format=jpg --overwrite
+# false color: NIR band B05 in the red channel, red band B04 in the green channel and green band B03 in the blue channel
+r.composite blue=L8_2023_N_03 green=L8_2023_N_04 red=L8_2023_N_05 output=L8_2023_N_345
+d.mon wx0
+d.rast L8_2023_N_345
+d.out.file output=Bangladesh_345 format=jpg --overwrite
+# true color
+r.composite blue=L8_2023_N_02 green=L8_2023_N_03 red=L8_2023_N_04 output=L8_2023_N_234
+d.mon wx0
+d.rast L8_2023_N_234
+d.out.file output=Bangladesh_J_234 format=jpg --overwrite
+\end{lstlisting}
+
+The results of the colour composites are demonstrated in Figure \ref{fig05}. The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. technically, it was performed using the modules 'i.group', 'i.cluster ' and 'i.maxlik' which creates the signature file and performs accuracy assessment using 'reject' function that evaluates rejection probability of the pixels using chi-square test. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst02}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst02}]
+g.region raster=L8_2023_N_01 -p
+i.group group=L8_2023_N subgroup=res_30m \
+  input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
+# Clustering: generating signature file and report using k-means clustering algorithm
+i.cluster group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  classes=10 reportfile=rep_clust_L8_2023_N.txt --overwrite
+# Classification by i.maxlik module
+i.maxlik group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  output=L8_2023_N_cluster_classes reject=L8_2023_N_cluster_reject --overwrite
+\end{lstlisting}
+
+The results of this step are demonstrated in Figure \ref{fig06} and are used as training data for supervised classification using deep learning approach. Moreover, the selected example of accuracy analysis for 2014 which was used as training data set is shown in Figure  \ref{fig07}. 
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{.45\textwidth}
@@ -314,8 +387,9 @@ The unsupervised classification is based on clustering using k-means and Maximum
 \caption{Examples of different colour composites created using multispectral bands of Landsat 8 OLI/TIRS scene on March and November 2014 by GRASS GIS 'r.composite' module. Here the band numbers correspond to the following Landsat channels: Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2).}\label{fig05}
 \end{figure}
 
+This step includes the procedures of clustering that generated signature file and report which was performed using k-means algorithm using 'i.cluster' module. The unsupervised classification was done using the 'i.maxlik' module. The results of this step are presented in Figure \ref{fig02} and provided the seed data and training map for the next step of DL modelling. Deep learning (DL) analysis is performed using algorithm of Multilayer Perceptron (MLPClassifier) for automated classification of the series of satellite images. First, the spatial region extent was defined using 'g.region' module which sets up the coordinates of the maps within the project using the target map. Afterwards, the training pixels from an older (2014) land cover classification were generated using 'r.random' module of GRASS GIS and used as seeds. Next, the imagery group with all Landsat-8 OLI/TIRS bands was created to include all multispectral bands (we do not need panchromatic bands in this case). Then the training pixels were applied to perform a classification using 'MLPClassifier' of deep learning approach on recent Landsat (in the presented code below -- the image on November 2023). This method trains a MLPClassifier model using 'r.learn.train. 
+
 \begin{figure}[H]
-%\hspace{50pt}\makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.50\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_06a.jpg}
@@ -326,12 +400,10 @@ The unsupervised classification is based on clustering using k-means and Maximum
 		\includegraphics[width=0.98\textwidth]{Fig_06b.jpg}
 		\caption{November 2014}
 	\end{subfigure}
-%}
 \caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method: \textbf{(a)}: March 2014; \textbf{(b)}: November 2014.}\label{fig06}
 \end{figure}
 
 \begin{figure}[H]
-%\hspace{50pt}\makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.50\textwidth}
 		\centering
 		\includegraphics[width=0.98\textwidth]{Fig_07a.jpg}
@@ -342,12 +414,28 @@ The unsupervised classification is based on clustering using k-means and Maximum
 		\includegraphics[width=0.98\textwidth]{Fig_07b.jpg}
 		\caption{November 2014}
 	\end{subfigure}
-%}
 \caption{Accuracy assessment of image classification of the Landsat 8 OLI/TIRS scenes: \textbf{(a)}: March 2014; \textbf{(b)}: November 2014.}\label{fig07}
 \end{figure}
 
+After this step, the prediction of the pixel assignments to each land cover class over the Ganges Delta River was performed using 'r.learn.predict' module. The raster categories were automatically applied to the classification output and checked again using the 'r.category' module. Then, the color scheme was assigned from the land class training map to result and visulised using the modules 'r.colors' and 'd.rast'. Technically, the DL approach was realised using the 'r.learn.train' module of GRASS GIS and demonstrated in script of Listing \ref{lst03}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst03}]
+g.region raster=L8_2023_N_01 -p
+r.random input=L8_2014_N_cluster_classes seed=100 npoints=1000 raster=training_pixels
+i.group group=L8_2023_N input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
+r.learn.train group=L8_2023_N training_map=training_pixels \
+    model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
+r.learn.predict group=L8_2023_N load_model=mlpc_model.gz output=mlpc_classification_Ganges --overwrite
+r.category mlpc_classification_Ganges
+d.mon wx0
+d.rast mlpc_classification_Ganges
+r.colors mlpc_classification_Ganges color=roygbiv -e
+d.legend raster=mlpc_classification_Ganges title="MLPClassifier: 11/2023" title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white border_color=white
+d.out.file output=MLPC_2023_11 format=jpg --overwrite
+\end{lstlisting}
+
 %----------- section ----------->
-\pagebreak
+%\pagebreak
 \section{Results}
 
 %----------- subsection ----------->
@@ -570,15 +658,15 @@ Class separability matrices of land cover classes identified over Ganges River D
  \begin{vmatrix}
     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 1 & 0 &  &  &  &  &  &  &  &  &  \\
-2 & X & 0 &  &  &  &  &  &  &  &  \\
-3 & X & X & 0 &  &  &  &  &  &  &  \\
-4 & X & X & X & 0 &  &  &  &  &  &  \\
-5 & X & X & X & X & 0 &  &  &  &  &  \\
-6 & X & X & X & X & X & 0 &  &  &  &  \\  
-7 & X & X & X & X & X & X & 0 &  &  &  \\  
-8 & X & X & X & X & X & X & X & 0 &  &  \\
-9 & X & X & X & X & X & X & X & X & 0 &  \\   
-10 & X & X & X & X & X & X & X & X & X & 0 \\       
+2 & 1.8 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.1 & 1.4 & 0 &  &  &  &  &  &  &  \\
+4 & 3.1 & 1.1 & 1.2 & 0 &  &  &  &  &  &  \\
+5 & 3.9 & 1.9 & 1.3 & 0.8 & 0 &  &  &  &  &  \\
+6 & 4.2 & 2.3 & 1.7 & 1.2 & 0.6 & 0 &  &  &  &  \\  
+7 & 3.5 & 2.5 & 0.9 & 1.8 & 1.4 & 1.5 & 0 &  &  &  \\  
+8 & 4.1 & 2.6 & 1.7 & 1.8 & 1.3 & 0.9 & 1.2 & 0 &  &  \\
+9 & 4.0 & 2.9 & 1.4 & 2.2 & 1.7 & 1.6 & 0.6 & 0.9 & 0 &  \\   
+10 & 3.1 & 2.7 & 1.6 & 2.2 & 1.9 & 1.9 & 1.0 & 1.6 & 0.9 & 0 \\       
  \end{vmatrix} 
 \end{equation}
  
