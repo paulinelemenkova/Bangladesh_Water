@@ -168,11 +168,11 @@ This study presents a case of the Ganges River Delta, located in southern Bangla
 \subsection{Problem formulation}
 The repetitive floods in Ganges Delta negatively impact social-natural systems causing losses of lives and damage to infrastructure \cite{JERIN2023}, fragmentation and disruption in natural landscapes \cite{MUKHERJEE2021106961} \hl{and} salinity intrusion during storms\hl{. Besides, floods affect} crop agriculture \cite{ABEDIN2023315,ALMASUD2020104443}, and \hl{negatively influence the} sustainability of coastal ecosystems \cite{SARKER2024169718,MAINUDDIN2021105740,HASAN2023101028}. Millions of people living in southern Bangladesh and neighbouring regions of India are vulnerable \hl{to repetitive floods} due to exposure, high susceptibility and low resilience \cite{SINGHA2020106825,RUMPA2023104047}. 
 
-The examples of social effects from floods include the disruptions to clean drinking water and electricity, broken transport and communication systems, effects regular education and normal working environment and health care support for population \cite{JERIN2023103851,NAHIN2023e14520}. The long-term effects from flood and its consequences which may last for months  seriously affect the social-economic system of Bangladesh. The coastal area of Ganges River Delta supports approximately 56.7 M of \hl{population} \cite{DAS2021101983} where many \hl{settlements} are \hl{located including both small villages and large cities such as the capital Dhaka, Khulna (the third-largest city in the country), Comilla and Narayani. Supporting such flood-prone areas }requires\hl{ geospatial }monitoring of flood risks \hl{in order to visualise the affected areas on the maps of floods} \cite{Alietal,AZAD2023100498}.
+The examples of social effects from floods include the disruptions to clean drinking water and electricity, broken transport and communication systems, effects regular education and normal working environment and health care support for population \cite{JERIN2023103851,NAHIN2023e14520}. The long-term effects from flood and its consequences which may last for months  seriously affect the social-economic system of Bangladesh. The coastal area of Ganges River Delta supports approximately 56.7 M of \hl{population which encompasses the study area} \cite{DAS2021101983} where many \hl{settlements} are \hl{located including both small villages and large cities such as the capital Dhaka, Khulna (the third-largest city in the country), Comilla and Narayani. Supporting such flood-prone areas }requires\hl{ geospatial }monitoring of flood risks \hl{in order to visualise the affected areas on the maps of floods} \cite{Alietal,AZAD2023100498}.
 
 The uncertainty of flood prediction in Ganges River Delta has an impact on vulnerability to risk and information among the local population. Hence, preventive prediction rises a question of using reliable data and advances methods for operative monitoring of floods and assessment of environmental sustainability \cite{NICHOLLS2016370}. \hl{The main approach that a country can take to assess flood risk is to map areas that are susceptible to flooding based on their geography and the comprehensive flood risk assessment. With this regards, flood maps should be prepared by the relevant authorities, and remote flood monitoring should be used to reduce the risk during weather events. Various techniques have been developed to produce flood maps. Among them, satellite-based flood maps tend to provide real-time, contiguous representations with varying spatial resolution over time and higher accuracy.}
 
-Notably, no prior study has explored the deep learning (DL) methods available in Geographic Resources Analysis Support System (GRASS) Geographic Information System (GIS) through a comprehensive evaluation of multi-spectral imagery for mapping floods in Ganges Delta\hl{, Bangladesh}. As a response to this gap, this study presents \hl{a report with} such approach which is based on using \hl{the }DL methods of \hl{satellite }image processing by GRASS GIS scripting software. \hl{The }implementation of this approach is realised through the MLPClassifier algorithm\hl{ }from the embedded Scikit-Learn library of Python. 
+Notably, no prior study has explored the deep learning (DL) methods available in Geographic Resources Analysis Support System (GRASS) Geographic Information System (GIS) \cite{GRASS_GIS_software} through a comprehensive evaluation of multi-spectral imagery for mapping floods in Ganges Delta\hl{, Bangladesh}. As a response to this gap, this study presents \hl{a report with} such approach which is based on using \hl{the }DL methods of \hl{satellite }image processing by GRASS GIS scripting software. \hl{The }implementation of this approach is realised through the MLPClassifier algorithm\hl{ }from the embedded Scikit-Learn library of Python \cite{pedregosa2011scikit,van1995python}. 
 
 %----------- section ----------->
 \section{Materials and Methods}
@@ -193,7 +193,7 @@ As a branch of Machine learning (ML), Deep learning (DL) is increasingly used in
 
 Of the existing ML methods, the most widely used approach is the Deep Learning (DL) with many examples of applications for image processing in environmental studies \cite{10441152,AHMED2024167234,HASSAN2023100399}. DL presents advanced technique for evaluating the environmental dynamics during the climate changes assessed from image analysis \cite{10441576}. There are many categories of DL algorithms which have various setting parameters and functionality for measurements of pixels values in the image and classification. Overall, DL algorithms train the computer model using knowledge derived from the input layers and processed in hidden layers which results in accurate modelling as a result of data processing.
 
-The existing algorithms use Neural Networks (NN) to learn semantic representations of features as indicated by pixels on the images hence derived directly from Earth Observation (EO) data. This enables to evaluate landscapes properties and dynamics of the environmental properties \cite{BISWAS2023e21245}, using such methods as segmentation \cite{Lemenkova202320}, feature extraction, and classification \cite{RAISA2024101128}. Further development of DL methods aims at achieving high precision of the image processing as signals obtained from the spectral reflectances of the land cover types detected on the space borne images, as well as the use of complex programming algorithms, for instance, such as in NN \cite{RUDRA2023e16459}. 
+The existing algorithms \hl{of the machine learning modules of GRASS GIS }use Neural Networks (NN) \cite{202017,HECHTNIELSEN199265,SHEKHAR199213} to learn semantic representations of features as indicated by pixels on the images hence derived directly from Earth Observation (EO) data. This enables to evaluate landscapes properties and dynamics of the environmental properties \cite{BISWAS2023e21245}, using such methods as segmentation \cite{Lemenkova202320}, feature extraction, and classification \cite{RAISA2024101128}. Further development of DL methods aims at achieving high precision of the image processing as signals obtained from the spectral reflectances of the land cover types detected on the space borne images, as well as the use of complex programming algorithms, for instance, such as in NN \cite{RUDRA2023e16459}. 
 
 %----------- subsection ----------->
 
@@ -289,7 +289,7 @@ The selection of these data is explained by the reputation and reliability of th
     \includegraphics[width=2.9cm]{Fig_04h.jpg} \\
     \small (h:) November 2023
   \end{tabular}
-  \caption{Data sources: Landsat 8-9 OLI/TIRS images on Ganges Delta, Bangladesh, collected during the flood period (March) and post-flood period (November) on years 2014, 2021, 2022 and 2023, used for analysis of flood dynamics. Data source: USGS. Compilation source: author.}
+  \caption{Data sources: Landsat 8-9 OLI/TIRS images on Ganges Delta, Bangladesh, collected during the flood period (March) and post-flood period (November) on years 2014, 2021, 2022 and 2023, used for analysis of flood dynamics. Data source: USGS \cite{Landsat}. Compilation source: author.}
   \label{fig04}
 \end{figure}
 
@@ -298,7 +298,7 @@ The workflow used in this research employs a chain of modules that use scripting
 
 %----------- subsection ----------->
 \subsection{Implementation}
-We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
+We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library \cite{pedregosa2011scikit} via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
 
 The following is an outline of the essential details regarding the approaches and techniques of the algorithm that compose the GRASS GIS framework using for image analysis. For details, full codes are presented below and explained with essential details. In all the GRASS GIS modules and functions and post-processing of the satellite images using DL approach, it is necessary to apply the module which implement the required functionality for data processing for each image in terms of the identifiers of functions and parameters of image processing. For this purpose, we adopted and modified the approaches of ML modules (libraries) of GRASS GIS which rely on using the Python's Scikit-Learn library for DL techniques.
 
@@ -533,6 +533,7 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
 \end{figure}
 
 \begin{table}[H]
+\caption{\hl{Flood period: estimated classes of land cover types for March period for years 2021, 2022 and 2023 in Ganges River Delta}}
   \centering
   \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
   \toprule
@@ -544,11 +545,11 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
      \textbf{2023} &  707 & 343 & 1055 & 381 & 1032 & 997 & 702 & 649 & 796 & 180 \\
 \bottomrule
 \end{tabularx}
-  \caption{Flood period: estimated classes of land cover types for March period for years 2021, 2022 and 2023 in Ganges River Delta}
   \label{tab02}
 \end{table}
 
 \begin{table}[H]
+ \caption{\hl{Post-flood period: estimated classes of land cover types for November period for years 2021, 2022 and 2023 in Ganges River Delta}}
   \centering
   \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
   \toprule
@@ -560,7 +561,6 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
      \textbf{2023} & 715 & 511 & 231 & 599 & 1351 & 1132 & 718 & 707 & 685 & 310 \\
 \bottomrule
 \end{tabularx}
-  \caption{Post-flood period: estimated classes of land cover types for November period for years 2021, 2022 and 2023 in Ganges River Delta}
   \label{tab03}
 \end{table}
 
