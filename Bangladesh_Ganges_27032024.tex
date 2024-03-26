@@ -298,9 +298,17 @@ The workflow used in this research employs a chain of modules that use scripting
 
 %----------- subsection ----------->
 \subsection{Implementation}
-We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library \cite{pedregosa2011scikit} via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
+We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS \hl{using the approach presented in Figure} \ref{fig04}. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library \cite{pedregosa2011scikit} via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
 
 The following is an outline of the essential details regarding the approaches and techniques of the algorithm that compose the GRASS GIS framework using for image analysis. For details, full codes are presented below and explained with essential details. In all the GRASS GIS modules and functions and post-processing of the satellite images using DL approach, it is necessary to apply the module which implement the required functionality for data processing for each image in terms of the identifiers of functions and parameters of image processing. For this purpose, we adopted and modified the approaches of ML modules (libraries) of GRASS GIS which rely on using the Python's Scikit-Learn library for DL techniques.
+
+\begin{figure}[H]
+    \begin{center}
+	\includegraphics[width=10.0cm]{Fig_04.jpg}
+    \end{center}
+    \caption{\hl{Workflow scheme for the methodology used in this study for image processing in GRASS GIS. Software: R, library DiagrammeR} \cite{DiagrammeR}. \hl{Diagram source: author}.}
+    \label{fig04}
+\end{figure}
 
 %----------- subsection ----------->
 \subsection{Image processing}
