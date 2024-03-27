@@ -33,6 +33,7 @@
 \usepackage{xcolor}
 \usepackage{gensymb} % for \textdegree
 \usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \usepackage{amsmath,mathtools,amsthm}
 	\setcounter{MaxMatrixCols}{15}
 \usepackage{array}
@@ -220,35 +221,31 @@ In this study, we used \hl{eight} Landsat 8-9 Operational Land Imager (OLI) and 
 The generated dataset is \hl{collected} from the \href{https://earthexplorer.usgs.gov/}{EarthExplorer} \cite{USGSPublication} with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands, Figure \ref{fig04}. The images are in GeoTIFF format and contained the \hl{seven multispectral} bands for each image. Hence, the image recordings received from the USGS source include RS datasets have been explored for metadata using records available in \hl{the Appendix in }Table \ref{tabApp} \hl{and the essential characteristics are summarised in Table} \ref{tab01}. The advantage of the Landsat archives is that it is reusable. Thus, in future studies, these data can be used as input data for similar tasks, such as classification and detection of land cover types, image processing and segmentation using presented GRASS GIS workflow model of other tools. 
 
 \begin{table}[H]
-\footnotesize
+%\scriptsize
 \caption{\hl{Attribute table of the main characteristics of} the Landsat 8-9 OLI/TIRS images} \label{tab01}
-\begin{adjustwidth}{-\extralength}{0cm}
-    \begin{tabularx}{\fulllength}{llll}
+%\begin{adjustwidth}{-\extralength}{0cm}
+ %   \begin{tabularx}{\fulllength}{llll}
+ %    \begin{tabularx}{\textwidth}{cccc}
+\begin{tabularx}{\textwidth}{@{}lYYYYY@{}}
     \toprule
        	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
-        \textbf{Landsat Scene Identifier} & LC81370442023066LGN00 & LC81370442022079LGN00 & LC81370442021076LGN00 \\ \hline
         \textbf{Date Acquired} & \textbf{2023/03/07} & \textbf{2022/03/20} & \textbf{2021/03/17} \\ \hline
         \textbf{Land Cloud Cover} & 3.12 & 0.01 & 0.03 \\ \hline
         \textbf{Scene Cloud Cover L1} & 2.97 & 0.01 & 0.03 \\ \hline
         \textbf{Sun Elevation L0RA} & 51.70012312 & 56.10505202 & 55.19368850 \\ \hline
         \textbf{Sun Azimuth L0RA} & 134.86314148 & 129.90704446 & 131.01649112 \\ \hline
-        \textbf{TIRS SSM Model} & FINAL & FINAL & FINAL \\ \hline
-        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
         \textbf{Satellite} & 8 & 8 & 8 \\ \hline\hline
         \midrule
         \textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
-        \textbf{Landsat Scene Identifier} & LC91370442023330LGN00 & LC91370442022327LGN01 & LC81370442021332LGN00 \\ \hline
         \textbf{Date Acquired} & \textbf{2023/11/26} & \textbf{2022/11/23} & \textbf{2021/11/28} \\ \hline
         \textbf{Land Cloud Cover} & 0.02 & 0.20 & 0.40 \\ \hline
         \textbf{Scene Cloud Cover L1} & 0.02 & 0.19 & 0.38 \\ \hline
         \textbf{Sun Elevation L0RA} & 41.83496249 & 42.43660966 & 41.36291892 \\ \hline
         \textbf{Sun Azimuth L0RA} & 154.44654325 & 154.42300606 & 154.52745495 \\ \hline
-        \textbf{TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
-        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
         \textbf{Satellite} & 9 & 9 & 8 \\ \hline
         \bottomrule
     \end{tabularx}
-    \end{adjustwidth}
+%    \end{adjustwidth}
 \end{table}
 
 The datasets are available in EarthExplorer \cite{USGSPublication} and originating from NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in day time. The Landsat Collection Category T1, Number 2 for all the scenes. Landsat Station Identifier is LGN. Sensor Identifier is Landsat OLI TIRS for all the images, Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
@@ -304,7 +301,7 @@ The following is an outline of the essential details regarding the approaches an
 
 \begin{figure}[H]
     \begin{center}
-	\includegraphics[width=10.0cm]{Fig_05.jpg}
+	\includegraphics[width=11.0cm]{Fig_05.jpg}
     \end{center}
     \caption{\hl{Workflow scheme for the methodology used in this study for image processing in GRASS GIS. Software: R, library DiagrammeR} \cite{DiagrammeR}. \hl{Diagram source: author}.}
     \label{fig05}
@@ -312,34 +309,7 @@ The following is an outline of the essential details regarding the approaches an
 
 %----------- subsection ----------->
 \subsection{Image processing}
-The images were first imported into the GRASS GIS system using 'r.import' module and colour composites are created using 'r.composite'. The images were then displayed using the combination of modules 'd.mon' and 'd.rast'. The files are then saved to the bitmap format using the 'd.out.file' module. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst01}.
-
-\begin{lstlisting}[language=bash,caption=GRASS GIS code for data import and creating colour composites algorithm,style=mystyle,label={lst01}]
-#importing the image subset with 7 Landsat bands and display the raster map
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B1.TIF output=L8_2023_N_01 extent=region resolution=region --overwrite
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B2.TIF output=L8_2023_N_02 extent=region resolution=region
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B3.TIF output=L8_2023_N_03 extent=region resolution=region
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B4.TIF output=L8_2023_N_04 extent=region resolution=region
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B5.TIF output=L8_2023_N_05 extent=region resolution=region
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B6.TIF output=L8_2023_N_06 extent=region resolution=region
-r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B7.TIF output=L8_2023_N_07 extent=region resolution=region
-g.list rast
-# false color
-r.composite blue=L8_2023_N_07 green=L8_2023_N_05 red=L8_2023_N_03 output=L8_2023_N_753
-d.mon wx0
-d.rast L8_2023_N_753
-d.out.file output=Bangladesh_753 format=jpg --overwrite
-# false color: NIR band B05 in the red channel, red band B04 in the green channel and green band B03 in the blue channel
-r.composite blue=L8_2023_N_03 green=L8_2023_N_04 red=L8_2023_N_05 output=L8_2023_N_345
-d.mon wx0
-d.rast L8_2023_N_345
-d.out.file output=Bangladesh_345 format=jpg --overwrite
-# true color
-r.composite blue=L8_2023_N_02 green=L8_2023_N_03 red=L8_2023_N_04 output=L8_2023_N_234
-d.mon wx0
-d.rast L8_2023_N_234
-d.out.file output=Bangladesh_J_234 format=jpg --overwrite
-\end{lstlisting}
+The images were first imported into the GRASS GIS system using 'r.import' module and colour composites are created using 'r.composite'. The images were then displayed using the combination of modules 'd.mon' and 'd.rast'. The files are then saved to the bitmap format using the 'd.out.file' module. 
 
 The results of the colour composites are demonstrated in Figure \ref{fig06}. 
 
@@ -369,6 +339,35 @@ The results of the colour composites are demonstrated in Figure \ref{fig06}.
 \caption{Examples of different false colour composites generated using the multispectral bands of the Landsat 8-9 OLI/TIRS scenes by GRASS GIS 'r.composite' module. Here the band numbers correspond to the following channels of the Landsat 8-9 OLI/TIRS images: Band 2 -- Blue; Band 3 -- Green; Band 4 -- Red; Band 5 -- Near Infrared (NIR); Band 7 -- Shortwave Infrared-2 (SWIR-2).}\label{fig06}
 \end{figure}
 
+The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst01}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for data import and creating colour composites algorithm,style=mystyle,label={lst01}]
+#importing the image subset with 7 Landsat bands and display the raster map
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B1.TIF output=L8_2023_N_01 extent=region resolution=region --overwrite
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B2.TIF output=L8_2023_N_02 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B3.TIF output=L8_2023_N_03 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B4.TIF output=L8_2023_N_04 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B5.TIF output=L8_2023_N_05 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B6.TIF output=L8_2023_N_06 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B7.TIF output=L8_2023_N_07 extent=region resolution=region
+g.list rast
+# false color
+r.composite blue=L8_2023_N_07 green=L8_2023_N_05 red=L8_2023_N_03 output=L8_2023_N_753
+d.mon wx0
+d.rast L8_2023_N_753
+d.out.file output=Bangladesh_753 format=jpg --overwrite
+# false color: NIR band B05 in the red channel, red band B04 in the green channel and green band B03 in the blue channel
+r.composite blue=L8_2023_N_03 green=L8_2023_N_04 red=L8_2023_N_05 output=L8_2023_N_345
+d.mon wx0
+d.rast L8_2023_N_345
+d.out.file output=Bangladesh_345 format=jpg --overwrite
+# true color
+r.composite blue=L8_2023_N_02 green=L8_2023_N_03 red=L8_2023_N_04 output=L8_2023_N_234
+d.mon wx0
+d.rast L8_2023_N_234
+d.out.file output=Bangladesh_J_234 format=jpg --overwrite
+\end{lstlisting}
+
 The unsupervised classification is based on clustering using k-means and Maximum Likelihood embedded in the GRASS GIS. technically, it was performed using the modules 'i.group', 'i.cluster ' and 'i.maxlik' which creates the signature file and performs accuracy assessment using 'reject' function that evaluates rejection probability of the pixels using chi-square test. The implementation of this step is performed using the GRASS GIS syntax (example is presented for November 2023), presented in the codes of Listing \ref{lst02}.
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for unsupervised image classification method using k-means clustering algorithm,style=mystyle,label={lst02}]
@@ -387,6 +386,8 @@ i.maxlik group=L8_2023_N subgroup=res_30m \
 
 The results of this step are demonstrated in Figure \ref{fig07} and are used as training data for supervised classification using deep learning approach. Moreover, the selected example of accuracy analysis for 2014 which was used as training data set is shown in Figure  \ref{fig08}. This step includes the procedures of clustering that generated signature file and report which was performed using k-means algorithm using 'i.cluster' module. The unsupervised classification was done using the 'i.maxlik' module. The results of this step are presented in Figure \ref{fig02} and provided the seed data and training map for the next step of DL modelling. 
 
+\hl{The results of the accuracy assessment are presented in Figure} \ref{fig08} \hl{which shows the reject threshold map layer created using GRASS GIS module 'i.maxlik'. The maps are computed for each satellite image and contain the index to one calculated confidence level for each classified pixels in the classified images. In total, the values range from 0 to 100 \% which indicate the predefined confidence intervals. The interpretation of the reject maps includes values of lower (is to be  as 0.1 = keep and those close to 100\% indicate reject. The application for this map layer is as a mask indicating raster pixels in the classified images that have a low probability of flood categorisation (that is, high rejection index) of being assigned to the correct class. }
+
 \begin{figure}[H]
 	\begin{subfigure}[b]{.50\textwidth}
 		\centering
@@ -398,8 +399,10 @@ The results of this step are demonstrated in Figure \ref{fig07} and are used as 
 		\includegraphics[width=0.98\textwidth]{Fig_07b.jpg}
 		\caption{November 2014}
 	\end{subfigure}
-\caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method: \textbf{(a)}: March 2014; \textbf{(b)}: November 2014.}\label{fig07}
+\caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method: \textbf{(a)}: March 2014; \textbf{(b)}: November 2014. \hl{Ten land cover types correspond to the following categogies: 1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.}}\label{fig07}
 \end{figure}
+
+\hl{The computed maps based on the evaluated reject raster map which indicates the results of the evaluated reject thresholds. The reject thresholds were calculated using a chi square test which is a statistical approach that tests goodness of fit of the datasets. This test was used to determine whether the computed pixels and assigned to various land cover classes are acceptable or should be rejected based on the hypothesis that the resulting data are from the specified distribution of land cover classes at the specified level of significance. Hence, the accuracy assessment was tested on each satellite image and shows the discriminant result at various threshold levels of confidence level of the assigned pixels. The maps shown in Figure} \ref{fig08} \hl{is used to determine at what confidence level each classified pixels is correctly categorised to the diverse land cover classes. }
 
 \begin{figure}[H]
 	\begin{subfigure}[b]{.50\textwidth}
@@ -447,8 +450,6 @@ Satellite images Landsat evaluated in this study cover the regions of southern B
 
 Flooded areas in Ganges River Delta detected and mapped using MaxLike methods are presented as a series of the resulting maps in Figure \ref{fig09} and Figure \ref{fig10} and deep learning (DL) is presented in Figure \ref{fig11} and Figure \ref{fig12}. Maps of floods can be used as a broad base of environmental applications and flood hazard assessment. Their application can range from academia and research, industry and development, to governmental and social services for risk prevention. The findings presented in the study revealed a changing pattern of expanded floods in the post-flood period in Ganges Delta, and inequality in distribution of inundated areas covered by water by consequent years (2021, 2022 and 2023). 
 
-The maps are generated using classified images for March showing the flooding event (in Figure \ref{fig09}) and Figure \ref{fig11}, as well as for November (Figure \ref{fig10} and Figure \ref{fig12}) showing the post-flood landscapes, respectively. Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.} \hl{Information on land cover types is derived from Rahman et al.} \cite{Rahman2020}\hl{, Sousa and Small} \cite{rs13234799} \hl{and Paszkowski et al.} \cite{Paszkowski2021}\hl{ and applied to the extent of the current study area.}
-
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.40\textwidth}
@@ -467,7 +468,7 @@ The maps are generated using classified images for March showing the flooding ev
 		\caption{2023}
 	\end{subfigure}%
 }
-\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig09}
+\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023. \hl{Ten land cover types correspond to the following categogies: 1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.}}\label{fig09}
 \end{figure}
 
 \begin{figure}[H]
@@ -488,15 +489,15 @@ The maps are generated using classified images for March showing the flooding ev
 		\caption{2023}
 	\end{subfigure}%
 }
-\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig10}
+\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using k-means clustering and MaxLike classification of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023. \hl{Ten land cover types correspond to the following categogies: 1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.}}\label{fig10}
 \end{figure}
+
+The maps are generated using classified images for March showing the flooding event (in Figure \ref{fig09}) and Figure \ref{fig11}, as well as for November (Figure \ref{fig10} and Figure \ref{fig12}) showing the post-flood landscapes, respectively. Scripting models of GRASS GIS with open source available specifications catalyse further innovation in risk management and presents solutions for state-of-the-art mapping using programming approaches and machine learning modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.} \hl{Information on land cover types is derived from Rahman et al.} \cite{Rahman2020}\hl{, Sousa and Small} \cite{rs13234799} \hl{and Paszkowski et al.} \cite{Paszkowski2021}\hl{ and applied to the extent of the current study area.}
 
 %----------- subsection ----------->
 \subsection{Deep Learning outcomes}
 
 The supervised learning models of GRASS GIS based on the MLPClassifier demonstrated accurate mapping and refined visualisation functionality, Figure \ref{fig11} and Figure \ref{fig12}. While this method was developed to serve a specific goal of image processing, its purpose is applicable as solutions to environmental monitoring with outcomes of detected flooded areas as presented above. Hence, the research outcomes have provided insights into the changing landscapes of the post-flooded period of Ganges Delta. 
-
-Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
 
 \begin{figure}[H]
 \hspace{50pt}\makebox[0.90\linewidth][r]{%
@@ -516,7 +517,7 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
 		\caption{2023}
 	\end{subfigure}%
 }
-\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023.}\label{fig11}
+\caption{Flooded landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: March 2021; \textbf{(b)}: March 2022; \textbf{(c)}: March 2023. \hl{Ten land cover types correspond to the following categogies: 1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.}}\label{fig11}
 \end{figure}
 
 \begin{figure}[H]
@@ -537,15 +538,17 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
 		\caption{2023}
 	\end{subfigure}%
 }
-\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023.}\label{fig12}
+\caption{Post-flood landscapes in Ganges Delta, Bangladesh mapped using Deep Learning (DL) classification MLPC of GRASS GIS applied to the Landsat 8-9 OLI/TIRS images: \textbf{(a)}: November 2021; \textbf{(b)}: November 2022; \textbf{(c)}: November 2023. \hl{Ten land cover types correspond to the following categogies: 1); Water; 2) Wetlands and mudflats; 3) Mangrove forests; 4) Sandy areas; 5) Forests; 6) Croplands; 7) Grasslands; 8) Urban settlements; 9) Orchards; 10) Aquaculture.}}\label{fig12}
 \end{figure}
+
+Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enabled by the USGS was used to plots and graphically display the changes in the flood and post-flood periods for southern Bangladesh for three test periods: 2021, 2022 and 2023. The data for 2014 were used as training polygon for deep learning modelling which requires the classification seed. As demonstrated in this paper, GRASS GIS presents an open-source mapping product that shows high potential for its adoption in environmental monitoring and mapping through embedded modules of machine learning and deep learning that support accurate image classification through advanced computer vision algorithms of pattern recognition and image analysis. 
 
 \begin{table}[H]
 \caption{\hl{Flood period: estimated classes of land cover types for March period for years 2021, 2022 and 2023 in Ganges River Delta}}
   \centering
   \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
   \toprule
-  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in March: Ganges-Brahmaputra River Delta} \\
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in March \hl{pixels}: Ganges-Brahmaputra River Delta} \\
      & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
     \midrule
     \textbf{2021} & 717 & 252 & 434 & 758 & 1005 & 1035 & 758 & 744 & 927 & 219 \\
@@ -561,7 +564,7 @@ Time-series analysis of the Ganges Delta using Landsat 8-9 OLI/TIRS dataset enab
   \centering
   \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
   \toprule
-  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in November: Ganges-Brahmaputra River Delta} \\
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types in November \hl{pixels}: Ganges-Brahmaputra River Delta} \\
      & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
     \midrule
     \textbf{2021} & 689 & 402 & 579 & 565 & 1228 & 1109 & 571 & 849 & 647 & 208 \\
