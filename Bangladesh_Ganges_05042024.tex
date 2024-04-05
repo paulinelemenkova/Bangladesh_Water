@@ -199,18 +199,28 @@ Of the existing ML methods, the most widely used approach is the \hl{DL} with ma
 %----------- subsection ----------->
 
 \subsection{Workflow}
-The methodological workflow\hl{ consists} of several steps\hl{ }aimed at\hl{ }geospatial \hl{analysis} and image processing. It also included diverse data obtained from different sources\hl{. }While the purpose of \hl{EO} data is to provide information on objects and features visible from space, \hl{the }choice of methods serves varied purposes that accommodate specific DL algorithms and techniques of image processing \cite{4736879,5070195}. This study utilises the\hl{ }DL methods available in the\hl{ }GRASS GIS \hl{modules }for satellite image processing to detect flooded areas in Ganges River Delta,\hl{ }Bangladesh. 
-
-%----------- subsection ----------->
-\subsection{Theoretical fundamentals of MLP}
-The Multilayer perceptron \hl{(MLP)} is a class of DL and a conceptual theoretical background to data analysis performed in this study\hl{. MLP} presents a feedforward Artificial Neural Network (ANN), a branch of \hl{the }DL methods \cite{su151813786}. It consists of fully connected \hl{neurones} with a nonlinear activation function\hl{ }organised in at least three layers, Figure \ref{fig03}. 
+The methodological workflow\hl{ consists} of several steps\hl{ }aimed at\hl{ }geospatial \hl{analysis} and image processing \hl{Figure} \ref{fig03}. 
 
 \begin{figure}[H]
     \begin{center}
-	\includegraphics[width=14.0cm]{Fig_03.jpg}
+	\includegraphics[width=8.50cm]{Fig_03.jpg}
+    \end{center}
+    \caption{Workflow scheme for the methodology used in this study for image processing in GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
+    \label{fig05}
+\end{figure}
+
+It also included diverse data obtained from different sources\hl{. }While the purpose of \hl{EO} data is to provide information on objects and features visible from space, \hl{the }choice of methods serves varied purposes that accommodate specific DL algorithms and techniques of image processing \cite{4736879,5070195}. This study utilises the\hl{ }DL methods available in the\hl{ }GRASS GIS \hl{modules }for satellite image processing to detect flooded areas in Ganges River Delta,\hl{ }Bangladesh. 
+
+%----------- subsection ----------->
+\subsection{Theoretical fundamentals of MLP}
+The Multilayer perceptron \hl{(MLP)} is a class of DL and a conceptual theoretical background to data analysis performed in this study\hl{. MLP} presents a feedforward Artificial Neural Network (ANN), a branch of \hl{the }DL methods \cite{su151813786}. It consists of fully connected \hl{neurones} with a nonlinear activation function\hl{ }organised in at least three layers, Figure \ref{fig04}. 
+
+\begin{figure}[H]
+    \begin{center}
+	\includegraphics[width=14.0cm]{Fig_04.jpg}
     \end{center}
     \caption{General methodological scheme for \hl{DL} approach\hl{ }for satellite image classification and EO data processing. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
-    \label{fig03}
+    \label{fig04}
 \end{figure}
 
 These layers are \hl{used} to distinguish data that \hl{are} not linearly separable and, for time series of satellite images, the variables that are \hl{changing over} time. This results in different \hl{values of pixels } recognised by the model as Digital Numbers (DN). Such characteristics is caused by the spatio-temporal variability \hl{of} spectral reflectance of pixels that constitute the image as raster matrix according to the physical properties of landscape and vegetation patches \cite{rs16010184,HUANG20181915,YIN2021102514}. 
@@ -218,7 +228,7 @@ These layers are \hl{used} to distinguish data that \hl{are} not linearly separa
 \subsection{Data}
 In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of Ganges Delta, Bangladesh. the images are selected for flood and post-flood periods (March and November) for year 2021, 2022 and 2023. The images for March and November of year 2014 were used as a seed of training pixels for Deep Learning classification. 
 
-The generated dataset is collected from the \href{https://earthexplorer.usgs.gov/}{EarthExplorer} \cite{USGSPublication} with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands, Figure \ref{fig04}. The images are in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets have been explored for metadata using records available in the Appendix in Table \ref{tabApp} and the essential characteristics are summarised in Table \ref{tab01}. The advantage of the Landsat archives is that it is reusable. Thus, in future studies, these data can be used as input data for similar tasks, such as classification and detection of land cover types, image processing and segmentation using presented GRASS GIS workflow model of other tools. 
+The generated dataset is collected from the \href{https://earthexplorer.usgs.gov/}{EarthExplorer} \cite{USGSPublication} with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands, Figure \ref{fig05}. The images are in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets have been explored for metadata using records available in the Appendix in Table \ref{tabApp} and the essential characteristics are summarised in Table \ref{tab01}. The advantage of the Landsat archives is that it is reusable. Thus, in future studies, these data can be used as input data for similar tasks, such as classification and detection of land cover types, image processing and segmentation using presented GRASS GIS workflow model of other tools. 
 
 \begin{table}[H]
 %\scriptsize
@@ -250,44 +260,44 @@ The generated dataset is collected from the \href{https://earthexplorer.usgs.gov
 
 The datasets are available in EarthExplorer \cite{USGSPublication} and originating from NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in day time. The Landsat Collection Category T1, Number 2 for all the scenes. Landsat Station Identifier is LGN. Sensor Identifier is Landsat OLI TIRS for all the images, Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
 
-The selection of these data is explained by the reputation and reliability of the Landsat imagery widely used for environmental studies. Besides, the Landsat images are available free of charge, have high repeatability of coverage and high quality. Hence, satellite images present a reliable source of information for detecting the extent of floods and visualising inundated areas using time series analysis. Their applications is reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. The data were collected from the available freely from the United States Geological Survey (USGS) repository EarthExplorer \cite{USGSPublication}. The original data are visualised in Figure \ref{fig04}. 
+The selection of these data is explained by the reputation and reliability of the Landsat imagery widely used for environmental studies. Besides, the Landsat images are available free of charge, have high repeatability of coverage and high quality. Hence, satellite images present a reliable source of information for detecting the extent of floods and visualising inundated areas using time series analysis. Their applications is reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. The data were collected from the available freely from the United States Geological Survey (USGS) repository EarthExplorer \cite{USGSPublication}. The original data are visualised in Figure \ref{fig05}. 
 
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04a.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05a.jpg} \\
     \small (a): March 2014
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04b.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05b.jpg} \\
     \small (b): November 2014
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04c.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05c.jpg} \\
     \small (c): March 2021
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04d.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05d.jpg} \\
     \small (d): November 2021
   \end{tabular}
    \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04e.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05e.jpg} \\
     \small (e): March 2022
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04f.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05f.jpg} \\
     \small (f): November 2022
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04g.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05g.jpg} \\
     \small (g): March 2023
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=2.9cm]{Fig_04h.jpg} \\
+    \includegraphics[width=2.9cm]{Fig_05h.jpg} \\
     \small (h:) November 2023
   \end{tabular}
   \caption{Data sources: Landsat 8-9 OLI/TIRS images on Ganges \hl{River} Delta, Bangladesh, collected during the flood period (March) and post-flood period (November) on years 2014, 2021, 2022 and 2023, used for analysis of flood dynamics. Data source: USGS \cite{Landsat}. Compilation source: author.}
-  \label{fig04}
+  \label{fig05}
 \end{figure}
 
 \subsection{Software}
@@ -298,14 +308,6 @@ The workflow used in this research employs a chain of modules that use scripting
 We used a workflow in GRASS GIS platform as a container of diverse modules to run the scripts on MacOS using the approach presented in Figure \ref{fig05}. The GRASS GIS uses algorithms of ML/DL methods of image processing derived from the Python's Scikit-Learn library \cite{pedregosa2011scikit} via the integrated libraries in the machine. For GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented below in scripts in Listings \ref{lst01}, \ref{lst02} and \ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analyse and classification using difference in spectral reflectance associated with land patches to each valid patch of the Ganges River Delta landscapes evaluated for March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
 
 The following is an outline of the essential details regarding the approaches and techniques of the algorithm that compose the GRASS GIS framework using for image analysis. For details, full codes are presented below and explained with essential details. In all the GRASS GIS modules and functions and post-processing of the satellite images using DL approach, it is necessary to apply the module which implement the required functionality for data processing for each image in terms of the identifiers of functions and parameters of image processing. For this purpose, we adopted and modified the approaches of ML modules (libraries) of GRASS GIS which rely on using the Python's Scikit-Learn library for DL techniques.
-
-\begin{figure}[H]
-    \begin{center}
-	\includegraphics[width=11.0cm]{Fig_05.jpg}
-    \end{center}
-    \caption{Workflow scheme for the methodology used in this study for image processing in GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
-    \label{fig05}
-\end{figure}
 
 %----------- subsection ----------->
 \subsection{Image processing}
