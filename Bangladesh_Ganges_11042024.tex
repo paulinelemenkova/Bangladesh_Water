@@ -205,17 +205,17 @@ Existing algorithms of the ML modules of GRASS GIS use Neural Networks (NN) \cit
 %----------- subsection ----------->
 
 \subsection{Workflow}
-The methodological workflow consists of several steps aimed at geospatial analysis and image processing Figure \ref{fig03}. 
+The methodological workflow consists of several steps aimed at geospatial analysis and image processing\hl{, }Figure \ref{fig03}. 
 
 \begin{figure}[H]
     \begin{center}
 	\includegraphics[width=10.0cm]{Fig_03.jpg}
     \end{center}
-    \caption{Workflow scheme for the methodology used in this study for image processing in GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
+    \caption{Workflow scheme \hl{illustrating} methodology used in this study for image processing \hl{by} GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
     \label{fig03}
 \end{figure}
 
-It also included diverse data obtained from different sources. While the purpose of EO data is to provide information on objects and features visible from space, the choice of methods serves varied purposes that accommodate specific DL algorithms and techniques of image processing \cite{4736879,5070195}. This study utilises the DL methods available in the GRASS GIS modules for satellite image processing to detect flooded areas in Ganges River Delta, Bangladesh. 
+\hl{This} study \hl{mainly uses} the DL methods available in the GRASS GIS modules for satellite image processing to detect flooded areas in Ganges River Delta, Bangladesh. \hl{The methodology} also included \hl{processing }diverse data obtained from different sources. While the purpose of \hl{the }EO data \hl{was} to provide information on objects and features \hl{of land surface }visible from space, the choice of methods serves varied \hl{according to }purposes that \hl{include} specific DL algorithms and techniques of image processing \cite{4736879,5070195}. 
 
 %----------- subsection ----------->
 \subsection{Theoretical fundamentals of MLP}
@@ -225,16 +225,18 @@ The Multilayer perceptron (MLP) is a class of DL and a conceptual theoretical ba
     \begin{center}
 	\includegraphics[width=14.0cm]{Fig_04.jpg}
     \end{center}
-    \caption{General methodological scheme for DL approach for satellite image classification and EO data processing. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
+    \caption{General methodological scheme for \hl{the }DL \hl{method of} satellite image classification and EO data processing. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
     \label{fig04}
 \end{figure}
 
-These layers are used to distinguish data that are not linearly separable and, for time series of satellite images, the variables that are changing over time. This results in different values of pixels recognised by the model as Digital Numbers (DN). Such characteristics is caused by the spatio-temporal variability of spectral reflectance of pixels that constitute the image as raster matrix according to the physical properties of landscape and vegetation patches \cite{rs16010184,HUANG20181915,YIN2021102514}. 
+These layers are used to distinguish \hl{the }data that are not linearly separable and, for time series of satellite images,\hl{ }variables that are changing over time. This results in different values of pixels recognised by the model as Digital Numbers (DN). Such characteristics is caused by\hl{ }spatio-temporal variability of spectral reflectance of pixels that constitute the image\hl{. Since }physical properties of landscape and vegetation patches \hl{vary significantly, such mosaic of landscape patches is reflected on the raster matrix and can be identified on the satellite images, accordingly} \cite{rs16010184,HUANG20181915,YIN2021102514}. 
 
 \subsection{Data}
-In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of Ganges Delta, Bangladesh. the images are selected for flood and post-flood periods (March and November) for year 2021, 2022 and 2023. The images for March and November of year 2014 were used as a seed of training pixels for Deep Learning classification. 
+In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of Ganges Delta, Bangladesh. \hl{The} images are selected for flood and post-flood periods (March and November) \hl{covering periods of }2021, 2022 and 2023. The images \hl{on} March and November of\hl{ }2014 were used as a seed of training pixels for Deep Learning classification. The generated dataset is collected from the \href{https://earthexplorer.usgs.gov/}{EarthExplorer} \cite{USGSPublication} with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands, Figure \ref{fig05}. 
 
-The generated dataset is collected from the \href{https://earthexplorer.usgs.gov/}{EarthExplorer} \cite{USGSPublication} with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands, Figure \ref{fig05}. The images are in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets have been explored for metadata using records available in the Appendix in Table \ref{tabApp} and the essential characteristics are summarised in Table \ref{tab01}. The advantage of the Landsat archives is that it is reusable. Thus, in future studies, these data can be used as input data for similar tasks, such as classification and detection of land cover types, image processing and segmentation using presented GRASS GIS workflow model of other tools. 
+The images are in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets\hl{. The metadata were} explored \hl{and the} records \hl{are }available in the Appendix in Table \ref{tabApp}\hl{. The most }essential \hl{technical }characteristics \hl{of the images }are summarised in Table \ref{tab01}. \hl{Besides quality, coverage and availability, another }advantage of the Landsat archives \hl{consists in their economic values: these data are reusable for further distribution and future research}. Thus, in \hl{similar} studies, these \hl{scenes} can be \hl{utilised} as input data for similar tasks on \hl{image analysis}, such as classification\hl{, }detection of land cover types, and image segmentation\hl{. The }presented GRASS GIS workflow model of other \hl{technical methods described in this study can be utilised for image processing}. 
+
+The datasets are available in EarthExplorer \cite{USGSPublication} and \hl{originate }from \hl{the }NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in day time. The Landsat Collection Category \hl{is} T1, Number 2 for all the scenes. \hl{The} Landsat Station Identifier is LGN \hl{with }sensor Identifier \hl{as} Landsat OLI TIRS for all the images\hl{. The }Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
 
 \begin{table}[H]
 %\scriptsize
@@ -250,7 +252,7 @@ The generated dataset is collected from the \href{https://earthexplorer.usgs.gov
         \textbf{Scene Cloud Cover L1} & 2.97 & 0.01 & 0.03 \\ \hline
         \textbf{Sun Elevation L0RA} & 51.70012312 & 56.10505202 & 55.19368850 \\ \hline
         \textbf{Sun Azimuth L0RA} & 134.86314148 & 129.90704446 & 131.01649112 \\ \hline
-        \textbf{Satellite} & 8 & 8 & 8 \\ \hline\hline
+        \textbf{Satellite} & 8 & 8 & 8 \\
         \midrule
         \textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
         \textbf{Date Acquired} & \textbf{2023/11/26} & \textbf{2022/11/23} & \textbf{2021/11/28} \\ \hline
@@ -258,13 +260,11 @@ The generated dataset is collected from the \href{https://earthexplorer.usgs.gov
         \textbf{Scene Cloud Cover L1} & 0.02 & 0.19 & 0.38 \\ \hline
         \textbf{Sun Elevation L0RA} & 41.83496249 & 42.43660966 & 41.36291892 \\ \hline
         \textbf{Sun Azimuth L0RA} & 154.44654325 & 154.42300606 & 154.52745495 \\ \hline
-        \textbf{Satellite} & 9 & 9 & 8 \\ \hline
+        \textbf{Satellite} & 9 & 9 & 8 \\
         \bottomrule
     \end{tabularx}
 %    \end{adjustwidth}
 \end{table}
-
-The datasets are available in EarthExplorer \cite{USGSPublication} and originating from NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in day time. The Landsat Collection Category T1, Number 2 for all the scenes. Landsat Station Identifier is LGN. Sensor Identifier is Landsat OLI TIRS for all the images, Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
 
 The selection of these data is explained by the reputation and reliability of the Landsat imagery widely used for environmental studies. Besides, the Landsat images are available free of charge, have high repeatability of coverage and high quality. Hence, satellite images present a reliable source of information for detecting the extent of floods and visualising inundated areas using time series analysis. Their applications is reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. The data were collected from the available freely from the United States Geological Survey (USGS) repository EarthExplorer \cite{USGSPublication}. The original data are visualised in Figure \ref{fig05}. 
 
