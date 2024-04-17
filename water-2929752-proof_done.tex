@@ -84,7 +84,7 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{\highlighting{Deep} Learning Methods of Satellite Image Processing for Monitoring of Flood Dynamics in the Ganges Delta, Bangladesh}%Attention: title altered.
+\Title{Deep Learning Methods of Satellite Image Processing for Monitoring of Flood Dynamics in the Ganges Delta, Bangladesh}%Attention: title altered. % Author's reply: ok, agree with changes.
 %MDPI: Dear Authors,
 %(1) Please proofread the article format according to the comments left and pay attention to the highlighted parts.
 %(2) Please do not delete our comments.
@@ -103,7 +103,7 @@
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{\hl{Polina} %MDPI: Please carefully check the accuracy of names and affiliations. Authorship can not be changed during this period
+\Author{Polina %MDPI: Please carefully check the accuracy of names and affiliations. Authorship can not be changed during this period % Author's reply: yes, correct.
  Lemenkova \orcidA{}}
 
 %\longauthorlist{yes}
@@ -112,7 +112,7 @@
 \AuthorNames{Polina Lemenkova}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{\hl{Lemenkova,} %MDPI: Please carefully check the accuracy of names and affiliations.
+\AuthorCitation{Lemenkova, %MDPI: Please carefully check the accuracy of names and affiliations. % Author's reply: yes, correct.
  P.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
@@ -135,10 +135,7 @@ While engineering methods of flood mitigation include practical solutions (techn
 % Keywords
 \keyword{machine learning; deep learning; flood; monsoon; cartography; geoinformatics; remote sensing; satellite image; geospatial analysis; GRASS GIS} 
 
-\PACS{\hl{91.10.Da;} %MDPI: For this journal, no need these contents, please remove.
- \hl{91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs}}
-\MSC{\hl{86A30; 86-08; 86A99; 86A04}}
-\JEL{\hl{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}}
+%MDPI: For this journal, no need these contents, please remove. % Author's reply: ok, agree, removed.
 
 \begin{document}
 
@@ -192,7 +189,7 @@ This study presents a case of the Ganges River Delta, {an area regularly affecte
    % \begin{center}
 	\includegraphics[width=11.0cm]{Fig_01.jpg}
    % \end{center}
-    \caption{\hl{Topographic} %MDPI: Please change the hyphen (-) into minus sign ($-$, "U+2212"). e.g., "-1000" should be "$-$1000".
+    \caption{Topographic %MDPI: Please change the hyphen (-) into minus sign ($-$, "U+2212"). e.g., "-1000" should be "$-$1000". % Author's reply: Figure 1 is corrected as recommended.
  map of Bangladesh and the study area showing the placement of the Landsat data over the Ganges River Delta. Digital elevation data: SRTM/GEBCO, 15 arc sec resolution grid \cite{GEBCO,Tozer}. Software: GMT version 6.4.0 \cite{Wessel}. Map source: author.}
     \label{fig01}
 \end{figure}
@@ -224,8 +221,9 @@ Notably, no prior study has explored the deep learning (DL) methods available in
 Moreover, DL{ }also increases{ the }flexibility of{ }image processing by allowing trained models{ }to be applied to various environmental {and hydrological }problems. The implementation of {such} an approach is realised through the MLPClassifier algorithm from the embedded Scikit-Learn library of Python \cite{pedregosa2011scikit,van1995python}. 
 
 %----------- section ----------->
-\section{\highlighting{Materials} and Methods}
-%MDPI: Please state manufacturer, city, and state abbreviation if applicable in US and country from where ALL material and equipment has been sourced. Example: oxalic acid (Sinopharm Chemical Reagent Co. Ltd., Shanghai, China).
+\section{Materials and Methods}
+The data and software used in this study have been obtained from the following sources. Software include the following programs: GRASS GIS version 8.3.2 from GRASS Development Team (National Research Council, U.S.A.), GMT version 6.4.0 (School of Ocean and Earth Science and Technology of the University of Hawai'i at Mānoa, U.S.A.), Inkscape version 1.2 (Sodipodi developers, University of California, Berkeley, U.S.A.), R software environment for statistical computing and graphics (R Foundation for Statistical Computing, Vienna, Austria). Data include the following sources: General Bathymetric Chart of the Oceans by GEBCO Guiding Committee (British Oceanographic Data Centre (BODC), Liverpool, UK), Landsat 8-9 OLI/TIRS satellite images from the United States Geological Survey (John Wesley Powell Center for Analysis and Synthesis, USGS, Reston, Virginia, U.S.A.)
+%MDPI: Please state manufacturer, city, and state abbreviation if applicable in US and country from where ALL material and equipment has been sourced. Example: oxalic acid (Sinopharm Chemical Reagent Co. Ltd., Shanghai, China). % Author's reply: added information on material and equipment above. 
 
 %----------- subsection ----------->
 \subsection{Deep Learning}
@@ -244,9 +242,9 @@ The methodological workflow consists of several steps aimed at geospatial analys
 
 \begin{figure}[H]
   %  \begin{center}
-	\includegraphics[width=10.0cm]{Fig_03.jpg}
+	\includegraphics[width=9.5cm]{Fig_03.jpg}
    % \end{center}
-    \caption{Workflow scheme {illustrating} the methodology used in this study for image processing {by} GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
+    \caption{Workflow scheme {illustrating} the methodology used in this study for image processing {by} GRASS GIS. Software: R version 4.3.3, library DiagrammeR version 1.0.11 \cite{DiagrammeR}. Diagram source: author.}
     \label{fig03}
 \end{figure}
 
@@ -262,17 +260,17 @@ The multilayer perceptron (MLP) is a class of DL and a conceptual theoretical ba
    % \begin{center}
 	\includegraphics[width=13.5cm]{Fig_04.jpg}
    % \end{center}
-    \caption{General methodological scheme for {the }DL {method of} satellite image classification and EO data processing. \hl{Software: R, library DiagrammeR} \cite{DiagrammeR}. Diagram source: author.}
-    \label{fig04} %MDPI: Please state the version number of the software
+    \caption{General methodological scheme for {the }DL {method of} satellite image classification and EO data processing. Software: R version 4.3.3, library DiagrammeR version 1.0.11 \cite{DiagrammeR}. Diagram source: author.}
+    \label{fig04} %MDPI: Please state the version number of the software % Author's reply: software versions are added.
 \end{figure}
 
 These layers are used to distinguish {the }data that are not linearly separable and, for time series of satellite images,{ }variables that are changing over time. This results in different values of pixels recognised by the model as Digital Numbers (DNs). Such characteristics are caused by{ }spatio-temporal variability of the spectral reflectance of pixels that constitute the image{. Since }physical properties of landscape and vegetation patches {vary significantly, such a mosaic of landscape patches is reflected on the raster matrix and can be identified on the satellite images accordingly} \cite{rs16010184,HUANG20181915,YIN2021102514}. 
 
 \subsection{Data}
-In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of the Ganges Delta, Bangladesh. {The} images were selected for flood and post-flood periods (March and November, respectively) {covering the periods of }2021, 2022 and 2023. The images {taken in} March and November of{ }2014 were used as a seed for training pixels in deep learning classification. The generated dataset is collected from \hl{} %MDPI: Please confirm this revision and add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020).
- \url{https://earthexplorer.usgs.gov/} \cite{USGSPublication}, with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands (Figure \ref{fig05}). 
+In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of the Ganges Delta, Bangladesh. {The} images were selected for flood and post-flood periods (March and November, respectively) {covering the periods of }2021, 2022 and 2023. The images {taken in} March and November of{ }2014 were used as a seed for training pixels in deep learning classification. The generated dataset is collected from %MDPI: Please confirm this revision and add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020). % Author's reply: I confirm; information is added (accessed on 2 March 2024)
+ \url{https://earthexplorer.usgs.gov/} \cite{USGSPublication} (accessed on 2 March 2024), with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands (Figure \ref{fig05}). 
 
-The images were in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets{. The metadata were} explored, {and the} records {are }available in Table \ref{tabApp}  in \hl{Appendix} %MDPI: Please confirm this revision.
+The images were in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets{. The metadata were} explored, {and the} records {are }available in Table \ref{tabApp}  in Appendix %MDPI: Please confirm this revision. % Author's reply: I confirm.
  \ref{app1}{. The most }essential {technical }characteristics {of the images }are summarised in \mbox{Table \ref{tab01}.} {Besides quality, coverage and availability, another }advantage of the Landsat archives {consists of their economic values; these data are reusable for further distribution and future research}. Thus, in {similar} studies, these {scenes} can be {utilised} as input data for similar tasks in {image analysis}, such as classification{, }detection of land cover types and image segmentation{. The }presented GRASS GIS workflow model of other {technical methods described in this study can be utilised for image processing}. 
 
 The datasets are available in EarthExplorer \cite{USGSPublication} and {originate }from {the }NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in daytime. The Landsat Collection category {is} T1, Number 2 for all the scenes. {The} Landsat Station Identifier is LGN {with }sensor identifier Landsat OLI TIRS for all the images. Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
@@ -286,9 +284,9 @@ The datasets are available in EarthExplorer \cite{USGSPublication} and {originat
 \begin{tabularx}{\textwidth}{lCCC}
     \toprule
        	\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \midrule
-        {{\hl{Date Acquired}%MDPI: We removed the bold. Please confirm this revision.
+        {{Date Acquired%MDPI: We removed the bold. Please confirm this revision. % Author's reply: yes, I confirm.
 } 
-} & {{7 March 2023} %MDPI: We revised date writing according to our rule, please confirm and same as follows.
+} & {{7 March 2023} %MDPI: We revised date writing according to our rule, please confirm and same as follows. % Author's reply: yes, I confirm.
 } & {{20 March 2022}} & {{17 March 2021}} \\ \midrule
         {{Land Cloud Cover}} & 3.12 & 0.01 & 0.03 \\ \midrule
         {{Scene Cloud Cover L1}} & 2.97 & 0.01 & 0.03 \\ \midrule
@@ -351,10 +349,12 @@ The selection of these data is explained by the reputation and reliability of th
   \label{fig05}
 \end{figure}
 
-\subsection{\highlighting{Software}} %MDPI: Please state the version number of the software. If it is not applicable, it can be ignored, and the related website or proof should be provided. Please review the full text and make sure each software has a version number or website
-The workflow used in this research employs a chain of modules that {utilise} \hl{GRASS GIS scripting software}%MDPI: Please state the version number of the software.
- \cite{GRASS_GIS_software} for image processing{. The technical details of such an approach are }described in earlier works \cite{Lemenkova202323,technologies11020046}. For the installation and use of the machine learning (ML) modules of GRASS GIS, we recommend using Python version 3.8.5 or higher. Specifically, the installation of our framework can be performed using the available packages in the shared data. The additional Python libraries required by GRASS GIS are included in the modules through {the} embedded links and include the following:\hl{ Matplotlib, NumPy, Pandas, Scikit-Learn and SciPy} %MDPI: Please state the version number of all the  softwares.
-. Additionally, the XCode {needs} to be installed for writing the scripts{.}  These libraries can be installed using 'pip install', with more details in the online resources of GRASS GIS.  {Finally, }using \hl{GitHub} %MDPI: Please state the version number of the software.
+\subsection{Software} %MDPI: Please state the version number of the software. If it is not applicable, it can be ignored, and the related website or proof should be provided. Please review the full text and make sure each software has a version number or website. % Author's reply: information about software version is added in all places where necessary.
+The workflow used in this research employs a chain of modules that {utilise} GRASS GIS scripting software version 8.3.2 %MDPI: Please state the version number of the software. % Author's reply: information is added.
+ \cite{GRASS_GIS_software} for image processing{. The technical details of such an approach are }described in earlier works \cite{Lemenkova202323,technologies11020046}. For the installation and use of the machine learning (ML) modules of GRASS GIS, we recommend using Python version 3.8.5 or higher. Specifically, the installation of our framework can be performed using the available packages in the shared data. The additional Python libraries required by GRASS GIS are included in the modules through {the} embedded links and include the following: Matplotlib version 3.8.4, NumPy version 1.26.4, Pandas version 2.2.1, Scikit-Learn version 1.4.2 and SciPy version 1.13.0 %MDPI: Please state the version number of all the softwares. % Author's reply: information about software version is added.
+. 
+
+Additionally, the XCode {needs} to be installed for writing the scripts{.}  These libraries can be installed using 'pip install', with more details in the online resources of GRASS GIS.  {Finally, }using GitHub version 3.12.1 %MDPI: Please state the version number of the software. % Author's reply: information about software version is added.
  is recommended {for backup of scripts and revision}.The methodology of {the} time series analysis includes the unsupervised and supervised classification of {the} multispectral satellite images {with the aim of} detecting changes in landscapes around the Ganges River Delta in {the} pre- and post-flood periods. The map in Figure \ref{fig01} was prepared using Generic Mapping Tools (GMT) version 6.4.0 \cite{Wessel,WesselSmith} with a raster grid of the General Bathymetric Chart of the Oceans (GEBCO). 
 
 %----------- subsection ----------->
@@ -366,7 +366,7 @@ The following is an outline of the essential details regarding the approaches an
 
 %----------- subsection ----------->
 \subsection{Image Processing}
-The images were first imported into the GRASS GIS system using the `r.import' module{, then pre-processed. Afterwards, the }colour composites {were} created using `r.composite'. The images were then displayed using a combination of the `d.mon' and `d.rast' modules. The files {were} saved in bitmap format using the `d.out.file' module. The binary results of the DL mapping and programming scripts used for DL image analysis are available in the GitHub repository {using} the following web \hl{link:} %MDPI: 1. Please add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020). 2. we revised into one paragraph, please check
+The images were first imported into the GRASS GIS system using the `r.import' module{, then pre-processed. Afterwards, the }colour composites {were} created using `r.composite'. The images were then displayed using a combination of the `d.mon' and `d.rast' modules. The files {were} saved in bitmap format using the `d.out.file' module. The binary results of the DL mapping and programming scripts used for DL image analysis are available in the GitHub repository {using} the following web link (accessed on 3 March 2024): %MDPI: 1. Please add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020). 2. we revised into one paragraph, please check. % Author's reply: yes, I confirm.
 \url{https://github.com/paulinelemenkova/Floods\_Ganges\_GRASS\_GIS\_DL\_Image\_Analysis}.
 
 %{https://github.com/paulinelemenkova/Floods_Ganges_GRASS_GIS_DL_Image_Analysis}
@@ -396,8 +396,8 @@ The results of the {generated }colour composites are presented in Figure \ref{fi
 		\includegraphics[width=0.98\textwidth]{Fig_06d.jpg}
 		\caption{\centering Bands 3--7--4}
 	\end{subfigure}
-\caption{\hl{Examples} %MDPI: We revised hyphen to en dash in subfigure caption, please confirm.
- of different false colour composites generated by the GRASS GIS 'r.composite' module using the multispectral bands of the Landsat 8-9 OLI/TIRS scenes%Please check intended meaning has been retained
+\caption{Examples %MDPI: We revised hyphen to en dash in subfigure caption, please confirm. % Author's reply: yes, I confirm.
+ of different false colour composites generated by the GRASS GIS 'r.composite' module using the multispectral bands of the Landsat 8-9 OLI/TIRS scenes%Please check intended meaning has been retained. % Author's reply: yes, retained.
  . Here, the band numbers correspond to the following channels of the Landsat 8-9 OLI/TIRS images: band 2---blue; band 3---green; band 4---red; band 5---near infrared (NIR); band 7---shortwave infrared-2 (SWIR-2).}\label{fig06}
 \end{figure}
 
