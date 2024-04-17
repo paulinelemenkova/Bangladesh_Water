@@ -493,23 +493,22 @@ i.maxlik group=L8_2023_N subgroup=res_30m \
 
 \vspace{-6pt}
 
-The results of this step{ }are used as training data for supervised classification using a deep learning approach. {The resulting maps are demonstrated in Figure} \ref{fig07}. Moreover,{ }selected example of accuracy analysis for 2014 that was used as a training dataset is shown in Figure \ref{fig08}. This step includes the procedures of clustering that generate a signature file and {a report} using the k-means algorithm {through} the `i.cluster' module {of GRASS GIS}%Please check intended meaning has been retained
+The results of this step{ }are used as training data for supervised classification using a deep learning approach. {The resulting maps are demonstrated in Figure} \ref{fig07}. Moreover,{ }selected example of accuracy analysis for 2014 that was used as a training dataset is shown in Figure \ref{fig08}. This step includes the procedures of clustering that generate a signature file and {a report} using the k-means algorithm {through} the `i.cluster' module {of GRASS GIS}%Please check intended meaning has been retained. % Author's reply: yes, retained.
 . Unsupervised classification was performed using the `i.maxlik' module. The results of this step provided the seed data and training map for the next step of DL modelling{. The maps are presented in Figure} \ref{fig02}.
 
-The results of the accuracy assessment are presented in Figure \ref{fig08}, which shows the reject threshold map layer created using the `i.maxlik' module of GRASS GIS. The maps are computed for each satellite image and contain the index to one calculated confidence level for each classified pixel in the classified images. The values range from 0 to 100 \%, which indicate the predefined confidence intervals. For interpretation of the reject maps, \hl{lower} %MDPI: We removed extra ``('', please confirm.
- values 0.1 = keep, and those close to 100\% indicate reject%Please check intended meaning has been retained
- . The application for this map layer is as a mask indicating raster pixels in the classified images that have a low probability of flood categorisation (that is, a high rejection index) and being assigned to the correct class%Please check intended meaning has been retained
+The results of the accuracy assessment are presented in Figure \ref{fig08}, which shows the reject threshold map layer created using the `i.maxlik' module of GRASS GIS. The maps are computed for each satellite image and contain the index to one calculated confidence level for each classified pixel in the classified images. The values range from 0 to 100 \%, which indicate the predefined confidence intervals. For interpretation of the reject maps, lower %MDPI: We removed extra ``('', please confirm. % Author's reply: yes, I confirm.
+ values 0.1 = keep, and those close to 100\% indicate reject%Please check intended meaning has been retained % Author's reply: yes, retained.
+ . The application for this map layer is as a mask indicating raster pixels in the classified images that have a low probability of flood categorisation (that is, a high rejection index) and being assigned to the correct class%Please check intended meaning has been retained % Author's reply: yes, retained.
  . 
 
-The computed maps {are} based on the evaluated reject raster map, which indicates the results of the evaluated reject thresholds. The reject thresholds were calculated using a chi-square test, which is a statistical approach that tests {the} goodness of fit of the datasets. This test was used to determine whether the computed pixels and assignments to various land cover classes are acceptable or should be rejected{%Please check intended meaning has been retained
-	. The approach of the chi-square test is }based on the hypothesis that the resulting data {have} a specified distribution of land cover classes at the specified level of significance. Hence, an accuracy assessment was conducted on each satellite image, showing the discriminant results at various threshold confidence levels for the assigned pixels%Please check intended meaning has been retained
-	. The maps shown in Figure \ref{fig08} {are} used to determine at what confidence level each classified pixel is correctly categorised to among the diverse land cover classes%Please check intended meaning has been retained
+The computed maps {are} based on the evaluated reject raster map, which indicates the results of the evaluated reject thresholds. The reject thresholds were calculated using a chi-square test, which is a statistical approach that tests {the} goodness of fit of the datasets. This test was used to determine whether the computed pixels and assignments to various land cover classes are acceptable or should be rejected{%Please check intended meaning has been retained % Author's reply: yes, retained.
+	. The approach of the chi-square test is }based on the hypothesis that the resulting data {have} a specified distribution of land cover classes at the specified level of significance. Hence, an accuracy assessment was conducted on each satellite image, showing the discriminant results at various threshold confidence levels for the assigned pixels%Please check intended meaning has been retained % Author's reply: yes, retained.
+	. The maps shown in Figure \ref{fig08} {are} used to determine at what confidence level each classified pixel is correctly categorised to among the diverse land cover classes%Please check intended meaning has been retained % Author's reply: yes, retained.
 	. 
 
 \begin{figure}[H]
 \begin{adjustwidth}{-\extralength}{0cm}
-\centering %% If there is a figure in wide page, please release command \centering
-
+%\centering %% If there is a figure in wide page, please release command \centering % Author's reply: ok, released.
 
 	\begin{subfigure}[b]{.65\textwidth}
 		\centering
@@ -527,7 +526,7 @@ The computed maps {are} based on the evaluated reject raster map, which indicate
 
 \begin{figure}[H]
 \begin{adjustwidth}{-\extralength}{0cm}
-\centering %% If there is a figure in wide page, please release command \centering
+%\centering %% If there is a figure in wide page, please release command \centering % Author's reply: ok, released.
 
 	\begin{subfigure}[b]{.60\textwidth}
 		\centering
@@ -551,7 +550,7 @@ After this step, the prediction of the pixel assignments to each land cover clas
 
 \begin{listing}[H]
 
-\caption{\hl{GRASS GIS code for unsupervised image classification method using k-means clustering algorithm.} %MDPI: The caption of listing 3 as same as listing 2, please check and revise.
+\caption{GRASS GIS code for supervised image classification using Artificial Neural Network (ANN) model with multi-layer neural network approach of MLPC algorithm. %MDPI: The caption of listing 3 as same as listing 2, please check and revise. % Author's reply: the caption of listing 3 is corrected. 
 }\label{lst03}
 
 \begin{lstlisting}[language=bash,style=mystyle,label={lst03}]
@@ -642,7 +641,7 @@ The flood periods in 2022 in southern Bangladesh caused significant deluges and 
 
 
 
-The maps were generated using {the} classified images for March showing the flooding event (Figure \ref{fig09} and Figure \ref{fig11}), as well as the images for November (Figures \ref{fig10} and  \ref{fig12}) showing the post-flood landscapes. Comparing these two periods, all crop-related land cover types represent areas notably affected by floods, which also occurred in the regions of residential property. Correspondingly, larger areas were inundated, including affected public infrastructure during the catastrophic November months when heavy monsoon rains continued to pummel the affected districts in close proximity to {the} Ganges River%Please check intended meaning has been retained
+The maps were generated using {the} classified images for March showing the flooding event (Figure \ref{fig09} and Figure \ref{fig11}), as well as the images for November (Figures \ref{fig10} and  \ref{fig12}) showing the post-flood landscapes. Comparing these two periods, all crop-related land cover types represent areas notably affected by floods, which also occurred in the regions of residential property. Correspondingly, larger areas were inundated, including affected public infrastructure during the catastrophic November months when heavy monsoon rains continued to pummel the affected districts in close proximity to {the} Ganges River%Please check intended meaning has been retained % Author's reply: yes, retained.
 . 
 
 %----------- subsection ----------->
@@ -697,14 +696,14 @@ The maps were generated using {the} classified images for March showing the floo
 
 The supervised learning models of GRASS GIS based on MLPClassifier demonstrated accurate results in flood mapping and refined visualisation functionality{. The outcomes of DL show} that for the March-to-November time frame, some patterns were common for both months, while autumn months were newly inundated (Figures \ref{fig11} and  \ref{fig12}). 
 
-In contrast, the spring period demonstrated that areas in selected northern regions recovered following continuous inundation%Please check intended meaning has been retained
-, while southern areas located in the proximity of the Ganges River Delta were progressively inundated. While the {DL} method was developed to serve a specific goal of image processing, its is applicable as a solution for the monitoring of {the} outcomes of floods in {the} detected inundated areas{, }as presented above%Please check intended meaning has been retained
+In contrast, the spring period demonstrated that areas in selected northern regions recovered following continuous inundation%Please check intended meaning has been retained. % Author's reply: yes, retained.
+, while southern areas located in the proximity of the Ganges River Delta were progressively inundated. While the {DL} method was developed to serve a specific goal of image processing, its is applicable as a solution for the monitoring of {the} outcomes of floods in {the} detected inundated areas{, }as presented above%Please check intended meaning has been retained. % Author's reply: yes, retained.
 . Hence, the research outcomes provide {valuable} insights into {the monitoring of }changing landscapes {comparing flooded and} post-flood periods in {the} Ganges River Delta. 
 
 
 
-A time series analysis of the Ganges River Delta was used to plot and graphically display{ }changes in the flood and post-flood periods for southern Bangladesh{. The analysis of data }for three test periods (2021, 2022 and 2023) illustrates that some areas recovered from flood waters as time progressed, in contrast with the inundated areas. The data for 2014 were used as a training polygon for {DL} modelling, which requires a classification seed. The derived maps were produced from the cloud-free Landsat images processed by the {DL} methods between the flooded period in March and the post-flooded period in November, when some areas had recovered from inundation%Please check intended meaning has been retained
-. The maps generated using GRASS GIS show high potential environmental monitoring. The methods of deep learning support accurate image classification through the use of advanced computer vision and pattern recognition algorithms%Please check intended meaning has been retained
+A time series analysis of the Ganges River Delta was used to plot and graphically display{ }changes in the flood and post-flood periods for southern Bangladesh{. The analysis of data }for three test periods (2021, 2022 and 2023) illustrates that some areas recovered from flood waters as time progressed, in contrast with the inundated areas. The data for 2014 were used as a training polygon for {DL} modelling, which requires a classification seed. The derived maps were produced from the cloud-free Landsat images processed by the {DL} methods between the flooded period in March and the post-flooded period in November, when some areas had recovered from inundation%Please check intended meaning has been retained. % Author's reply: yes, retained.
+. The maps generated using GRASS GIS show high potential environmental monitoring. The methods of deep learning support accurate image classification through the use of advanced computer vision and pattern recognition algorithms%Please check intended meaning has been retained. % Author's reply: yes, retained.
 . 
 
 \begin{table}[H]
