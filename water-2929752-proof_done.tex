@@ -187,7 +187,7 @@ This study presents a case of the Ganges River Delta, {an area regularly affecte
 
 \begin{figure}[H]
    % \begin{center}
-	\includegraphics[width=11.0cm]{Fig_01.jpg}
+	\includegraphics[width=12.5cm]{Fig_01.jpg}
    % \end{center}
     \caption{Topographic %MDPI: Please change the hyphen (-) into minus sign ($-$, "U+2212"). e.g., "-1000" should be "$-$1000". % Author's reply: Figure 1 is corrected as recommended.
  map of Bangladesh and the study area showing the placement of the Landsat data over the Ganges River Delta. Digital elevation data: SRTM/GEBCO, 15 arc sec resolution grid \cite{GEBCO,Tozer}. Software: GMT version 6.4.0 \cite{Wessel}. Map source: author.}
@@ -637,10 +637,6 @@ The flood periods in 2022 in southern Bangladesh caused significant deluges and 
  landscapes in the Ganges River Delta, Bangladesh, mapped using k-means clustering and MaxLike classification in GRASS GIS applied to Landsat 8-9 OLI/TIRS images: (\textbf{a}) November 2021; (\textbf{b}) November 2022; (\textbf{c}) November 2023. The ten land cover types correspond to the following categories: (1); water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig10}
 \end{figure}
 
-
-
-
-
 The maps were generated using {the} classified images for March showing the flooding event (Figure \ref{fig09} and Figure \ref{fig11}), as well as the images for November (Figures \ref{fig10} and  \ref{fig12}) showing the post-flood landscapes. Comparing these two periods, all crop-related land cover types represent areas notably affected by floods, which also occurred in the regions of residential property. Correspondingly, larger areas were inundated, including affected public infrastructure during the catastrophic November months when heavy monsoon rains continued to pummel the affected districts in close proximity to {the} Ganges River%Please check intended meaning has been retained % Author's reply: yes, retained.
 . 
 
@@ -749,9 +745,7 @@ The maps derived using the deep learning approach were produced from the cloud-f
 %Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3}
  for the years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
 
-The class separability matrices of land cover classes identified in the Ganges River Delta are presented in {Figures }\ref{fig13}--\ref{fig15}. \mbox{Figure \ref{fig13}} shows class separability matrices for March and November 2021, Figure \ref{fig14} shows class separability matrices for March and November 2022 and Figure \ref{fig15} shows class separability matrices for March and November 2023. The covariance matrices signify the values of class separability, which are composed of the cluster means based on the values of the spectral signatures of pixels. They demonstrate the results of the cluster's means {obtained from the computed} covariance matrices{. The matrices} were generated {using} the `i.maxlik' function of GRASS GIS during the image classification process. The columns {signify} 10 generated land cover classes, and the rows signify the number of pixels correctly assigned to those classes. Hence, the class separability matrices show the error matrix for {the} pixel-based maximum-likelihood classification, which indicates the correctness of the pixels assigned to the {land cover }classes from 1 to 10. The results of {image} clustering{ }using values of spectral classes are related to {the} land cover types identified in the Ganges River Delta and {the} surroundings. 
-
-The matrices consist of ten classes and computed pixels for each land cover class. The land categories are defined as follows: water bodies, wetlands and mudflats indicating inundated areas, mangrove forests and associated swamps, sandy areas on riverbanks, forests (e.g., tree cover, hill forests), croplands and homestead croplands, grasslands, urban and rural settlements, orchards and aquaculture. Class separability matrices evaluate the assignment of pixels to various land cover classes in the landscapes of the Ganges River Delta. Hence, the matrices serve the function of regularisation parameters used to determine the distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform iterative searches for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
+The class separability matrices of land cover classes identified in the Ganges River Delta are presented in {Figures }\ref{fig13}--\ref{fig15}. \mbox{Figure \ref{fig13}} shows class separability matrices for March and November 2021, Figure \ref{fig14} shows class separability matrices for March and November 2022 and Figure \ref{fig15} shows class separability matrices for March and November 2023. 
 
 \begin{figure}[H]
 \begin{equation}
@@ -865,6 +859,10 @@ The matrices consist of ten classes and computed pixels for each land cover clas
 \label{fig15}
 \end{figure}
 
+The covariance matrices signify the values of class separability, which are composed of the cluster means based on the values of the spectral signatures of pixels. They demonstrate the results of the cluster's means {obtained from the computed} covariance matrices{. The matrices} were generated {using} the `i.maxlik' function of GRASS GIS during the image classification process. The columns {signify} 10 generated land cover classes, and the rows signify the number of pixels correctly assigned to those classes. Hence, the class separability matrices show the error matrix for {the} pixel-based maximum-likelihood classification, which indicates the correctness of the pixels assigned to the {land cover }classes from 1 to 10. The results of {image} clustering{ }using values of spectral classes are related to {the} land cover types identified in the Ganges River Delta and {the} surroundings. 
+
+The matrices consist of ten classes and computed pixels for each land cover class. The land categories are defined as follows: water bodies, wetlands and mudflats indicating inundated areas, mangrove forests and associated swamps, sandy areas on riverbanks, forests (e.g., tree cover, hill forests), croplands and homestead croplands, grasslands, urban and rural settlements, orchards and aquaculture. Class separability matrices evaluate the assignment of pixels to various land cover classes in the landscapes of the Ganges River Delta. Hence, the matrices serve the function of regularisation parameters used to determine the distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform iterative searches for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
+
 Through the applied automatic DL-based image processing and mapping workflow, flood inundation mapping of southern Bangladesh {has} the potential to provide information on inundated areas{. Time series of Landsat images are essential }for flood management in real-time regimes. Using the techniques of deep learning applied to flood mapping, a significant difference in values of spectral reflectance for land cover classes in inundated areas (containing high percentages of water and moisture) and non-water (dry) areas enables a distinct separation between these land cover categories. Automatically derived ranges for inundated areas in Landsat images show a clear discrimination of {the} affected areas from other classes, as presented in {the }figures {supporting this research}. 
 
 It is well known that Bangladesh is a country particularly vulnerable to hydrological hazards and flood disasters. Therefore, testing and implementation of novel cartographic methods for RS-based mapping of flooded areas are essential for operative monitoring of areas at risk, such as coastal areas of the Ganges River Delta. The cumulative effects of the flat topographic relief and monsoon climate result in the high level of vulnerability of Bangladesh to floods, with over 80\% of the population exposed to flood risks. Diverse measures have been undertaken by the authorities and government of this coastal country to protect the population from devastating flood disasters. {The} construction of engineered infrastructure to protect against floods includes flood shelters, hydrologic sluice gates and river regulators, dredged drainage channels, etc.%Please check intended meaning has been retained
@@ -898,7 +896,7 @@ Importantly, this paper presents a case of flood mapping in the Ganges River Del
 
 
 
-\funding{The APC was funded by MDPI and University of Salzburg, IOAP Participant.  %MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding. % Author's reply: information is added.
+\funding{The APC was funded by MDPI and the IOAP Participant University of Salzburg.  %MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding. % Author's reply: information is added.
 }
 
 \institutionalreview{Not applicable.}
@@ -1702,7 +1700,7 @@ Nicholls, R.; Hutton, C.; Lázár, A.; Allan, A.; Adger, W.; Adams, H.; Wolf,
 \bibitem[{Inkscape Project Development Team}()]{Inkscape}
 {Inkscape Project Development Team}.
 \newblock \emph{Inkscape},
-\newblock Software version 1.2; Inkscape Project Development \hl{Team}%MDPI: Please add ``Publisher: Place of Publication, Year''.
+\newblock Software version 1.2; Inkscape Project Development Team. Publisher: Inkscape Software Freedom Conservancy, Portland, OR, U.S.A, 2012. %MDPI: Please add ``Publisher: Place of Publication, Year''.
 .
 
 \bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
