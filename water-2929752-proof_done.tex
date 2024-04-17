@@ -700,14 +700,12 @@ In contrast, the spring period demonstrated that areas in selected northern regi
 , while southern areas located in the proximity of the Ganges River Delta were progressively inundated. While the {DL} method was developed to serve a specific goal of image processing, its is applicable as a solution for the monitoring of {the} outcomes of floods in {the} detected inundated areas{, }as presented above%Please check intended meaning has been retained. % Author's reply: yes, retained.
 . Hence, the research outcomes provide {valuable} insights into {the monitoring of }changing landscapes {comparing flooded and} post-flood periods in {the} Ganges River Delta. 
 
-
-
 A time series analysis of the Ganges River Delta was used to plot and graphically display{ }changes in the flood and post-flood periods for southern Bangladesh{. The analysis of data }for three test periods (2021, 2022 and 2023) illustrates that some areas recovered from flood waters as time progressed, in contrast with the inundated areas. The data for 2014 were used as a training polygon for {DL} modelling, which requires a classification seed. The derived maps were produced from the cloud-free Landsat images processed by the {DL} methods between the flooded period in March and the post-flooded period in November, when some areas had recovered from inundation%Please check intended meaning has been retained. % Author's reply: yes, retained.
-. The maps generated using GRASS GIS show high potential environmental monitoring. The methods of deep learning support accurate image classification through the use of advanced computer vision and pattern recognition algorithms%Please check intended meaning has been retained. % Author's reply: yes, retained.
+. The results of numerical analysis are summarised in tables showing the extent of areas occupied by diverse land cover classes in the flood period (Table \ref{tab02}) and post-flood period (Table \ref{tab03}). The maps generated using GRASS GIS show high potential environmental monitoring. The methods of deep learning support accurate image classification through the use of advanced computer vision and pattern recognition algorithms%Please check intended meaning has been retained. % Author's reply: yes, retained.
 . 
 
 \begin{table}[H]
-\caption{\hl{Flood} %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order.
+\caption{Flood %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order. % Author's reply: the table is cited and the citation is added in the paragraph above.
  period: estimated classes of land cover types for the March period for the years 2021, 2022 and 2023 in the Ganges River Delta.}
   \centering
   \begin{tabularx}{\textwidth}{CCCCCCCCCCC}
@@ -715,17 +713,17 @@ A time series analysis of the Ganges River Delta was used to plot and graphicall
   \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types in March Pixels: Ganges--Brahmaputra River Delta}} \\\cmidrule{2-11}
      & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
     \midrule
-    \textbf{\hl{2021} %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same.
+    \textbf{2021 %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same. % Author's reply: bold is removed.
 } & 717 & 252 & 434 & 758 & 1005 & 1035 & 758 & 744 & 927 & 219 \\
-    \textbf{\hl{2022}} &  749 & 236 & 489 & 803 & 1030 & 1100 & 557 & 744 & 800 & 336 \\
-     \textbf{\hl{2023}} &  707 & 343 & 1055 & 381 & 1032 & 997 & 702 & 649 & 796 & 180 \\
+    \textbf{2022} &  749 & 236 & 489 & 803 & 1030 & 1100 & 557 & 744 & 800 & 336 \\
+     \textbf{2023} &  707 & 343 & 1055 & 381 & 1032 & 997 & 702 & 649 & 796 & 180 \\
 \bottomrule
 \end{tabularx}
   \label{tab02}
 \end{table}
 \vspace{-12pt}
 \begin{table}[H]
- \caption{\hl{Post-flood} %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order.
+ \caption{Post-flood %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order. % Author's reply: the table is cited and the citation is added in the paragraph above.
  period: estimated classes of land cover types for the November period for the years 2021, 2022 and 2023 in the Ganges River Delta.}
   \centering
   \begin{tabularx}{\textwidth}{CCCCCCCCCCC}
@@ -733,17 +731,17 @@ A time series analysis of the Ganges River Delta was used to plot and graphicall
   \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types in November Pixels: Ganges--Brahmaputra River Delta}} \\\cmidrule{2-11}
      & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
     \midrule
-    \textbf{\hl{2021} %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same.
+    \textbf{2021 %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same. % Author's reply: bold is removed.
 } & 689 & 402 & 579 & 565 & 1228 & 1109 & 571 & 849 & 647 & 208 \\
-    \textbf{\hl{2022}} & 700 & 468 & 365 & 587 & 1066 & 1048 & 683 & 942 & 683 & 326 \\
-     \textbf{\hl{2023}} & 715 & 511 & 231 & 599 & 1351 & 1132 & 718 & 707 & 685 & 310 \\
+    \textbf{2022} & 700 & 468 & 365 & 587 & 1066 & 1048 & 683 & 942 & 683 & 326 \\
+     \textbf{2023} & 715 & 511 & 231 & 599 & 1351 & 1132 & 718 & 707 & 685 & 310 \\
 \bottomrule
 \end{tabularx}
   \label{tab03}
 \end{table}
 
-The time series flood data made using scripting models of GRASS GIS with open-source specifications catalyse further innovation in risk management and represent solutions for state-of-the-art mapping of floods using programming approaches and {ML} modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{\emph{(1)} \hl{water,} %MDPI: Please confirm if the italics should be retained.
- \emph{(2)} \hl{wetlands and mudflats,} \emph{(3)} \hl{mangrove forests,} \emph{(4)} \hl{sandy areas}, \emph{(5)} \hl{forests,} \emph{(6)} \hl{croplands, }\emph{(7)} \hl{grasslands,} \emph{(8)} \hl{urban settlements,} \emph{(9)} \hl{orchards and } \emph{(10) } \hl{aquaculture.}} Information on land cover types was derived from Rahman et al. \cite{Rahman2020}, Sousa and \mbox{Small \cite{rs13234799}} and Paszkowski et al. \cite{Paszkowski2021} and applied to the extent of the current study area. The presented maps of floods can be used as a broad base for environmental applications and flood hazard assessment. Their application potential ranges from academia and research, industry and development to governmental and social services for risk prevention. 
+The time series flood data made using scripting models of GRASS GIS with open-source specifications catalyse further innovation in risk management and represent solutions for state-of-the-art mapping of floods using programming approaches and {ML} modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: (1) water, %MDPI: Please confirm if the italics should be retained. % Author's reply: italic can be removed (I removed it).
+ (2) wetlands and mudflats, (3) mangrove forests, (4) sandy areas, (5) forests,(6) croplands, (7) grasslands, (8) urban settlements, (9) orchards and (10) aquaculture. Information on land cover types was derived from Rahman et al. \cite{Rahman2020}, Sousa and \mbox{Small \cite{rs13234799}} and Paszkowski et al. \cite{Paszkowski2021} and applied to the extent of the current study area. The presented maps of floods can be used as a broad base for environmental applications and flood hazard assessment. Their application potential ranges from academia and research, industry and development to governmental and social services for risk prevention. 
 
 The maps derived using the deep learning approach were produced from the cloud-free Landsat scenes collected between the March and November periods and are shown in \mbox{Figures \ref{fig11} and \ref{fig12}.} The presented land cover maps are intended for potential flood damage assessment in southern Bangladesh. Corrections of the presented framework and the Python-based algorithm of GRASS GIS derived using a machine learning (ML) approach with the deep learning (DL) MLPClassifier represent an advanced tool for automated recognition of land cover types in satellite images and the monitoring of floods in flood-prone regions of southern Bangladesh%Please check intended meaning has been retained
 . The percentage of correctly classified images was calculated summarised in the matrices showing class separability (\hl{Figure} %MDPI: Please confirm this revision according to our rule, we keep the figure label for figures 13-15
