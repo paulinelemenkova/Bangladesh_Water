@@ -1,0 +1,1984 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[water,article,accept,pdftex,oneauhor]{Definitions/mdpi} 
+
+%=================================================================
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2024}
+\copyrightyear{2024}
+\externaleditor{Academic Editors: Chang Huang, Won Seok Jang, Jiwan Lee and Seungsoo Lee}
+\datereceived{7 March 2024} 
+\daterevised{11 April 2024} 
+\dateaccepted{16 April 2024} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{\alph{subfigure}}
+\DeclareCaptionLabelFormat{subcaptionlabel}{\normalfont(\textbf{#2}\normalfont)}
+\captionsetup[subfigure]{labelformat=subcaptionlabel}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{amsmath,mathtools,amsthm}
+	\setcounter{MaxMatrixCols}{15}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage[super]{nth}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepblue},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{\highlighting{Deep} Learning Methods of Satellite Image Processing for Monitoring of Flood Dynamics in the Ganges Delta, Bangladesh}%Attention: title altered.
+%MDPI: Dear Authors,
+%(1) Please proofread the article format according to the comments left and pay attention to the highlighted parts.
+%(2) Please do not delete our comments.
+%(3) Please revise and answer all questions that we proposed. Such as: “It should be italic”; “I confirm”; “I have checked and revised all.”
+%(4) English editing and layout have been complete, please do not revert the changes.
+%(5) Please directly correct on this version. 
+%(6) Please make sure that all the symbols in the paper are of the same format.
+%(7) Please note that at this stage (the manuscript has been accepted in its present content/format) we will not accept authorship or content changes to the manuscript text.
+
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Deep Learning Methods of Satellite Image Processing for Monitoring of Flood Dynamics in the Ganges Delta, Bangladesh}%Attention: title altered.
+
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina} %MDPI: Please carefully check the accuracy of names and affiliations. Authorship can not be changed during this period
+ Lemenkova \orcidA{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{\hl{Lemenkova,} %MDPI: Please carefully check the accuracy of names and affiliations.
+ P.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address[1]{%
+Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg, Schillerstraße 30, A-5020 Salzburg, Austria; polina.lemenkova@plus.ac.at; Tel.: +43-677-6173-2772
+}
+
+% Contact information of the corresponding author
+%\corres{\hangafter=1 \hangindent=1.05em \hspace{-0.82em} Correspondence:  (P.L.)}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{Mapping spatial data is essential for the monitoring of flooded areas, prognosis of hazards and prevention of flood risks. The Ganges River Delta, Bangladesh, is the world's largest river delta and is prone to floods that impact social--natural systems through losses of lives and damage to infrastructure and landscapes. Millions of people living in this region are vulnerable to repetitive floods due to exposure, high susceptibility and low resilience. Cumulative effects of the monsoon climate, repetitive rainfall, tropical cyclones and the hydrogeologic setting of the Ganges River Delta increase probability of floods. 
+While engineering methods of flood mitigation include practical solutions (technical construction of dams, bridges and hydraulic drains), regulation of traffic and land planning support systems%Please check intended meaning has been retained
+, geoinformation methods rely on the modelling of remote sensing (RS) data to evaluate the dynamics of flood hazards. Geoinformation is indispensable for mapping catchments of flooded areas and visualization of affected regions in real-time flood monitoring, in addition to implementing and developing emergency plans and vulnerability assessment through warning systems supported by RS data. In this regard, this study used RS data to monitor the southern segment of the Ganges River Delta. Multispectral Landsat 8-9 OLI/TIRS satellite images were evaluated in flood (March) and post-flood (November) periods for analysis of flood extent and landscape changes. Deep Learning (DL) algorithms of GRASS GIS and modules of qualitative and quantitative analysis were used as advanced methods of satellite image processing. The results constitute a series of maps based on the classified images for the monitoring of floods in the Ganges River Delta.}
+
+% Keywords
+\keyword{machine learning; deep learning; flood; monsoon; cartography; geoinformatics; remote sensing; satellite image; geospatial analysis; GRASS GIS} 
+
+\PACS{\hl{91.10.Da;} %MDPI: For this journal, no need these contents, please remove.
+ \hl{91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs}}
+\MSC{\hl{86A30; 86-08; 86A99; 86A04}}
+\JEL{\hl{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}}
+
+\begin{document}
+
+%----------- section ----------->
+\section{Introduction}
+
+\subsection{Background}
+{The increasing interest in flood hazards among the hydrologic scientific community has dramatically increased the demand for effective methods of geospatial data processing aimed at detecting floods. }In hydrological studies and the management {of coastal regions}, detecting areas prone to floods is an essential issue. {The monitoring of Earth observation data for }cartographic visualization of flooded landscapes{ supports} flood hazard assessment. {This} includes the {processing of Remote Sensing (RS) data for} analysis of {flood extent, the consequences of disastrous events and }the degree of flood impact, as well as evaluation of the affected area and estimation of changes in post-flood periods \cite{su142114145,w15152802,su142316270}. Such analysis helps to highlight{ }the spatial extent of{ }floods and {evaluate }spatio-temporal dynamics. {The processing RS data using a Geographic Information System (GIS)} has been acknowledged as one of the most powerful approaches in hydrological hazard monitoring. Indeed, the {analysis of }satellite images{ }helps to reveal information {on} the consequences of floods {that lead to } environmental changes such as{ }destroyed areas, {inundated areas}, affected land patches, declined vegetation coverage and disrupted ecosystems \cite{ijgi12110465,rs15102561}. 
+
+Specifically for coastal Asian countries affected by {global climate and environmental changes, as well as regional effects from }monsoon seasonality, fieldwork to capture data on flooded areas is difficult{. Moreover, direct observations in the areas affected by floods may be impossible }both financially and {practically. Depending} on the safety of the inundated area and the severity of hydrological hazards, {on-site surveys }might {be} impossible. Therefore, the {use of }RS data{ }for the mapping of flooded landscapes and {evaluation of the }spatial dynamics of water extent {represent essential }tools for the monitoring of {floods}%Please check intended meaning has been retained
+ \cite{YASEEN2024101665,GHALEHTEIMOURI2023}. 
+
+\subsection{Related Works}
+
+Evaluating the degree and rates of floods {is useful for environmental risk assessment. }For hazard prediction and mitigation of hydrological risks{, the processing of RS data is an effective approach that can be used to reveal the affected areas. More specifically, }satellite images{ represent} valuable sources of information that can be {processed for detection of areas in pre- and post-flood periods. For example, }they can{ }be used to reveal climate--environmental patterns of floods {and} to evaluate spatio-temporal dynamics in pre- and post-flood periods. To mention a few {examples of such applications}, satellite images have long been used for{ }numerical evaluation of risks \citep{THAKUR2024130683}, hydrological and irrigation modelling \cite{SUN2024415}, susceptibility mapping of coastal areas \cite{RAZAVITERMEH2023100595}, detection of affected areas and estimation of social--economic costs of floods \cite{ZHENG2023101410,DUAN2024131010}, hydrogeological modelling \cite{BELL2021107451}, land use mapping and evaluation of climate and environmental impacts on vegetation \cite{JARAMILLO2024526} and computation of inundated areas \cite{ZUO2024}.
+
+RS data can be processed to retrieve information on floods from satellite images using diverse {software and hydrological applications in geoinformatics}. {Traditionally, RS data have been processed by GIS methods.} Diverse tools included in GIS allow for the mapping of the degree and complexity of flood hazards and environmental consequences through the classification of satellite images. For instance, for coastal regions in deltaic areas prone to floods, {the} time series of RS data {are useful} for visualising the dynamics of the ecological patterns related to flood events and monsoon cycles \citep{RAZAVITERMEH2023100595,SINGHA2023316,MATHEW2021100861}. Moreover, the analysis of satellite images covering countries located close to shorelines can help to better understand the effects of climate changes on coastal landscapes{.}  
+
+{However, state-of-the-art software severely impedes the timely evaluation and analysis of RS datasets due to the manual, user-adjusted nature of processing techniques%Please check intended meaning has been retained
+	. In view of this, }novel {methods} of machine learning (ML) {represent better alternative to image processing and RS data analysis%Please check intended meaning has been retained
+	.} ML {emerged recently} as a fundamental technique of image processing and classification{. Its current applications include} a wide variety of {topics, such as }environmental studies \cite{ROCHA2022107415}, earth science \cite{LI2023103345,Lemenkova202306,XIONG2021145256}, geological and hazard risk \mbox{assessment \cite{AOURAGH2023100939},} hydrological monitoring \cite{RAFIK2023101569} and vegetation analysis \cite{WU2023110723,Lemenkova202310,DOSSANTOS2022106753}{, to mention a few of them}. Technical advantages of ML have been noted previously \cite{9883389,coasts4010008} {and} include high sensitivity {in data analysis}, flexibility of image {processing} {and accuracy in detecting} variations in {land cover types} to evaluate environmental {dynamics}. {Moreover, diverse parameters of ML techniques} can be finely adjusted using{ different }algorithms, {such as} Random Forest (RF), Support Vector Machine (SVM) {and many more}.
+
+\subsection{Gap and Motivation}
+
+{In order to perform environmental monitoring of flooded areas, policy makers and scientists need effective techniques and approaches. Therefore, }flood mitigation measures include diverse{ }methods {and tools}. Engineering solutions include, for instance, {the }construction of infrastructure, dams and bridges, maintaining the hydraulic performance of drains. Regulating traffic based on geoinformation regarding {the }locations of buildings and land planning support systems supports affected communities. Non-engineering methods mostly include modelling, prediction and prognosis{ }for the implementation and development {of }emergency plans. Such methods enable the assessment of the vulnerability of areas to flood hazards through warning systems supported by up-to-date geoinformation. In this regard, using{ }RS data processed by GIS is indispensable in evaluating the catchment {of inundated} areas and visualization of affected regions in real-time flood monitoring.
+
+Currently, the cartographic monitoring of floods in the Ganges River Delta {is mostly based on} GIS-based mapping \cite{Sanyal2023,ISLAM2023167,RANA2023}. Besides the conventional approaches, recent studies in the study area have used alternative {data} such as Sentinel-1 SAR images and data from the Google Earth Engine \cite{ChakmaAkter,SINGHA2020278}%Please check intended meaning has been retained
+. {Such case studies} have raised questions about operative and accurate methods for data processing aimed at flood prediction and management%Please check intended meaning has been retained
+. Accurate classification of satellite images for environmental mapping requires advanced methods and scripting languages that aim at robust detection of patterns \cite{YANG2020100413,Lemenkova202322,BEVERIDGE2020104843,SADIQ2023111233,Lemenkova202227}. Existing state-of-the-art methods of image processing and classification mostly use traditional GIS for data handling, which may lead to misclassification and inaccurate labelling of pixels. {Nevertheless, the software that processes RS data for the monitoring of floods must include intelligent algorithms and techniques to deal with complex spatial patterns of flooded coastal areas, i.e., advanced computational methods that exploit the spatial variability and heterogeneity of the affected landscapes rather than visualising particular extents of the images.} {In this regard, ML and programming} techniques {represent advanced solutions} to support real-time flood prognosis systems through the use of artificial intelligence{ (AI) algorithms%Please check intended meaning has been retained
+} \cite{ZHAO2021126777}. {Such methods can be used for operative monitoring of floods and }identification of landscape patterns within coastal and tidal areas, such as estuaries and deltas%Please check intended meaning has been retained
+, {which }is challenging {task }due to the obscurity and ambiguity of land cover types. 
+
+{Complimentary to} the available traditional tools of satellite image{ }classification, novel methods of Deep Learning (DL) can now be used as {an} advanced approach {for} RS {data processing}. For instance, algorithms such as Multilayer Perceptron (MLPClassifier) are designed to support image partition, classification and analysis through the use of decision trees and computer vision algorithms %Please check intended meaning has been retained
+\cite{6493388,6422192,7507955}. The application of such methods in hydrological studies and coastal risk assessment creates principally new perspectives in cartography by combining RS {data }with programming approaches for the mapping of flooded areas. It is therefore particularly important to apply such advanced technical tools to regions with high heterogeneity and complexity of landscape patterns, such as coastal zones, where DL algorithms can generate image classification decisions and detect affected areas {automatically}. 
+
+When applied to a series of satellite images, \textls[-10]{ML methods can effectively discover the properties of landscapes through comparative analysis \cite{9324433,Lemenkova202313}. Moreover, ML enables quantification of patches of landscapes on raster images using computer \mbox{vision  algorithms~\cite{10281789,jmse11040871,8899013,Lemenkova202021,9333522}}} or determination of landscape dynamics for environmental monitoring \cite{9392684,Lemenkova202324}. Finally, another advantage of the ML approach is that it is a resource- and time-effective method based on advanced programming methods that largely involves scripting techniques. Such an approach enables the automation of data processing and cartographic analysis, as mentioned earlier \cite{10282693,Lemenkova202301,10441504}. Hence, using ML enables the indication of flood risk and the development of crisis strategies %Please check intended meaning has been retained
+in flood-prone areas such as the Ganges River Delta, Bangladesh. Moreover, such methods are especially effective for detecting correlations between environmental processes {in coastal areas }and {the effects of }climate change over time, which are especially relevant for tropical regions that are subject to monsoon {activity}%Please check intended meaning has been retained
+. {Nevertheless, among the most serious deficiencies scientists face with current GIS is the lack of appropriate ML-based methods of RS data processing. In this regard, the Geographic Resources Analysis Support System (GRASS) GIS represents advantageous software that includes methods of ML for the manipulation of satellite images using advanced algorithms such as deep learning (DL) and Artificial Neural Networks (ANNs).}
+
+\subsection{Goals and Objectives}
+
+This paper presents the use of advanced DL tools of GRASS GIS for {satellite }image classification. {Moreover, it addresses a particular problem of monitoring flooded areas around the Ganges River Delta, Bangladesh.} Several Landsat satellite images are used, processed, classified, compared and analysed to evaluate pre- and post-flood periods in coastal Bangladesh. The potential of the ML modules of GRASS GIS for the mapping of consequences of hydrological hazards is exemplified by the case of {the }affected landscapes of coastal Bangladesh and associated climate dynamics related to the monsoonal climate of the Indian Ocean. The focus of this manuscript is a holistic approach to accurate satellite image processing with the help of open-source software GRASS GIS. The methodology applied to the subject of the study can be applied to the other relevant countries located in coastal regions with flood-prone areas.
+
+\section{Study Area}
+
+\subsection{Current  Landscape}
+
+This study presents a case of the Ganges River Delta, {an area regularly affected by floods and }located in southern Bangladesh{ }(Figure \ref{fig01}). 
+
+\begin{figure}[H]
+   % \begin{center}
+	\includegraphics[width=11.0cm]{Fig_01.jpg}
+   % \end{center}
+    \caption{\hl{Topographic} %MDPI: Please change the hyphen (-) into minus sign ($-$, "U+2212"). e.g., "-1000" should be "$-$1000".
+ map of Bangladesh and the study area showing the placement of the Landsat data over the Ganges River Delta. Digital elevation data: SRTM/GEBCO, 15 arc sec resolution grid \cite{GEBCO,Tozer}. Software: GMT version 6.4.0 \cite{Wessel}. Map source: author.}
+    \label{fig01}
+\end{figure}
+
+The Ganges River Delta is the{ }largest river delta {in the world. It has a population of }hundreds of millions of people in its total catchment area%Please check intended meaning has been retained
+. Located in a region with a monsoon climate and a seasonally changing environmental setting, it is subject to {regularly repeating} floods, occasional tropical cyclones, tidal waves and related inundations \cite{Bhardwaj2022}. The complex hydrology of the Ganges River Delta increases the consequences of floods through a dense network of streams, rivers and tributaries where water remains for a long \mbox{period \cite{Islam}.} Alluvial clayey sediments dominating in the riverbed contribute to the stagnation of water during floods, {since they} accumulate in numerous interconnected channels, inner lakes, wetlands and flood plains of the Ganges River Delta \cite{Datta,KHAN201927,Lemenkova202029}. The monsoon climate regulates the repeatability of rainfall and floods in the Ganges River Delta, which normally {increase in the period} between{ }March and September. 
+
+\subsection{Problem Formulation}
+Repetitive floods in the Ganges River Delta negatively impact social--natural systems{. They cause }losses of lives and damage to infrastructure \cite{JERIN2023}, as well as fragmentation and disruption in natural landscapes \cite{MUKHERJEE2021106961} and {increased salinity due to the intrusion of oceanic water }during storms. {Moreover, }floods affect crop agriculture \cite{ABEDIN2023315,ALMASUD2020104443} and negatively influence the sustainability of coastal ecosystems \cite{SARKER2024169718,MAINUDDIN2021105740,HASAN2023101028}. Millions of people living in southern Bangladesh and neighbouring regions of India are vulnerable to {such hazards }due to exposure, high susceptibility and low resilience {to repetitive floods} \cite{SINGHA2020106825,RUMPA2023104047}. 
+
+Examples of social effects of floods include {restricted or limited access} to clean drinking water{, damage to the }electricity {network} and broken transport and communication systems{. Furthermore, flood hazards disrupt} regular education and normal working environments, {as well as} healthcare support for the population \cite{JERIN2023103851,NAHIN2023e14520}. The long-term effects of {floods and their} consequences, which may last for months, seriously affect the social--economic system of Bangladesh. The coastal area of the Ganges River Delta supports a population of approximately 56.7 M %Attention AE: should it be written out as million?
+ , which encompasses the study area \cite{DAS2021101983}, where many settlements are located{. This includes }both small villages and large cities such as the capital, Dhaka; Khulna (the third-largest city in the country); Comilla; and Narayani. Supporting such flood-prone areas requires geospatial monitoring of flood risks in order to visualise the affected areas on flood maps \cite{Alietal,AZAD2023100498}.
+
+The uncertainty of flood prediction in the Ganges River Delta has an impact on vulnerability to risk and information dissemination %Please check intended meaning has been retained
+among the local population. Hence, preventive prediction raises a question of using reliable data and advanced methods for operative monitoring of floods and assessment of environmental sustainability {using flood maps} \cite{NICHOLLS2016370}. {Various} techniques have been developed to produce flood maps. Among them, satellite-based flood maps tend to provide real-time, contiguous representations with varying spatial resolution over time and higher accuracy. The main approach that a country can take to assess flood risk is to map areas that are susceptible to flooding based on their {geographic setting} and{ }comprehensive flood risk assessment. {Such analysis can be performed when satellite images are integrated with geospatial information, e.g., frequency of floods, topographic relief, population density, locations of cities and climate setting. }In this regard, flood maps should be prepared by the relevant authorities, and remote flood monitoring should be used to reduce risk during weather events. 
+
+Notably, no prior study has explored the deep learning (DL) methods available in {GRASS GIS} \cite{GRASS_GIS_software}{ }for the mapping of floods in the Ganges River Delta, Bangladesh. As a response to this gap, this study presents {a comprehensive evaluation of multispectral imagery as }a report of the use of such an approach%Please check intended meaning has been retained
+{. Specifically, the methodology of this research }is based on the use of DL methods of satellite image processing in GRASS GIS scripting software. Deep learning is highly scalable for image processing purposes, since it can analyse large datasets, such as times series of RS data, and conduct numerous computations in a cost- and time-effective way using scripting software such as GRASS GIS. Hence, the application of DL for environmental monitoring increases the productivity of RS data processing by speeding up image processing using different algorithms (\mbox{Figure \ref{fig02}}). 
+
+\begin{figure}[H]
+   % \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=8.0cm]{Fig_02.jpg}
+ %  \end{center}
+    \caption{Conceptual structure of ML and DL algorithms in geospatial data analysis and image processing by GRASS GIS. Graphical software: Inkscape version 1.2 \cite{Inkscape}. Scheme source: author.}
+    \label{fig02}
+\end{figure}
+
+Moreover, DL{ }also increases{ the }flexibility of{ }image processing by allowing trained models{ }to be applied to various environmental {and hydrological }problems. The implementation of {such} an approach is realised through the MLPClassifier algorithm from the embedded Scikit-Learn library of Python \cite{pedregosa2011scikit,van1995python}. 
+
+%----------- section ----------->
+\section{\highlighting{Materials} and Methods}
+%MDPI: Please state manufacturer, city, and state abbreviation if applicable in US and country from where ALL material and equipment has been sourced. Example: oxalic acid (Sinopharm Chemical Reagent Co. Ltd., Shanghai, China).
+
+%----------- subsection ----------->
+\subsection{Deep Learning}
+
+As a branch of machine learning (ML), deep learning (DL) is increasingly used in {the }earth {sciences as a tool} for automatic processing of geospatial data. DL can be applied by a variety of tools, using programming libraries, embedded plugins and modules in geographic information systems (GIS). {However, the} problem remains with the technical approach of such methods, {specifically for RS data and satellite image processing}. Among the geoinformation software {that operates with RS data}, GRASS GIS \cite{GRASS_GIS_software,NETELER2012124,MitasovaNeteler} proposes effective solutions to satellite image processing with the {valuable }option {of utilising} diverse choices of models for image classification.
+
+{Among} the existing ML methods, the most widely used approach is DL, with many examples of applications for {satellite} image processing in environmental studies \cite{10441152,AHMED2024167234,HASSAN2023100399}. {For example, }DL presents an advanced technique for evaluating environmental dynamics during climate change assessed through the satellite image analysis \cite{10441576}. There are many DL algorithms that have various parameters and functionalities for image classification. Overall, {such algorithms} train the computer model using knowledge derived from the input layers and processed in hidden layers, which results in accurate modelling of data. {Moreover, DL considers existing conditions in geospatial data that are commonly expressed in terms of spatial relations and the topology of objects.}
+
+\textls[-15]{Existing algorithms of the ML modules of GRASS GIS use neural networks \mbox{(NNs) \cite{202017,HECHTNIELSEN199265,SHEKHAR199213}}} to learn semantic representations of features as indicated by pixels in images derived from Earth observation (EO) data. This enables evaluation of landscapes dynamics  and {assessment of }environmental properties \cite{BISWAS2023e21245}{, as well as the application of advanced methods of} segmentation \cite{Lemenkova202320}, feature extraction and classification \cite{RAISA2024101128} {for data analysis}. Further development of DL methods aims at achieving high-precision image processing using {information} obtained from spectral reflectances of the land cover types detected in images%Please check intended meaning has been retained
+, as well as the use of complex programming algorithms, e.g., NNs \cite{RUDRA2023e16459}. 
+
+%----------- subsection ----------->
+
+\subsection{Workflow}
+The methodological workflow consists of several steps aimed at geospatial analysis and image processing (Figure \ref{fig03}). 
+
+\begin{figure}[H]
+  %  \begin{center}
+	\includegraphics[width=10.0cm]{Fig_03.jpg}
+   % \end{center}
+    \caption{Workflow scheme {illustrating} the methodology used in this study for image processing {by} GRASS GIS. Software: R, library DiagrammeR \cite{DiagrammeR}. Diagram source: author.}
+    \label{fig03}
+\end{figure}
+
+{This} study {mainly uses} the DL methods available in the GRASS GIS modules for satellite image processing to detect flooded areas in the Ganges River Delta, Bangladesh. {The methodology} also includes the {processing }of diverse data obtained from different sources. While the purpose of {the }EO data {was} to provide information on objects and features {of the land surface }visible from space, the choice of methods varied {according to the }purpose, {including} specific DL algorithms and techniques of image processing \cite{4736879,5070195}%Please check intended meaning has been retained
+. 
+
+%----------- subsection ----------->
+\subsection{Theoretical Fundamentals of MLP}
+The multilayer perceptron (MLP) is a class of DL and a conceptual theoretical background for the data analysis performed in this study. MLP represents a feedforward artificial neural network (ANN), a branch of the DL methods \cite{su151813786}. It consists of fully connected neurons%Please check intended meaning has been retained
+ with a nonlinear activation function organised in at least three layers (Figure \ref{fig04}). 
+
+\begin{figure}[H]
+   % \begin{center}
+	\includegraphics[width=13.5cm]{Fig_04.jpg}
+   % \end{center}
+    \caption{General methodological scheme for {the }DL {method of} satellite image classification and EO data processing. \hl{Software: R, library DiagrammeR} \cite{DiagrammeR}. Diagram source: author.}
+    \label{fig04} %MDPI: Please state the version number of the software
+\end{figure}
+
+These layers are used to distinguish {the }data that are not linearly separable and, for time series of satellite images,{ }variables that are changing over time. This results in different values of pixels recognised by the model as Digital Numbers (DNs). Such characteristics are caused by{ }spatio-temporal variability of the spectral reflectance of pixels that constitute the image{. Since }physical properties of landscape and vegetation patches {vary significantly, such a mosaic of landscape patches is reflected on the raster matrix and can be identified on the satellite images accordingly} \cite{rs16010184,HUANG20181915,YIN2021102514}. 
+
+\subsection{Data}
+In this study, we used eight Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) multispectral satellite images for environmental mapping of the Ganges Delta, Bangladesh. {The} images were selected for flood and post-flood periods (March and November, respectively) {covering the periods of }2021, 2022 and 2023. The images {taken in} March and November of{ }2014 were used as a seed for training pixels in deep learning classification. The generated dataset is collected from \hl{} %MDPI: Please confirm this revision and add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020).
+ \url{https://earthexplorer.usgs.gov/} \cite{USGSPublication}, with image samples openly available for download, processing and data reuse. The original Landsat images included multispectral, panchromatic and SWIR bands (Figure \ref{fig05}). 
+
+The images were in GeoTIFF format and contained the seven multispectral bands for each image. Hence, the image recordings received from the USGS source include RS datasets{. The metadata were} explored, {and the} records {are }available in Table \ref{tabApp}  in \hl{Appendix} %MDPI: Please confirm this revision.
+ \ref{app1}{. The most }essential {technical }characteristics {of the images }are summarised in \mbox{Table \ref{tab01}.} {Besides quality, coverage and availability, another }advantage of the Landsat archives {consists of their economic values; these data are reusable for further distribution and future research}. Thus, in {similar} studies, these {scenes} can be {utilised} as input data for similar tasks in {image analysis}, such as classification{, }detection of land cover types and image segmentation{. The }presented GRASS GIS workflow model of other {technical methods described in this study can be utilised for image processing}. 
+
+The datasets are available in EarthExplorer \cite{USGSPublication} and {originate }from {the }NOAA Landsat collections \cite{Landsat}. The images were pre-projected as original data and had the following technical characteristics: Datum and Ellipsoid World Geodetic System 84 (WGS84), stored in Universal Transverse Mercator (UTM) Zone 46 for southern Bangladesh, and Worldwide Reference System (WRS) Path/Row 137/44. The data were collected at Nadir in daytime. The Landsat Collection category {is} T1, Number 2 for all the scenes. {The} Landsat Station Identifier is LGN {with }sensor identifier Landsat OLI TIRS for all the images. Data Type L2 is OLI TIRS L2SP. The remaining essential characteristics of the images are summarised in Table \ref{tab01}.
+
+\begin{table}[H]
+%\scriptsize
+\caption{Attribute table of the main characteristics of the Landsat 8-9 OLI/TIRS images.} \label{tab01}
+%\begin{adjustwidth}{-\extralength}{0cm}
+ %   \begin{tabularx}{\fulllength}{llll}
+ %    \begin{tabularx}{\textwidth}{cccc}
+\begin{tabularx}{\textwidth}{lCCC}
+    \toprule
+       	\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \midrule
+        {{\hl{Date Acquired}%MDPI: We removed the bold. Please confirm this revision.
+} 
+} & {{7 March 2023} %MDPI: We revised date writing according to our rule, please confirm and same as follows.
+} & {{20 March 2022}} & {{17 March 2021}} \\ \midrule
+        {{Land Cloud Cover}} & 3.12 & 0.01 & 0.03 \\ \midrule
+        {{Scene Cloud Cover L1}} & 2.97 & 0.01 & 0.03 \\ \midrule
+        {{Sun Elevation L0RA}} & 51.70012312 & 56.10505202 & 55.19368850 \\ \midrule
+        {{Sun Azimuth L0RA}} & 134.86314148 & 129.90704446 & 131.01649112 \\ \midrule
+        {{Satellite}} & 8 & 8 & 8 \\
+        \midrule
+      {\textbf{Dataset Attribute}} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \midrule
+        {{Date Acquired}} & {{26 November 2023}} & {{23 November 2022}} & {{28 November 2021}} \\ \midrule
+        {{Land Cloud Cover}} & 0.02 & 0.20 & 0.40 \\ \midrule
+        {{Scene Cloud Cover L1}} & 0.02 & 0.19 & 0.38 \\ \midrule
+        {{Sun Elevation L0RA}} & 41.83496249 & 42.43660966 & 41.36291892 \\ \midrule
+        {{Sun Azimuth L0RA}} & 154.44654325 & 154.42300606 & 154.52745495 \\ \midrule
+        {{Satellite}} & 9 & 9 & 8 \\
+        \bottomrule
+    \end{tabularx}
+%    \end{adjustwidth}
+\end{table}
+
+The selection of these data is explained by the reputation and reliability of the Landsat {satellite }imagery widely used for environmental studies. Landsat images are {openly }available free of charge and have a high {frequency of orbit (8-day repeat coverage of Landsat scene area)} and high quality. Hence, {these }images represent a reliable source of information for the detection of the extent of floods and visualisation of inundated areas using time series analysis. Their applications are reported in many existing studies with a focus on environmental monitoring \cite{Sheonty,Islam2016,Lemenkova202229,Ferdous,Lemenkova202321}. The data were collected from the {freely} available  {repository of }the United States Geological Survey (USGS){---}EarthExplorer \cite{USGSPublication}. The original data are visualised in Figure \ref{fig05}. 
+
+
+
+\begin{figure}[H]
+ \centering
+  \begin{tabular}[H]{c}
+  \hspace{-8mm}  \includegraphics[width=2.9cm]{Fig_05a.jpg} \\
+    \hspace{-8mm} \small (\textbf{a}) March 2014
+  \end{tabular}
+  \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05b.jpg} \\
+    \small (\textbf{b}) November 2014
+  \end{tabular}
+    \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05c.jpg} \\
+    \small (\textbf{c}) March 2021
+  \end{tabular}
+  \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05d.jpg} \\
+    \small (\textbf{d}) November 2021
+  \end{tabular}
+   \begin{tabular}[H]{c}
+  \hspace{-8mm}   \includegraphics[width=2.9cm]{Fig_05e.jpg} \\
+  \hspace{-8mm}   \small (\textbf{e}) March 2022
+  \end{tabular}
+  \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05f.jpg} \\
+    \small (\textbf{f}) November 2022
+  \end{tabular}
+    \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05g.jpg} \\
+    \small (\textbf{g}) March 2023
+  \end{tabular}
+  \begin{tabular}[H]{c}
+    \includegraphics[width=2.9cm]{Fig_05h.jpg} \\
+    \small (\textbf{h}) November 2023
+  \end{tabular}
+  \caption{{Data} 
+ sources: Landsat 8-9 OLI/TIRS images of the Ganges River Delta, Bangladesh, collected during the flood period (March) and post-flood period (November) in 2014, 2021, 2022 and 2023 and used for analysis of flood dynamics. Data source: USGS \cite{Landsat}. Compilation source: author.}
+  \label{fig05}
+\end{figure}
+
+\subsection{\highlighting{Software}} %MDPI: Please state the version number of the software. If it is not applicable, it can be ignored, and the related website or proof should be provided. Please review the full text and make sure each software has a version number or website
+The workflow used in this research employs a chain of modules that {utilise} \hl{GRASS GIS scripting software}%MDPI: Please state the version number of the software.
+ \cite{GRASS_GIS_software} for image processing{. The technical details of such an approach are }described in earlier works \cite{Lemenkova202323,technologies11020046}. For the installation and use of the machine learning (ML) modules of GRASS GIS, we recommend using Python version 3.8.5 or higher. Specifically, the installation of our framework can be performed using the available packages in the shared data. The additional Python libraries required by GRASS GIS are included in the modules through {the} embedded links and include the following:\hl{ Matplotlib, NumPy, Pandas, Scikit-Learn and SciPy} %MDPI: Please state the version number of all the  softwares.
+. Additionally, the XCode {needs} to be installed for writing the scripts{.}  These libraries can be installed using 'pip install', with more details in the online resources of GRASS GIS.  {Finally, }using \hl{GitHub} %MDPI: Please state the version number of the software.
+ is recommended {for backup of scripts and revision}.The methodology of {the} time series analysis includes the unsupervised and supervised classification of {the} multispectral satellite images {with the aim of} detecting changes in landscapes around the Ganges River Delta in {the} pre- and post-flood periods. The map in Figure \ref{fig01} was prepared using Generic Mapping Tools (GMT) version 6.4.0 \cite{Wessel,WesselSmith} with a raster grid of the General Bathymetric Chart of the Oceans (GEBCO). 
+
+%----------- subsection ----------->
+\subsection{Implementation}
+We used a workflow in that GRASS GIS platform as a container of diverse modules to run the scripts on MacOS using the approach presented in Figure \ref{fig05}. GRASS GIS uses algorithms of ML/DL methods of image processing derived from Python's Scikit-Learn library \cite{pedregosa2011scikit} via the integrated libraries in the machine. For the GRASS GIS platform, this is performed using the containers of modules via the sequence of commands presented in Listings \ref{lst01}--\ref{lst03}. The processes include the import and pre-processing of the multispectral bands of the given image, image analysis and classification{. The classification is based on fundamental properties of the RS data on }differences in the spectral reflectance {of pixels that are }associated with land patches {on the land surfaces visible from space. Here, }each{ }patch of the Ganges River Delta {contributes to the mosaic of }landscapes evaluated for the March (flood) and November (post-flood) periods of 2021, 2022 and 2023.
+
+The following is an outline of the essential details regarding the approaches and techniques of the algorithms that compose the GRASS GIS framework {used} for image analysis. Full codes are presented below and explained with {the} essential details. In all the GRASS GIS modules and functions, as well as for post-processing of the satellite images using the DL approach, it is necessary to apply the module that {implements} the required functionality for data processing of each image%Please check intended meaning has been retained
+{. In this sense, the parameters of scripts are adjusted }in terms of the identifiers of functions and {specifications} of image processing. For this purpose, we adopted and modified the approaches of the ML modules{ }of GRASS GIS, which rely on{ }Python's Scikit-Learn library for DL techniques.
+
+%----------- subsection ----------->
+\subsection{Image Processing}
+The images were first imported into the GRASS GIS system using the `r.import' module{, then pre-processed. Afterwards, the }colour composites {were} created using `r.composite'. The images were then displayed using a combination of the `d.mon' and `d.rast' modules. The files {were} saved in bitmap format using the `d.out.file' module. The binary results of the DL mapping and programming scripts used for DL image analysis are available in the GitHub repository {using} the following web \hl{link:} %MDPI: 1. Please add the access date (Format: Date Month Year). e.g., (accessed on 1 January 2020). 2. we revised into one paragraph, please check
+\url{https://github.com/paulinelemenkova/Floods\_Ganges\_GRASS\_GIS\_DL\_Image\_Analysis}.
+
+%{https://github.com/paulinelemenkova/Floods_Ganges_GRASS_GIS_DL_Image_Analysis}
+
+The results of the {generated }colour composites are presented in Figure \ref{fig06}. 
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_06a.jpg}
+		\caption{\centering Bands 3--4--7}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_06b.jpg}
+		\caption{ \centering Bands 3--4--5}
+	\end{subfigure}
+		\hfill
+		\vspace{1em}
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_06c.jpg}
+		\caption{\centering Bands 2--4--7}
+	\end{subfigure}
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_06d.jpg}
+		\caption{\centering Bands 3--7--4}
+	\end{subfigure}
+\caption{\hl{Examples} %MDPI: We revised hyphen to en dash in subfigure caption, please confirm.
+ of different false colour composites generated by the GRASS GIS 'r.composite' module using the multispectral bands of the Landsat 8-9 OLI/TIRS scenes%Please check intended meaning has been retained
+ . Here, the band numbers correspond to the following channels of the Landsat 8-9 OLI/TIRS images: band 2---blue; band 3---green; band 4---red; band 5---near infrared (NIR); band 7---shortwave infrared-2 (SWIR-2).}\label{fig06}
+\end{figure}
+
+This step is implemented using the GRASS GIS syntax (an example is presented for November 2023) presented in the codes of Listing \ref{lst01}.
+
+
+The unsupervised classification is based on a clustering {technique} using k-means and maximum likelihood embedded in GRASS GIS. {Practically}, it was performed using the `i.group', `i.cluster' and `i.maxlik' modules. {The latter creates} the signature file and performs accuracy assessment using {the} `reject' function{. This function }evaluates {the }rejection probability of the pixels using a chi-square test, {which is used to examine the dependence of categorical variables, i.e., pixels, on the raster scene}. This step is implemented using the GRASS GIS syntax (an example{ is }presented {below }for November 2023){ }in{ }the codes of Listing \ref{lst02}.
+
+
+\begin{listing}[H]
+
+\caption{GRASS GIS code for data import and the creation of a colour composite algorithm%Please check intended meaning has been retained
+	.}\label{lst01}
+
+\begin{lstlisting}[language=bash,style=mystyle,label={lst01}]
+#importing the image subset with 7 Landsat bands and display the raster map
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B1.TIF output=L8_2023_N_01 extent=region resolution=region --overwrite
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B2.TIF output=L8_2023_N_02 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B3.TIF output=L8_2023_N_03 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B4.TIF output=L8_2023_N_04 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B5.TIF output=L8_2023_N_05 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B6.TIF output=L8_2023_N_06 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B7.TIF output=L8_2023_N_07 extent=region resolution=region
+g.list rast
+# false color
+r.composite blue=L8_2023_N_07 green=L8_2023_N_05 red=L8_2023_N_03 output=L8_2023_N_753
+d.mon wx0
+d.rast L8_2023_N_753
+d.out.file output=Bangladesh_753 format=jpg --overwrite
+# false color: NIR band B05 in the red channel, red band B04 in the green channel and green band B03 in the blue channel
+r.composite blue=L8_2023_N_03 green=L8_2023_N_04 red=L8_2023_N_05 output=L8_2023_N_345
+d.mon wx0
+d.rast L8_2023_N_345
+d.out.file output=Bangladesh_345 format=jpg --overwrite
+# true color
+r.composite blue=L8_2023_N_02 green=L8_2023_N_03 red=L8_2023_N_04 output=L8_2023_N_234
+d.mon wx0
+d.rast L8_2023_N_234
+d.out.file output=Bangladesh_J_234 format=jpg --overwrite
+\end{lstlisting}
+
+\end{listing}
+
+%\begin{lstlisting}[language=bash,caption=GRASS GIS code for data import and creating colour composites algorithm,style=mystyle,label={lst01}]
+%#importing the image subset with 7 Landsat bands and display the raster map
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B1.TIF output=L8_2023_N_01 extent=region resolution=region --overwrite
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B2.TIF output=L8_2023_N_02 extent=region resolution=region
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B3.TIF output=L8_2023_N_03 extent=region resolution=region
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B4.TIF output=L8_2023_N_04 extent=region resolution=region
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B5.TIF output=L8_2023_N_05 extent=region resolution=region
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B6.TIF output=L8_2023_N_06 extent=region resolution=region
+%r.import input=/Users/polinalemenkova/grassdata/Bangladesh/LC09_L2SP_137044_20231126_20231128_02_T1_SR_B7.TIF output=L8_2023_N_07 extent=region resolution=region
+%g.list rast
+%# false color
+%r.composite blue=L8_2023_N_07 green=L8_2023_N_05 red=L8_2023_N_03 output=L8_2023_N_753
+%d.mon wx0
+%d.rast L8_2023_N_753
+%d.out.file output=Bangladesh_753 format=jpg --overwrite
+%# false color: NIR band B05 in the red channel, red band B04 in the green channel and green band B03 in the blue channel
+%r.composite blue=L8_2023_N_03 green=L8_2023_N_04 red=L8_2023_N_05 output=L8_2023_N_345
+%d.mon wx0
+%d.rast L8_2023_N_345
+%d.out.file output=Bangladesh_345 format=jpg --overwrite
+%# true color
+%r.composite blue=L8_2023_N_02 green=L8_2023_N_03 red=L8_2023_N_04 output=L8_2023_N_234
+%d.mon wx0
+%d.rast L8_2023_N_234
+%d.out.file output=Bangladesh_J_234 format=jpg --overwrite
+%\end{lstlisting}
+
+
+\vspace{-10pt}
+
+
+\begin{listing}[H]
+
+\caption{GRASS GIS code for unsupervised image classification method using k-means clustering algorithm.}\label{lst02}
+
+\begin{lstlisting}[language=bash,style=mystyle,label={lst02}]
+g.region raster=L8_2023_N_01 -p
+i.group group=L8_2023_N subgroup=res_30m \
+  input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
+# Clustering: generating signature file and report using k-means clustering algorithm
+i.cluster group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  classes=10 reportfile=rep_clust_L8_2023_N.txt --overwrite
+# Classification by i.maxlik module
+i.maxlik group=L8_2023_N subgroup=res_30m \
+  signaturefile=cluster_L8_2023_N \
+  output=L8_2023_N_cluster_classes reject=L8_2023_N_cluster_reject --overwrite
+\end{lstlisting}
+\end{listing}
+
+\vspace{-6pt}
+
+The results of this step{ }are used as training data for supervised classification using a deep learning approach. {The resulting maps are demonstrated in Figure} \ref{fig07}. Moreover,{ }selected example of accuracy analysis for 2014 that was used as a training dataset is shown in Figure \ref{fig08}. This step includes the procedures of clustering that generate a signature file and {a report} using the k-means algorithm {through} the `i.cluster' module {of GRASS GIS}%Please check intended meaning has been retained
+. Unsupervised classification was performed using the `i.maxlik' module. The results of this step provided the seed data and training map for the next step of DL modelling{. The maps are presented in Figure} \ref{fig02}.
+
+The results of the accuracy assessment are presented in Figure \ref{fig08}, which shows the reject threshold map layer created using the `i.maxlik' module of GRASS GIS. The maps are computed for each satellite image and contain the index to one calculated confidence level for each classified pixel in the classified images. The values range from 0 to 100 \%, which indicate the predefined confidence intervals. For interpretation of the reject maps, \hl{lower} %MDPI: We removed extra ``('', please confirm.
+ values 0.1 = keep, and those close to 100\% indicate reject%Please check intended meaning has been retained
+ . The application for this map layer is as a mask indicating raster pixels in the classified images that have a low probability of flood categorisation (that is, a high rejection index) and being assigned to the correct class%Please check intended meaning has been retained
+ . 
+
+The computed maps {are} based on the evaluated reject raster map, which indicates the results of the evaluated reject thresholds. The reject thresholds were calculated using a chi-square test, which is a statistical approach that tests {the} goodness of fit of the datasets. This test was used to determine whether the computed pixels and assignments to various land cover classes are acceptable or should be rejected{%Please check intended meaning has been retained
+	. The approach of the chi-square test is }based on the hypothesis that the resulting data {have} a specified distribution of land cover classes at the specified level of significance. Hence, an accuracy assessment was conducted on each satellite image, showing the discriminant results at various threshold confidence levels for the assigned pixels%Please check intended meaning has been retained
+	. The maps shown in Figure \ref{fig08} {are} used to determine at what confidence level each classified pixel is correctly categorised to among the diverse land cover classes%Please check intended meaning has been retained
+	. 
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+
+
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{Fig_07a.jpg}
+		\caption{\centering March 2014}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{Fig_07b.jpg}
+		\caption{\centering November 2014}
+	\end{subfigure}\end{adjustwidth}
+\caption{\hl{Image} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)". 
+ processing of the Landsat 8 OLI/TIRS scene in March and November 2014 using unsupervised classification through clustering and Maximal Likelihood method: (\textbf{a}) March 2014; (\textbf{b}) November 2014. The ten land cover types correspond to the following categories: (1) water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig07}
+\end{figure}
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+
+	\begin{subfigure}[b]{.60\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{Fig_08a.jpg}
+		\caption{\centering March 2014}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.60\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{Fig_08b.jpg}
+		\caption{\centering November 2014}
+	\end{subfigure}
+\end{adjustwidth}
+\caption{\hl{Accuracy} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".
+ assessment of image classification of the Landsat 8 OLI/TIRS scenes: (\textbf{a}) March 2014; (\textbf{b}) November 2014.}\label{fig08}
+\end{figure}
+
+{The} deep learning (DL) analysis was performed using the Multilayer perceptron (MLPClassifier) algorithm for automated classification of the series of satellite images. First, the extent of the spatial region was defined using {the} `g.region' module, which sets up the coordinates of the maps within the project using the target map. Afterwards, the training pixels from an older (2014) land cover classification were generated using {the} `r.random' module of GRASS GIS and used as seeds. Next, the imagery group with all Landsat-8 OLI/TIRS bands was created to include all {the} multispectral bands ({since }we do not need panchromatic bands in this case, {they were excluded from data analysis}). Then, the training pixels were applied to perform a classification using {the} `MLPClassifier' of {DL} approach {applied to} recent Landsat {images }(in the presented code below, the image for November 2023). This method trains an MLPClassifier model using `r.learn.train'. 
+
+After this step, the prediction of the pixel assignments to each land cover class in the Ganges River Delta was performed using {the} `r.learn.predict' module. The raster categories were automatically applied to the classification output and checked again using the `r.category' module. {Following that}, the color scheme was assigned from the land class training map and {visualised} using the `r.colors' and `d.rast' modules. Technically, the DL approach was realised using the `r.learn.train' module of GRASS GIS and demonstrated in the script of Listing \ref{lst03}.
+
+
+\begin{listing}[H]
+
+\caption{\hl{GRASS GIS code for unsupervised image classification method using k-means clustering algorithm.} %MDPI: The caption of listing 3 as same as listing 2, please check and revise.
+}\label{lst03}
+
+\begin{lstlisting}[language=bash,style=mystyle,label={lst03}]
+g.region raster=L8_2023_N_01 -p
+r.random input=L8_2014_N_cluster_classes seed=100 npoints=1000 raster=training_pixels
+i.group group=L8_2023_N input=L8_2023_N_01,L8_2023_N_02,L8_2023_N_03,L8_2023_N_04,L8_2023_N_05,L8_2023_N_06,L8_2023_N_07 --overwrite
+r.learn.train group=L8_2023_N training_map=training_pixels \
+    model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
+r.learn.predict group=L8_2023_N load_model=mlpc_model.gz output=mlpc_classification_Ganges --overwrite
+r.category mlpc_classification_Ganges
+d.mon wx0
+d.rast mlpc_classification_Ganges
+r.colors mlpc_classification_Ganges color=roygbiv -e
+d.legend raster=mlpc_classification_Ganges title="MLPClassifier: 11/2023" title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white border_color=white
+d.out.file output=MLPC_2023_11 format=jpg --overwrite
+\end{lstlisting}
+\end{listing}
+
+Each image of the produced dataset contained seven multispectral bands processed automatically by the GRASS GIS `r.learn.train' and `r.learn.predict' modules for each image. The total processing time for one image is ca. 30 min, which demonstrates a high time efficiency of the proposed GRASS GIS {DL} algorithm. The MLPClassifier algorithm was tested initially on a single image processed as a complete workflow for the March and November 2021, 2022 and 2023 datasets, then analysed for changes in the evaluated period%Please check intended meaning has been retained
+. Changes detected using the repeatability pattern of land cover types in the Ganges River Delta were evaluated for the flood- and post-flood periods. Noise background related to cloudiness is ignored, since the images were collected under high visibility (below 10\% cloudiness), which ensured that land cover types are clearly visible and identified by the ML algorithm. 
+
+%----------- section ----------->
+\section{Results}
+
+\textls[-15]{The Landsat satellite images evaluated in this study cover the regions of southern Bangladesh} and the periods of March and November for the years 2021, 2022 and 2023. {The }analysed images included multispectral bands and were collected on cloud-free dates, which enabled the detection of notable changes in the flooded areas. Land cover changes during flood and post-flood periods were measured using the advanced `MLPClassifeir' DL approach {, as described in the previous section. The scripting approach was }developed {in} GRASS GIS and employs the Python algorithms of the Scikit-Learn ML library. The variations in the flooding characteristics in the mapped region show an increase in the water level, which is associated the pre-monsoon and monsoon rainfall over the river catchments of the Ganges, Brahmaputra and Meghna rivers. Another factor in addition to the water flow is the intake from the snow melt in February%Please check intended meaning has been retained
+, which is reflected in early March levels. 
+
+The hydrological peaks of the Brahmaputra River in late August or September show that the maximum flow of a stream in response to a rainstorm event coincides with the Ganges River peak in 2022. In contrast, sandy areas in the inlet of the Ganges River are more pronounced in 2023 due to the changed conditions and the local climate setting, which is visible in the scenes of {the classified }Landsat {images}. The increase in inundated areas in the wetlands of the Ganges River, the development of mangrove forests and the fragmentation of the forest land cover types were detected in the images of the processed scenes {using the} DL modules of GRASS GIS. The hydrological contribution from the Meghna tributary to the Ganges River stream follows a similar hydrological pattern to that of the Brahmaputra River. Since the Meghna River has high water levels that extend into September due of a backwater %Please check intended meaning has been retained
+effect, the contribution of the Meghna to the Ganges River's flow is more pronounced in the images for November. Hence, as shown in the images, the categories of land cover types were visualised and evaluated using image classification methods. The flooding periods impacted the hydrology of the Ganges River as a result of the monsoon effects in southern Bangladesh%Please check intended meaning has been retained
+.
+
+%----------- subsection ----------->
+\subsection{K-Means Classification Outcomes}
+
+Flooded areas in the Ganges River Delta detected and mapped using MaxLike methods are presented as a series of the resulting maps in Figures \ref{fig09} and \ref{fig10}, and deep learning (DL) results %Please check intended meaning has been retained
+are presented in Figures \ref{fig11} and  \ref{fig12}. 
+
+\begin{figure}[H]
+\hspace{+14mm}\makebox[0.90\linewidth][r]{%
+\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_09a.jpg}
+		\caption{\centering2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_09b.jpg}
+		\caption{\centering 2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_09c.jpg}
+		\caption{\centering 2023}
+	\end{subfigure}%
+}
+\caption{\hl{Flooded} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".
+ landscapes in the Ganges River Delta, Bangladesh, mapped using k-means clustering and MaxLike classification in GRASS GIS applied to Landsat 8-9 OLI/TIRS images: (\textbf{a}) March 2021; (\textbf{b}) March 2022; (\textbf{c}) March 2023. The ten land cover types correspond to the following categories: (1) water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig09}
+\end{figure}
+
+
+The classified images show the pre- and post-flood inundation maps for the region of the Ganges River Delta during March and November in 2021, 2022 and 2023 based on the Landsat images. The findings reveal a changing pattern of expanded floods in the post-flood period in the Ganges River Delta and inequality in the distribution of inundated areas covered by water in consequent years (2021, 2022 and 2023). 
+
+The flood periods in 2022 in southern Bangladesh caused significant deluges and inundations, which affected cropland areas as well as  settlements in rural and urban districts. Selected areas also experienced extended periods of inundations, while coastal areas were continuously inundated. Finally, land cover types related to orchards were affected{ by floods. }Thus, the results show the distribution of continuing water bodies in March, which increases in November, covering an area of southern Bangladesh. In March 2021, the total flood-inundated area was lower, with most inundation occurring in cropland (Class 6); followed by urban settlement (Class 8); orchard areas (Class 9); and other areas, such as wetlands, mangroves and aquaculture (Classes 2, 3 and 10, respectively). 
+
+\begin{figure}[H]
+\hspace{+10mm}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.98\textwidth]{Fig_10a.jpg}
+		\caption{\centering2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_10b.jpg}
+		\caption{\centering2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_10c.jpg}
+		\caption{\centering2023}
+	\end{subfigure}%
+}
+\caption{\hl{Post-flood} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".
+ landscapes in the Ganges River Delta, Bangladesh, mapped using k-means clustering and MaxLike classification in GRASS GIS applied to Landsat 8-9 OLI/TIRS images: (\textbf{a}) November 2021; (\textbf{b}) November 2022; (\textbf{c}) November 2023. The ten land cover types correspond to the following categories: (1); water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig10}
+\end{figure}
+
+
+
+
+
+The maps were generated using {the} classified images for March showing the flooding event (Figure \ref{fig09} and Figure \ref{fig11}), as well as the images for November (Figures \ref{fig10} and  \ref{fig12}) showing the post-flood landscapes. Comparing these two periods, all crop-related land cover types represent areas notably affected by floods, which also occurred in the regions of residential property. Correspondingly, larger areas were inundated, including affected public infrastructure during the catastrophic November months when heavy monsoon rains continued to pummel the affected districts in close proximity to {the} Ganges River%Please check intended meaning has been retained
+. 
+
+%----------- subsection ----------->
+
+
+\begin{figure}[H]
+\hspace{+10mm}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+			\includegraphics[width=0.98\textwidth]{Fig_11a.jpg}
+		\caption{\centering2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_11b.jpg}
+		\caption{\centering2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_11c.jpg}
+		\caption{\centering2023}
+	\end{subfigure}%
+}
+\caption{\hl{Flooded} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".
+ landscapes in the Ganges River Delta, Bangladesh, mapped using deep learning (DL) classification MLPC in GRASS GIS applied to Landsat 8-9 OLI/TIRS images: (\textbf{a}) March 2021; (\textbf{b}) March 2022; (\textbf{c}) March 2023. The ten land cover types correspond to the following categories: (1) water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig11}
+\end{figure}
+
+\begin{figure}[H]
+\hspace{+10mm}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+			\includegraphics[width=0.98\textwidth]{Fig_12a.jpg}
+		\caption{\centering2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_12b.jpg}
+		\caption{\centering2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.43\textwidth}
+		\centering
+		\includegraphics[width=0.98\textwidth]{Fig_12c.jpg}
+		\caption{\centering2023}
+	\end{subfigure}%
+}
+\caption{\hl{Post-flood} %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".
+ landscapes in the Ganges River Delta, Bangladesh, mapped using deep learning (DL) classification MLPC in GRASS GIS applied to Landsat 8-9 OLI/TIRS images: (\textbf{a}) November 2021; (\textbf{b}) November 2022; (\textbf{c}) November 2023. The ten land cover types correspond to the following categories: (1) water; (2) wetlands and mudflats; (3) mangrove forests; (4) sandy areas; (5) forests; (6) croplands; (7) grasslands; (8) urban settlements; (9) orchards; (10) aquaculture.}\label{fig12}
+\end{figure}
+
+
+\subsection{Deep Learning Outcomes}
+
+The supervised learning models of GRASS GIS based on MLPClassifier demonstrated accurate results in flood mapping and refined visualisation functionality{. The outcomes of DL show} that for the March-to-November time frame, some patterns were common for both months, while autumn months were newly inundated (Figures \ref{fig11} and  \ref{fig12}). 
+
+In contrast, the spring period demonstrated that areas in selected northern regions recovered following continuous inundation%Please check intended meaning has been retained
+, while southern areas located in the proximity of the Ganges River Delta were progressively inundated. While the {DL} method was developed to serve a specific goal of image processing, its is applicable as a solution for the monitoring of {the} outcomes of floods in {the} detected inundated areas{, }as presented above%Please check intended meaning has been retained
+. Hence, the research outcomes provide {valuable} insights into {the monitoring of }changing landscapes {comparing flooded and} post-flood periods in {the} Ganges River Delta. 
+
+
+
+A time series analysis of the Ganges River Delta was used to plot and graphically display{ }changes in the flood and post-flood periods for southern Bangladesh{. The analysis of data }for three test periods (2021, 2022 and 2023) illustrates that some areas recovered from flood waters as time progressed, in contrast with the inundated areas. The data for 2014 were used as a training polygon for {DL} modelling, which requires a classification seed. The derived maps were produced from the cloud-free Landsat images processed by the {DL} methods between the flooded period in March and the post-flooded period in November, when some areas had recovered from inundation%Please check intended meaning has been retained
+. The maps generated using GRASS GIS show high potential environmental monitoring. The methods of deep learning support accurate image classification through the use of advanced computer vision and pattern recognition algorithms%Please check intended meaning has been retained
+. 
+
+\begin{table}[H]
+\caption{\hl{Flood} %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order.
+ period: estimated classes of land cover types for the March period for the years 2021, 2022 and 2023 in the Ganges River Delta.}
+  \centering
+  \begin{tabularx}{\textwidth}{CCCCCCCCCCC}
+  \toprule
+  \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types in March Pixels: Ganges--Brahmaputra River Delta}} \\\cmidrule{2-11}
+     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+    \midrule
+    \textbf{\hl{2021} %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same.
+} & 717 & 252 & 434 & 758 & 1005 & 1035 & 758 & 744 & 927 & 219 \\
+    \textbf{\hl{2022}} &  749 & 236 & 489 & 803 & 1030 & 1100 & 557 & 744 & 800 & 336 \\
+     \textbf{\hl{2023}} &  707 & 343 & 1055 & 381 & 1032 & 997 & 702 & 649 & 796 & 180 \\
+\bottomrule
+\end{tabularx}
+  \label{tab02}
+\end{table}
+\vspace{-12pt}
+\begin{table}[H]
+ \caption{\hl{Post-flood} %MDPI: Please cite the table in the text and ensure the first citation of each table appears in numerical order.
+ period: estimated classes of land cover types for the November period for the years 2021, 2022 and 2023 in the Ganges River Delta.}
+  \centering
+  \begin{tabularx}{\textwidth}{CCCCCCCCCCC}
+  \toprule
+  \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types in November Pixels: Ganges--Brahmaputra River Delta}} \\\cmidrule{2-11}
+     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+    \midrule
+    \textbf{\hl{2021} %MDPI: Please add an explanation for bold in the table footer. If the bold is unnecessary, please remove it. The following highlights are the same.
+} & 689 & 402 & 579 & 565 & 1228 & 1109 & 571 & 849 & 647 & 208 \\
+    \textbf{\hl{2022}} & 700 & 468 & 365 & 587 & 1066 & 1048 & 683 & 942 & 683 & 326 \\
+     \textbf{\hl{2023}} & 715 & 511 & 231 & 599 & 1351 & 1132 & 718 & 707 & 685 & 310 \\
+\bottomrule
+\end{tabularx}
+  \label{tab03}
+\end{table}
+
+The time series flood data made using scripting models of GRASS GIS with open-source specifications catalyse further innovation in risk management and represent solutions for state-of-the-art mapping of floods using programming approaches and {ML} modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: \emph{\emph{(1)} \hl{water,} %MDPI: Please confirm if the italics should be retained.
+ \emph{(2)} \hl{wetlands and mudflats,} \emph{(3)} \hl{mangrove forests,} \emph{(4)} \hl{sandy areas}, \emph{(5)} \hl{forests,} \emph{(6)} \hl{croplands, }\emph{(7)} \hl{grasslands,} \emph{(8)} \hl{urban settlements,} \emph{(9)} \hl{orchards and } \emph{(10) } \hl{aquaculture.}} Information on land cover types was derived from Rahman et al. \cite{Rahman2020}, Sousa and \mbox{Small \cite{rs13234799}} and Paszkowski et al. \cite{Paszkowski2021} and applied to the extent of the current study area. The presented maps of floods can be used as a broad base for environmental applications and flood hazard assessment. Their application potential ranges from academia and research, industry and development to governmental and social services for risk prevention. 
+
+The maps derived using the deep learning approach were produced from the cloud-free Landsat scenes collected between the March and November periods and are shown in \mbox{Figures \ref{fig11} and \ref{fig12}.} The presented land cover maps are intended for potential flood damage assessment in southern Bangladesh. Corrections of the presented framework and the Python-based algorithm of GRASS GIS derived using a machine learning (ML) approach with the deep learning (DL) MLPClassifier represent an advanced tool for automated recognition of land cover types in satellite images and the monitoring of floods in flood-prone regions of southern Bangladesh%Please check intended meaning has been retained
+. The percentage of correctly classified images was calculated summarised in the matrices showing class separability (\hl{Figure} %MDPI: Please confirm this revision according to our rule, we keep the figure label for figures 13-15
+ \ref{fig13}, Figure \ref{fig14} and Figure \ref{fig15}
+%Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3}
+ for the years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
+
+The class separability matrices of land cover classes identified in the Ganges River Delta are presented in {Figures }\ref{fig13}--\ref{fig15}. \mbox{\hl{Figure} \ref{fig13}} shows class separability matrices for March and November 2021, \hl{Figure} \ref{fig14} shows class separability matrices for March and November 2022 and \hl{Figure} \ref{fig15} shows class separability matrices for March and November 2023. The covariance matrices signify the values of class separability, which are composed of the cluster means based on the values of the spectral signatures of pixels. They demonstrate the results of the cluster's means {obtained from the computed} covariance matrices{. The matrices} were generated {using} the `i.maxlik' function of GRASS GIS during the image classification process. The columns {signify} 10 generated land cover classes, and the rows signify the number of pixels correctly assigned to those classes. Hence, the class separability matrices show the error matrix for {the} pixel-based maximum-likelihood classification, which indicates the correctness of the pixels assigned to the {land cover }classes from 1 to 10. The results of {image} clustering{ }using values of spectral classes are related to {the} land cover types identified in the Ganges River Delta and {the} surroundings. 
+
+The matrices consist of ten classes and computed pixels for each land cover class. The land categories are defined as follows: water bodies, wetlands and mudflats indicating inundated areas, mangrove forests and associated swamps, sandy areas on riverbanks, forests (e.g., tree cover, hill forests), croplands and homestead croplands, grasslands, urban and rural settlements, orchards and aquaculture. Class separability matrices evaluate the assignment of pixels to various land cover classes in the landscapes of the Ganges River Delta. Hence, the matrices serve the function of regularisation parameters used to determine the distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform iterative searches for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
+
+\begin{figure}[H]
+\begin{equation}
+\setlength\arraycolsep{3pt}
+\footnotesize
+\hspace{-12mm}\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.3 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.2 & 1.0 & 0 &  &  &  &  &  &  &  \\
+4 & 3.0 & 1.5 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 3.2 & 1.2 & 1.2 & 1.2 & 0 &  &  &  &  &  \\
+6 & 3.4 & 1.9 & 1.3 & 0.7 & 1.1 & 0 &  &  &  &  \\  
+7 & 3.6 & 2.4 & 1.7 & 1.2 & 1.6 & 0.7 & 0 &  &  &  \\  
+8 & 3.7 & 1.7 & 1.8 & 1.7 & 0.7 & 1.4 & 1.7 & 0 &  &  \\
+9 & 3.4 & 1.6 & 2.3 & 2.5 & 1.3 & 2.3 & 2.6 & 1.0 & 0 &  \\   
+10 & 3.8 & 2.2 & 2.8 & 2.8 & 2.0 & 2.7 & 3.0 & 1.8 & 1.1 & 0 \\      
+\end{vmatrix}
+ %
+ \hspace{10pt}
+ \begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.9 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.6 & 1.0 & 0 &  &  &  &  &  &  &  \\
+4 & 2.9 & 2.2 & 1.4 & 0 &  &  &  &  &  &  \\
+5 & 3.9 & 2.0 & 0.9 & 1.2 & 0 &  &  &  &  &  \\
+6 & 4.6 & 2.4 & 1.4 & 1.5 & 0.6 & 0 &  &  &  &  \\  
+7 & 4.2 & 2.8 & 1.9 & 1.3 & 1.3 & 1.0 & 0 &  &  &  \\  
+8 & 4.1 & 2.9 & 1.8 & 0.8 & 1.3 & 1.3 & 0.7 & 0 &  &  \\
+9 & 3.9 & 3.3 & 2.5 & 1.0 & 2.2 & 2.3 & 1.5 & 1.1 & 0 &  \\   
+10 & 3.5 & 3.3 & 2.6 & 1.5 & 2.3 & 2.3 & 1.8 & 1.5 & 0.9 & 0 \\       
+ \end{vmatrix} \nonumber
+\end{equation}
+\caption{\hl{Class} %MDPI: we removed the equations numbering for figures 13-15
+ separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2021.}
+\label{fig13}
+\end{figure}
+
+\begin{figure}[H]
+\begin{equation}
+\setlength\arraycolsep{3pt}
+\footnotesize
+\hspace{-12mm}\begin{vmatrix}
+   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.5 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.4 & 1.0 & 0 &  &  &  &  &  &  &  \\
+4 & 3.3 & 1.7 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 3.4 & 1.3 & 1.3 & 1.3 & 0 &  &  &  &  &  \\
+6 & 3.8 & 2.2 & 1.3 & 0.7 & 1.2 & 0 &  &  &  &  \\  
+7 & 3.6 & 2.4 & 1.6 & 1.1 & 1.5 & 0.6 & 0 &  &  &  \\  
+8 & 3.9 & 1.8 & 1.9 & 1.8 & 0.7 & 1.4 & 1.6 & 0 &  &  \\
+9 & 3.9 & 1.7 & 2.5 & 2.7 & 1.4 & 2.4 & 2.5 & 1.1 & 0 &  \\   
+10 & 3.9 & 2.1 & 2.8 & 2.9 & 2.0 & 2.7 & 2.8 & 1.7 & 1.0 & 0 \\      
+\end{vmatrix}
+ %
+ \hspace{10pt}
+ \begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.8 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.4 & 1.8 & 0 &  &  &  &  &  &  &  \\
+4 & 2.7 & 0.9 & 1.3 & 0 &  &  &  &  &  &  \\
+5 & 3.8 & 1.8 & 1.4 & 0.8 & 0 &  &  &  &  &  \\
+6 & 4.5 & 2.2 & 1.8 & 1.3 & 0.6 & 0 &  &  &  &  \\  
+7 & 4.1 & 2.5 & 1.5 & 1.7 & 1.3 & 1.0 & 0 &  &  &  \\  
+8 & 4.1 & 2.5 & 1.0 & 1.5 & 1.1 & 1.2 & 0.7 & 0 &  &  \\
+9 & 3.9 & 2.9 & 0.8 & 2.3 & 2.2 & 2.3 & 1.4 & 1.2 & 0 &  \\   
+10 & 3.0 & 2.8 & 1.2 & 2.3 & 2.3 & 2.4 & 1.8 & 1.7 & 0.8 & 0 \\       
+ \end{vmatrix} \nonumber
+\end{equation}
+\caption{{\hl{Class} separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2022.}}
+\label{fig14}
+\end{figure}
+
+\begin{figure}[H]
+\begin{equation}
+\setlength\arraycolsep{3pt}
+\footnotesize
+\hspace{-12mm}\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.4 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.0 & 1.0 & 0 &  &  &  &  &  &  &  \\
+4 & 3.0 & 1.3 & 1.4 & 0 &  &  &  &  &  &  \\
+5 & 3.8 & 1.7 & 0.7 & 1.6 & 0 &  &  &  &  &  \\
+6 & 4.1 & 1.7 & 1.2 & 0.9 & 1.1 & 0 &  &  &  &  \\  
+7 & 3.9 & 2.1 & 1.3 & 2.1 & 0.7 & 1.5 & 0 &  &  &  \\  
+8 & 4.4 & 2.2 & 1.7 & 1.2 & 1.4 & 0.7 & 1.4 & 0 &  &  \\
+9 & 4.2 & 2.3 & 2.3 & 1.1 & 2.3 & 1.4 & 2.4 & 1.1 & 0 &  \\   
+10 & 3.9 & 2.6 & 2.6 & 1.8 & 2.5 & 2.0 & 2.6 & 1.7 & 1.1 & 0 \\      
+\end{vmatrix}
+ %
+ \hspace{10pt}
+ \begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.8 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.1 & 1.4 & 0 &  &  &  &  &  &  &  \\
+4 & 3.1 & 1.1 & 1.2 & 0 &  &  &  &  &  &  \\
+5 & 3.9 & 1.9 & 1.3 & 0.8 & 0 &  &  &  &  &  \\
+6 & 4.2 & 2.3 & 1.7 & 1.2 & 0.6 & 0 &  &  &  &  \\  
+7 & 3.5 & 2.5 & 0.9 & 1.8 & 1.4 & 1.5 & 0 &  &  &  \\  
+8 & 4.1 & 2.6 & 1.7 & 1.8 & 1.3 & 0.9 & 1.2 & 0 &  &  \\
+9 & 4.0 & 2.9 & 1.4 & 2.2 & 1.7 & 1.6 & 0.6 & 0.9 & 0 &  \\   
+10 & 3.1 & 2.7 & 1.6 & 2.2 & 1.9 & 1.9 & 1.0 & 1.6 & 0.9 & 0 \\       
+ \end{vmatrix} \nonumber
+\end{equation}
+\caption{{\hl{Class} separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2023.}}
+\label{fig15}
+\end{figure}
+
+Through the applied automatic DL-based image processing and mapping workflow, flood inundation mapping of southern Bangladesh {has} the potential to provide information on inundated areas{. Time series of Landsat images are essential }for flood management in real-time regimes. Using the techniques of deep learning applied to flood mapping, a significant difference in values of spectral reflectance for land cover classes in inundated areas (containing high percentages of water and moisture) and non-water (dry) areas enables a distinct separation between these land cover categories. Automatically derived ranges for inundated areas in Landsat images show a clear discrimination of {the} affected areas from other classes, as presented in {the }figures {supporting this research}. 
+
+It is well known that Bangladesh is a country particularly vulnerable to hydrological hazards and flood disasters. Therefore, testing and implementation of novel cartographic methods for RS-based mapping of flooded areas are essential for operative monitoring of areas at risk, such as coastal areas of the Ganges River Delta. The cumulative effects of the flat topographic relief and monsoon climate result in the high level of vulnerability of Bangladesh to floods, with over 80\% of the population exposed to flood risks. Diverse measures have been undertaken by the authorities and government of this coastal country to protect the population from devastating flood disasters. {The} construction of engineered infrastructure to protect against floods includes flood shelters, hydrologic sluice gates and river regulators, dredged drainage channels, etc.%Please check intended meaning has been retained
+ 
+
+{Earth} observation data represent{ indispensable} resources for flood monitoring from space, as demonstrated in this study. {The technical} advantage of the demonstrated novel methods of flood mapping consists of an automated approach of deep learning applied to inundated areas in Bangladesh. {More specifically}, this paper contributes to the development of cartographic methods for visualisation of flooded areas using satellite images and deep learning (DL) techniques available in GRASS GIS. The presented and discussed programming codes can be reused {for} flood mapping in similar studies. 
+
+%----------- section ----------->
+\section{Discussion}
+
+Floods are a major threat to human communities all over the world, with serious socio-economic and environmental consequences, given that they are the leading cause of natural disaster losses. Related research shows that one in four people worldwide is considered to be at significant risk from flooding. Bangladesh, which occupies low-lying flood and tidal plains, has one of the world's largest and most disaster-prone deltas. {In particular}, the absolute number of people at risk of flooding {in Bangladesh} is 94.42 million, or 57.5\% of the country's population (the second highest in the world). {Consequently, }floods in the Ganges River Delta represent one of the most catastrophic problems at the national level \cite{Szabo}. In this regard, preventive mapping of flooded areas is of societal importance for the social system of Bangladesh and {contributes to }the maintenance of the sustainability of both natural landscapes and social infrastructure. 
+
+Social awareness of flood hazards can help in mitigating the risk associated with floods. {Remote} sensing (RS) data processed using advanced methods and visualised on maps {are} essential {in} addressing environmental challenges{. Processing of RS data is useful in} mapping areas at risks, as well as for cartographic display of inundated coastal areas and prognosis of floods in deltaic areas based on time series analysis. To this end, the advanced methods of deep learning (DL) used for operative mapping of flooded areas support publicly accessible, modifiable and distributable open-source cartographic products. Such products can be used for preventive monitoring of areas at risk, prognosis of flood events and hydrologic modelling. Hence, operative monitoring and forecasting of flood hazards {using RS data }can effectively reduce the catastrophic consequences of floods in the Ganges River Delta. 
+
+The use of advanced {DL} methods for accurate processing of satellite images is possible using open-source GRASS GIS, which represents an effective method of retrieving geoinformation. This study presents {the use of }such a DL-based image analysis using{ }GRASS GIS {for} mapping of flooded areas in the coastal region of the Ganges River Delta{. }Through comparison of {the} multi-temporal RS data, the areas affected by floods were detected and compared for the flood and post-flood periods. {The} presented workflow demonstrated that the DL techniques of GRASS GIS {have} significant advantages for image classification {because DL increases} the accuracy and automation of mapping through the use of AI algorithms in the cartographic workflow. Automated detection of similar spectral characteristics {was applied to} different {land categories}, assigning them to distinct classes, which helps to overcome the challenges of misclassification. Second, heterogeneous landscapes with highly dense mosaics of landscape {patterns}, which are typical for coastal Bangladesh, were identified by ML{ }with regard to{ the }resolution of the Landsat images and defined classes. Spectral properties of the multispectral satellite images{ }were evaluated {for} land cover changes{ }in the inundated areas of the Ganges River Delta{.} 
+
+Flooded areas in the Ganges River Delta were determined over the target dates using time series analysis of Landsat satellite images and compared for flood and post-flood periods. The results indicated an increase in wetlands and inundated areas during the later period detected by the DL methods{ }and cartographic scripts. The obtained results comprise a series of maps of the Ganges River Delta that show that flood periods reached a peak in November and affected coastal landscapes of the Ganges River, demonstrating an increase in flooded areas. The presented time series of maps showing floods in March and post-flooded landscapes in November highlight the benefits achieved by {RS} data visualisation for analysis {and comparison of} flood extent{.} 
+
+Floods have varied effects on the behaviour of landscapes differ over the years as indirect indicators of climate effects and monsoon processes. In fact, the combination of the regional hydrologic behaviour of the Ganges River, the structure of sediment and the proportions of clayey sediments in the soil resulted in a significant increase in the degree of water stagnation in inundated areas%Please check intended meaning has been retained
+. The behaviour of coastal areas was evaluated within three years (2021, 2022 and 2023) to demonstrate the effects of floods on landscapes, as reflected in the maps prepared using clustering (Figures \ref{fig09} and \ref{fig10}) and DL techniques (Figures \ref{fig11} and \ref{fig12}). Similar to existing studies discussed in earlier sections, the flooded period of the Ganges River resulted in the highest level of inundation of the coastal regions of southern Bangladesh in the November period compared to March. 
+
+\section{Conclusions}
+This study demonstrated the capacity of sequential analysis of RS data to identify changes in the coastal and wetland landscapes of the Ganges River Delta over the last three years{ }for comparison of flood events with post-flood landscapes. The results illustrated the effectiveness of satellite images in the identification of flood extent and detecting affected areas. Moreover, the results show the technological advantages of DL for satellite image processing with a case of GRASS GIS. {The} demonstrated and discussed codes can be used in similar studies including vulnerability{analysis} and flood risk assessment in the future. In relation to {previous studies and{ }working hypotheses, the results of {this} study can be integrated with related {geoinformation}, such as hydrologic models, satellite altimetry, aerial imagery{,} topographic maps {and }hydrodynamic flood models. These data can then be be used for flood forecasting, simulation of flood models in southern Bangladesh, to provide information on the spatial extent of flooded areas and to estimate possible impacts of floods. The integrated use of such information is useful in undertaking adaptive measures and mitigating floods in the Ganges River Delta.
+
+Importantly, this paper presents a case of flood mapping in the Ganges River Delta integrating {open-source data and methods. The dataset was obtained from the publicly available repository of the USGS and processed using freely available GRASS GIS software. Such an approach is essential for{ }policy makers from developing countries such as Bangladesh, since free data and tools can motivate further studies to continue and expand spatial analysis using the proposed techniques. In future studies involving environmental monitoring, this research can be further extended for larger spatio-temporal extents of the Ganges River Delta{. For example, a series of maps covering extended periods can be produced using complementary RS data. Moreover, upscaling of the data for a basin or sub-basin level can support more general estimation of flood impacts for hydrological risk assessment. Finally, spatial analysis based on ML-based image processing can be included as a cartographic support for community-based water resource management in southern Bangladesh to monitor areas prone to flood disasters.
+
+{In conclusion, }this research has demonstrated an example of using the advanced approach of ML in cartography and RS data processing. Thus, it has led to a greater understanding of the importance of using advanced methods of machine learning for environmental monitoring. The application of ANNs as a branch of machine learning methods, presented here as a case of the MLP classifier algorithm, demonstrated that such a technique can be successfully applied in similar studies that require RS data for spatio-temporal analysis. The promise of the ML methods of GRASS GIS remote sensing software for image processing and environmental data analysis was demonstrated%Please check intended meaning has been retained
+. We evaluated the proposed ML framework of GRASS GIS on Landsat scenes; however, other satellite images can also be applied in future similar studies.
+%----------- section ----------->
+\vspace{6pt} 
+
+
+
+\funding{\hl{~~~} %MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
+}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The raw data supporting the conclusions of this article will be made available by the authors on request. The binary results of the DL mapping are available in the GitHub repository, including GRASS GIS scripts and the results of the DL image analysis: \url{https://github.com/paulinelemenkova/Floods\_Ganges\_GRASS\_GIS\_DL\_Image\_Analysis}
+%{https://github.com/paulinelemenkova/Floods_Ganges_GRASS_GIS_DL_Image_Analysis}
+ (accessed on 5 April 2024).}
+
+\acknowledgments{\hl{The} %MDPI: Please ensure that all individuals included in this section have consented to the acknowledgement.
+ author thanks the reviewers for reading and review of this manuscript.}
+
+\conflictsofinterest{The author declares that they have no known competing financial interests or personal relationships that could have influenced the work reported in this article.} 
+
+\abbreviations{Abbreviations}{
+\hspace{7mm}The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+{AI} & {Artificial Intelligence} \\
+ANN & Artificial Neural Network \\
+DL & Deep Learning \\
+DN & Digital Number \\
+EO & Earth Observation \\
+GEBCO & General Bathymetric Chart of the Oceans \\
+GMT & Generic Mapping Tools \\
+GRASS & Geographic Resources Analysis Support System \\
+GIS & Geographic Information System \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
+ML & Machine Learning \\
+MLP & Multilayer Perceptron \\
+\end{tabular}
+
+\noindent 
+\begin{tabular}{@{}ll}
+
+NIR &~~~~~~~~~~~~~~~~~~Near Infrared \\ 
+RF & ~~~~~~~~~~~~~~~~~~Random Forest \\
+RS &~~~~~~~~~~~~~~~~~~Remote Sensing \\
+SVM &~~~~~~~~~~~~~~~~~~Support Vector Machine \\
+SWIR &~~~~~~~~~~~~~~~~~~Shortwave Infrared \\
+USGS &~~~~~~~~~~~~~~~~~~United States Geological Survey \\
+UTM &~~~~~~~~~~~~~~~~~~Universal Transverse Mercator \\
+WGS84 &~~~~~~~~~~~~~~~~~~World Geodetic System 84\\
+WRS &~~~~~~~~~~~~~~~~~~Worldwide Reference System  
+\end{tabular}
+}
+
+\appendixtitles{yes} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{Metadata for Satellite Images }\label{app1}
+\begin{table}[H]
+\small
+\caption{\hl{Metadata} %MDPI: 1. Please confirm the alignment changed. 2. We removed double lines.
+ for the Landsat 8-9 OLI/TIRS images obtained from the USGS.} \label{tabApp}
+\begin{adjustwidth}{-\extralength}{0cm}
+    \begin{tabularx}{\fulllength}{lCCC}
+    \toprule
+       	\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \midrule
+      {{Landsat Scene Identifier} 
+} & LC81370442023066LGN00 & LC81370442022079LGN00 & LC81370442021076LGN00 \\ \midrule
+      \hl{Date Acquired} %MDPI: We removed the bold. Please confirm this revision.
+ & {7 March 2023} & {20 March 2022} & {17 March 2021} \\ \midrule
+      {{Roll Angle}} & $-$1 & 0 & 0 \\ \midrule
+      {{Start Time}} & 7 March 2023 04:24:33 & 20 March 2022 04:24:26.058914 & 17 March 2021 04:24:23.120295 \\ \midrule
+      {{Stop Time}} & 7 March 2023 04:25:05 & 20 March 2022 04:24:57.828914 & 17 March 2021 04:24:54.890294 \\ \midrule
+      {{Land Cloud Cover}} & 3.12 & 0.01 & 0.03 \\ \midrule
+      {{Scene Cloud Cover L1}} & 2.97 & 0.01 & 0.03 \\ \midrule
+         {{Ground Control Points Model}} & 732 & 771 & 776 \\ \midrule
+        {{Ground Control Points Version}} & 5 & 5 & 5 \\ 
+        \midrule
+        {{Geometric RMSE Model}} & 5683 & 5615 & 5694 \\ 
+        \midrule
+        {{Geometric RMSE Model X}} & 3887 & 3857 & 3585 \\ \midrule
+        {{Geometric RMSE Model Y}} & 4146 & 4081 & 4424 \\
+         \midrule
+        {{Processing Software Version}} & LPGS\_16.2.0 & LPGS\_15.6.0 & LPGS\_15.4.0 \\ \midrule
+        {{Sun Elevation L0RA}} & 51.70012312 & 56.10505202 & 55.19368850 \\ \midrule
+        {{Sun Azimuth L0RA}} & 134.86314148 & 129.90704446 & 131.01649112 \\ \midrule
+        {{TIRS SSM Model}} & FINAL & FINAL & FINAL \\ \midrule
+        {{Data Type L2}} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \midrule
+        {{Satellite}} & 8 & 8 & 8 \\ \midrule
+ {{Scene Center Lat DMS}} & ``23°06$'$46.58$''$ N'' & ``23°06$'$45.29$''$ N'' & ``23°06$'$46.01$''$ N'' \\ \midrule
+        {{Scene Center Long DMS}} & ``90°23$'$29.83$''$ E'' & ``90°23$'$14.57$''$ E'' & ``90°24$'$53.42$''$ E'' \\ \midrule
+{{Corner Upper Left Lat DMS}} & ``24°09$'$00.29$''$ N'' & ``24°09$'$00$''$ N'' & ``24°09$'$02.38$''$ N'' \\ \midrule
+{{Corner Upper Left Long DMS}} & ``89°13$'$54.73$''$ E'' & ``89°13$'$44.11$''$ E'' & ``89°15$'$19.58$''$ E'' \\ \midrule
+{{Corner Upper Right Lat DMS}} & ``24°11$'$21.62$''$ N'' & ``24°11$'$21.52$''$ N'' & ``24°11$'$22.45$''$ N'' \\ \midrule
+{{Corner Upper Right Long DMS}} & ``91°30$'$23.18$''$ E'' & ``91°30$'$12.56$''$ E'' & ``91°31$'$48.22$''$ E'' \\ \midrule
+{{Corner Lower Left Lat DMS}} & ``22°01$'$28.45$''$ N'' & ``22°01$'$28.20$''$ N'' & ``22°01$'$30.32$''$ N'' \\ \midrule
+{{Corner Lower Left Long DMS}} & ``89°17$'$26.70$''$ E'' & ``89°17$'$16.22$''$ E'' & ``89°18$'$50.22$''$ E'' \\ \midrule
+{{Corner Lower Right Lat DMS}} & ``22°03$'$36.04$''$ N'' & ``22°03$'$35.93$''$ N'' & ``22°03$'$36.76$''$ N'' \\ \midrule
+{{Corner Lower Right Long DMS}} & ``91°31$'$47.39$''$ E'' & ``91°31$'$36.95$''$ E'' & ``91°33$'$11.12$''$ E'' \\ 
+% \midrule
+%{{Dataset Attribute}} & {{Attribute Value}} & {{Attribute Value}} & {{Attribute Value}} \\ 
+
+        \bottomrule
+\end{tabularx} 
+\end{adjustwidth}
+\end{table}
+
+\begin{table}[H]\ContinuedFloat
+\small
+\caption{{\em Cont.}}
+\begin{adjustwidth}{-\extralength}{0cm}
+    \begin{tabularx}{\fulllength}{lCCC}
+    \toprule
+       	\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ %\midrule
+        \midrule
+       
+
+{{Landsat Scene Identifier}} & LC91370442023330LGN00 & LC91370442022327LGN01 & LC81370442021332LGN00 \\ \midrule
+{{Date Acquired}} & {{26 November 2023}} & {{23 November 2022}} & {{28 November 2021}} \\ \midrule
+
+{{Roll Angle}} & 0 & 0 & 0 \\ \midrule
+{{Start Time}} & 26 November 2023 04:24:51 & 23 November 2022 04:25:01 & 28 November 2021 04:24:54.925489 \\ \midrule
+{{Stop Time}} & 26 November 2023 04:25:23 & 23 November 2022 04:25:32 & 28 November 2021 04:25:26.695489 \\ \midrule
+{{Land Cloud Cover}} & 0.02 & 0.20 & 0.40 \\ \midrule
+{{Scene Cloud Cover L1}} & 0.02 & 0.19 & 0.38 \\ \midrule
+{{Ground Control Points Model}} & 750 & 782 & 768 \\ \midrule
+{{Ground Control Points Version}} & 5 & 5 & 5 \\ \midrule
+{{Geometric RMSE Model}} & 6651 & 6490 & 6697 \\ \midrule
+{{Geometric RMSE Model X}} & 4185 & 4191 & 4329 \\ \midrule
+{{Geometric RMSE Model Y}} & 5170 & 4955 & 5110 \\ \midrule
+{{Processing Software Version}} & LPGS\_16.3.1 & LPGS\_16.2.0 & LPGS\_15.5.0 \\ \midrule
+{{Sun Elevation L0RA}} & 41.83496249 & 42.43660966 & 41.36291892 \\ \midrule
+{{Sun Azimuth L0RA}} & 154.44654325 & 154.42300606 & 154.52745495 \\ \midrule
+{{TIRS SSM Model}} & N/A & N/A & FINAL \\ \midrule
+{{Data Type L2}} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \midrule
+{{Satellite}} & 9 & 9 & 8 \\  \midrule
+%\bottomrule
+%\end{tabularx}
+%\end{adjustwidth}
+%\end{table}
+%
+%\begin{table}[H]\ContinuedFloat
+%\small
+%\caption{{\em Cont.}}
+%\begin{adjustwidth}{-\extralength}{0cm}
+%\begin{tabularx}{\fulllength}{cCCC}
+%\toprule
+%\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ %\midrule
+%\midrule
+{{Scene Center Lat DMS}} & ``23°06$'$45.65$''$ N'' & ``23°06$'$46.48$''$ N'' & ``23°06$'$45.22$''$ N'' \\ \midrule
+{{Scene Center Long DMS}} & ``90°22$'$20.75$''$ E'' & ``90°23$'$11.94$''$ E'' & ``90°24$'$08.21$''$ E'' \\ \midrule
+{{Corner Upper Left Lat DMS}} & ``24°08$'$48.98$''$ N'' & ``24°08$'$50.28$''$ N'' & ``24°09$'$01.33$''$ N'' \\ \midrule
+{{Corner Upper Left Long DMS}} & ``89°12$'$51.37$''$ E'' & ``89°13$'$44.40$''$ E'' & ``89°14$'$37.14$''$ E'' \\ \midrule
+{{Corner Upper Right Lat DMS}} & ``24°11$'$11.26$''$ N'' & ``24°11$'$11.80$''$ N'' & ``24°11$'$22.06$''$ N'' \\ \midrule
+{{Corner Upper Right Long DMS}} & ``91°29$'$19.50$''$ E'' & ``91°30$'$12.67$''$ E'' & ``91°31$'$05.70$''$ E'' \\ \midrule
+{{Corner Lower Left Lat DMS}} & ``22°01$'$27.01$''$ N'' & ``22°01$'$28.20$''$ N'' & ``22°01$'$19.67$''$ N'' \\ \midrule
+{{Corner Lower Left Long DMS}} & ``89°16$'$24.02$''$ E'' & ``89°17$'$16.22$''$ E'' & ``89°18$'$08.71$''$ E'' \\ \midrule
+{{Corner Lower Right Lat DMS}} & ``22°03$'$35.46$''$ N'' & ``22°03$'$35.93$''$ N'' & ``22°03'$'$26.64$''$ N'' \\ \midrule
+{{Corner Lower Right Long DMS}} & ``91°30$'$44.60$''$ E'' & ``91°31$'$36.95$''$ E'' & ``91°32$'$29.36$''$ E'' \\ %\midrule
+\bottomrule
+
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+%\nocite{*}
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\begin{thebibliography}{999}
+
+\bibitem[Alarifi et~al.(2022)Alarifi, Abdelkareem, Abdalla, and
+  Alotaibi]{su142114145}
+Alarifi, S.S.; Abdelkareem, M.; Abdalla, F.; Alotaibi, M.
+\newblock Flash Flood Hazard Mapping Using Remote Sensing and GIS Techniques in
+  Southwestern Saudi Arabia.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14}, 14145.
+\newblock {\url{https://doi.org/10.3390/su142114145}}.
+
+\bibitem[Subraelu et~al.(2023)Subraelu, Ahmed, Ebraheem, Sherif, Mirza,
+  Ridouane, and Sefelnasr]{w15152802}
+Subraelu, P.; Ahmed, A.; Ebraheem, A.A.; Sherif, M.; Mirza, S.B.; Ridouane,
+  F.L.; Sefelnasr, A.
+\newblock Risk Assessment and Mapping of Flash Flood Vulnerable Zones in Arid
+  Region, Fujairah City, UAE-Using Remote Sensing and GIS-Based Analysis.
+\newblock {\em Water} {\bf 2023}, {\em 15}, 2802.
+\newblock {\url{https://doi.org/10.3390/w15152802}}.
+
+\bibitem[Ahmed et~al.(2022)Ahmed, Alrajhi, Alquwaizany, Al~Maliki, and
+  Hewa]{su142316270}
+Ahmed, A.; Alrajhi, A.; Alquwaizany, A.; Al~Maliki, A.; Hewa, G.
+\newblock Flood Susceptibility Mapping Using Watershed Geomorphic Data in the
+  Onkaparinga Basin, South Australia.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14}, 16270.
+\newblock {\url{https://doi.org/10.3390/su142316270}}.
+
+\bibitem[Rashwan et~al.(2023)Rashwan, Mohamed, Alshehri, Almadani, Khattab, and
+  Mohamed]{ijgi12110465}
+Rashwan, M.; Mohamed, A.K.; Alshehri, F.; Almadani, S.; Khattab, M.; Mohamed,
+  L.
+\newblock Flash Flood Hazard Assessment along the Red Sea Coast Using Remote
+  Sensing and GIS Techniques.
+\newblock {\em ISPRS Int. J. Geo-Inf.} {\bf 2023}, {\em 12}, 465.
+\newblock {\url{https://doi.org/10.3390/ijgi12110465}}.
+
+\bibitem[Shawky and Hassan(2023)]{rs15102561}
+Shawky, M.; Hassan, Q.K.
+\newblock Geospatial Modeling Based-Multi-Criteria Decision-Making for Flash
+  Flood Susceptibility Zonation in an Arid Area.
+\newblock {\em Remote Sens.} {\bf 2023}, {\em 15}, 2561.
+\newblock {\url{https://doi.org/10.3390/rs15102561}}.
+
+\bibitem[Yaseen(2024)]{YASEEN2024101665}
+Yaseen, Z.M.
+\newblock Flood hazards and susceptibility detection for Ganga river, Bihar
+  state, India: Employment of remote sensing and statistical approaches.
+\newblock {\em Results Eng.} {\bf 2024}, {\em 21},~101665.
+\newblock {\url{https://doi.org/10.1016/j.rineng.2023.101665}}.
+
+\bibitem[Ghalehteimouri et~al.(2023)Ghalehteimouri, Ros, and
+  Rambat]{GHALEHTEIMOURI2023}
+Ghalehteimouri, K.J.; Ros, F.C.; Rambat, S.
+\newblock Flood risk assessment through rapid urbanization LULC change with
+  destruction of urban green infrastructures based on NASA Landsat time series
+  data: A case of study Kuala Lumpur between 1990--2021.
+\newblock {\em Acta Ecol. Sin.} { 2023}, \emph{in press}.
+\newblock {\url{https://doi.org/10.1016/j.chnaes.2023.06.007}}.
+
+\bibitem[Thakur et~al.(2024)Thakur, Mohanty, Mishra, and
+  Karmakar]{THAKUR2024130683}
+Thakur, D.A.; Mohanty, M.P.; Mishra, A.; Karmakar, S.
+\newblock Quantifying flood risks during monsoon and post-monsoon seasons: An
+  integrated framework for resource-constrained coastal regions.
+\newblock {\em J. Hydrol.} {\bf 2024}, {\em 630},~130683.
+\newblock {\url{https://doi.org/10.1016/j.jhydrol.2024.130683}}.
+
+\bibitem[Sun et~al.(2024)Sun, Yang, Li, Goldberg, Kalluri, Helfrich, Sjonberg,
+  Zhou, Zhang, Straka, Yang, and Miralles-Wilhelm]{SUN2024415}
+Sun, D.; Yang, T.; Li, S.; Goldberg, M.; Kalluri, S.; Helfrich, S.; Sjonberg,
+  B.; Zhou, L.; Zhang, Q.; Straka, W.;  et~al.
+\newblock Hazard or Non-Hazard Flood: Post Analysis for Paddy Rice, Wetland,
+  and Other Potential Non-Hazard Flood Extraction from the VIIRS Flood
+  Products.
+\newblock {\em ISPRS J. Photogramm. Remote. Sens.} {\bf 2024}, {\em
+  209},~415--431.
+\newblock {\url{https://doi.org/10.1016/j.isprsjprs.2024.02.013}}.
+
+\bibitem[Razavi-Termeh et~al.(2023)Razavi-Termeh, Seo, Sadeghi-Niaraki, and
+  Choi]{RAZAVITERMEH2023100595}
+Razavi-Termeh, S.V.; Seo, M.; Sadeghi-Niaraki, A.; Choi, S.M.
+\newblock Flash flood detection and susceptibility mapping in the Monsoon
+  period by integration of optical and radar satellite imagery using an
+  improvement of a sequential ensemble algorithm.
+\newblock {\em Weather Clim. Extrem.} {\bf 2023}, {\em 41},~100595.
+\newblock {\url{https://doi.org/10.1016/j.wace.2023.100595}}.
+
+\bibitem[Zheng et~al.(2023)Zheng, Duan, Chen, Li, and Wu]{ZHENG2023101410}
+Zheng, X.; Duan, C.; Chen, Y.; Li, R.; Wu, Z.
+\newblock Disaster loss calculation method of urban flood bimodal data fusion
+  based on remote sensing and text.
+\newblock {\em J. Hydrol. Reg. Stud.} {\bf 2023}, {\em 47},~101410.
+\newblock {\url{https://doi.org/10.1016/j.ejrh.2023.101410}}.
+
+\bibitem[Duan et~al.(2024)Duan, Zheng, Li, and Wu]{DUAN2024131010}
+Duan, C.; Zheng, X.; Li, R.; Wu, Z.
+\newblock Urban flood vulnerability Knowledge-Graph based on remote sensing and
+  textual bimodal data fusion.
+\newblock {\em J. Hydrol.} {\bf 2024}, {\em 633},~131010.
+\newblock {\url{https://doi.org/10.1016/j.jhydrol.2024.131010}}.
+
+\bibitem[Bell et~al.(2021)Bell, Fort, Götz, Bernsteiner, Andermann,
+  Etzlstorfer, Posch, Gurung, and Gurung]{BELL2021107451}
+Bell, R.; Fort, M.; Götz, J.; Bernsteiner, H.; Andermann, C.; Etzlstorfer, J.;
+  Posch, E.; Gurung, N.; Gurung, S.
+\newblock Major geomorphic events and natural hazards during monsoonal
+  precipitation 2018 in the Kali Gandaki Valley, Nepal Himalaya.
+\newblock {\em Geomorphology} {\bf 2021}, {\em 372},~107451.
+\newblock {\url{https://doi.org/10.1016/j.geomorph.2020.107451}}.
+
+\bibitem[Jaramillo et~al.(2024)Jaramillo, Portnoy, Torregroza-Espinosa, and
+  Larios-Giraldo]{JARAMILLO2024526}
+Jaramillo, E.; Portnoy, I.; Torregroza-Espinosa, A.C.; Larios-Giraldo, P.
+\newblock Evolution of the Landscape's Vegetation Health Condition in a
+  Tropical Coastal Lagoon: A Remote Sensing Study in the Case of Northern
+  Colombia.
+\newblock {\em Procedia Comput. Sci.} {\bf 2024}, {\em 231},~526--531.
+\newblock {\url{https://doi.org/10.1016/j.procs.2023.12.245}}.
+
+\bibitem[Zuo et~al.(2024)Zuo, Jiang, Li, and Du]{ZUO2024}
+Zuo, J.; Jiang, W.; Li, Q.; Du, Y.
+\newblock Remote sensing dynamic monitoring of the flood season area of Poyang
+  Lake over the past two decades.
+\newblock {\em Nat. Hazards Res.} {\bf 2024}, \hl{\emph{4}, 8--19.} %MDPI: Newly added information. Please confirm.
+\newblock {\url{https://doi.org/10.1016/j.nhres.2023.12.017}}.
+
+\bibitem[Singha and Pal(2023)]{SINGHA2023316}
+Singha, P.; Pal, S.
+\newblock Influence of hydrological state on trophic state in dam induced
+  seasonally inundated flood plain wetland.
+\newblock {\em Ecohydrol. Hydrobiol. } {\bf 2023}, {\em 23},~316--334.
+\newblock {\url{https://doi.org/10.1016/j.ecohyd.2023.01.001}}.
+
+\bibitem[Mathew et~al.(2021)Mathew, K, Mathew, Arulbalaji, and
+  Padmalal]{MATHEW2021100861}
+Mathew, M.M.; K, S.; Mathew, M.; Arulbalaji, P.; Padmalal, D.
+\newblock Spatiotemporal variability of rainfall and its effect on hydrological
+  regime in a tropical monsoon-dominated domain of Western Ghats, India.
+\newblock {\em J. Hydrol. Reg. Stud.} {\bf 2021}, {\em 36},~100861.
+\newblock {\url{https://doi.org/10.1016/j.ejrh.2021.100861}}.
+
+\bibitem[Rocha et~al.(2022)Rocha, Drewry, Willett, and Luck]{ROCHA2022107415}
+Rocha, E.M.; Drewry, J.L.; Willett, R.M.; Luck, B.D.
+\newblock {Assessing kernel processing score of harvested corn silage in
+  real-time using image analysis and machine learning}.
+\newblock {\em Comput. Electron. Agric.} {\bf 2022}, {\em 203},~107415.
+\newblock {\url{https://doi.org/10.1016/j.compag.2022.107415}}.
+
+\bibitem[Li et~al.(2023)Li, Li, Zhang, Peng, and Bruzzone]{LI2023103345}
+Li, Y.; Li, X.; Zhang, Y.; Peng, D.; Bruzzone, L.
+\newblock {Cost-efficient information extraction from massive remote sensing
+  data: When weakly supervised deep learning meets remote sensing big data}.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2023}, {\em 120},~103345.
+\newblock {\url{https://doi.org/10.1016/j.jag.2023.103345}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202306}
+Lemenkova, P.; Debeir, O.
+\newblock {Recognizing the Wadi Fluvial Structure and Stream Network in the
+  Qena Bend of the Nile River, Egypt, on Landsat 8-9 OLI Images}.
+\newblock {\em Information} {\bf 2023}, {\em 14},~249.
+\newblock {\url{https://doi.org/10.3390/info14040249}}.
+
+\bibitem[Xiong et~al.(2021)Xiong, Tong, Zhang, Shen, Battiston, Ouzounov,
+  Iuppa, Crookes, Long, and Zhou]{XIONG2021145256}
+Xiong, P.; Tong, L.; Zhang, K.; Shen, X.; Battiston, R.; Ouzounov, D.; Iuppa,
+  R.; Crookes, D.; Long, C.; Zhou, H.
+\newblock {Towards advancing the earthquake forecasting by machine learning of
+  satellite data}.
+\newblock {\em Sci. Total Environ.} {\bf 2021}, {\em 771},~145256.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2021.145256}}.
+
+\bibitem[Aouragh et~al.(2023)Aouragh, Ijlil, Essahlaoui, Essahlaoui, {El
+  Hmaidi}, {El Ouali}, and Mridekh]{AOURAGH2023100939}
+Aouragh, M.H.; Ijlil, S.; Essahlaoui, N.; Essahlaoui, A.; {El Hmaidi}, A.; {El
+  Ouali}, A.; Mridekh, A.
+\newblock {Remote sensing and GIS-based machine learning models for spatial
+  gully erosion prediction: A case study of Rdat watershed in Sebou basin,
+  Morocco}.
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf 2023}, {\em 30},~100939.
+\newblock {\url{https://doi.org/10.1016/j.rsase.2023.100939}}.
+
+\bibitem[Rafik et~al.(2023)Rafik, {Ait Brahim}, Amazirh, Ouarani, Bargam,
+  Ouatiki, Bouslihim, Bouchaou, and Chehbouni]{RAFIK2023101569}
+Rafik, A.; {Ait Brahim}, Y.; Amazirh, A.; Ouarani, M.; Bargam, B.; Ouatiki, H.;
+  Bouslihim, Y.; Bouchaou, L.; Chehbouni, A.
+\newblock {Groundwater level forecasting in a data-scarce region through remote
+  sensing data downscaling, hydrological modeling, and machine learning: A case
+  study from Morocco}.
+\newblock {\em J. Hydrol. Reg. Stud.} {\bf 2023}, {\em 50},~101569.
+\newblock {\url{https://doi.org/10.1016/j.ejrh.2023.101569}}.
+
+\bibitem[Wu et~al.(2023)Wu, Crusiol, Liu, Wuyun, and Han]{WU2023110723}
+Wu, N.; Crusiol, L.G.T.; Liu, G.; Wuyun, D.; Han, G.
+\newblock {Comparing the performance of machine learning algorithms for
+  estimating aboveground biomass in typical steppe of northern China using
+  Sentinel imageries}.
+\newblock {\em Ecol. Indic.} {\bf 2023}, {\em 154},~110723.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2023.110723}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202310}
+Lemenkova, P.; Debeir, O.
+\newblock {Multispectral Satellite Image Analysis for Computing Vegetation
+  Indices by R in the Khartoum Region of Sudan, Northeast Africa}.
+\newblock {\em J. Imaging} {\bf 2023}, {\em 9},~98.
+\newblock {\url{https://doi.org/10.3390/jimaging9050098}}.
+
+\bibitem[{dos Santos} et~al.(2022){dos Santos}, {da Silva}, {do Amaral},
+  Fernandes-Filho, and Dias]{DOSSANTOS2022106753}
+{dos Santos}, E.P.; {da Silva}, D.D.; {do Amaral}, C.H.; Fernandes-Filho, E.I.;
+  Dias, R.L.S.
+\newblock {A Machine Learning approach to reconstruct cloudy affected
+  vegetation indices imagery via data fusion from Sentinel-1 and Landsat 8}.
+\newblock {\em Comput. Electron. Agric.} {\bf 2022}, {\em 194},~106753.
+\newblock {\url{https://doi.org/10.1016/j.compag.2022.106753}}.
+
+\bibitem[Kalpoma et~al.(2022)Kalpoma, Robin, Ferdaus, Mitul, and
+  Rahman]{9883389}
+Kalpoma, K.A.; Robin, G.M.R.K.; Ferdaus, J.; Mitul, M.M.R.; Rahman, A.
+\newblock Satellite Image Database Creation for Road Quality Measurement of
+  National Highways of Bangladesh.
+\newblock In Proceedings of the IGARSS 2022---2022 International Geoscience and Remote Sensing Symposium
+  (IGARSS), \hl{Kuala Lumpur, Malaysia, 17--22 July 2022;} %MDPI: We added the location and date of the conference. Please confirm.
+ pp. 3047--3050.
+\newblock {\url{https://doi.org/10.1109/IGARSS46834.2022.9883389}}.
+
+\bibitem[Lemenkova(2024)]{coasts4010008}
+Lemenkova, P.
+\newblock Random Forest Classifier Algorithm of Geographic Resources Analysis
+  Support System Geographic Information System for Satellite Image Processing:
+  Case Study of Bight of Sofala, Mozambique.
+\newblock {\em Coasts} {\bf 2024}, {\em 4},~127--149.
+\newblock {\url{https://doi.org/10.3390/coasts4010008}}.
+
+\bibitem[Sanyal(2023)]{Sanyal2023}
+Sanyal, J. Flood Inundation Modelling in Data-Sparse Flatlands: Challenges and
+  Prospects.
+\newblock In {\em Floods in the Ganga–Brahmaputra---Meghna Delta}; Springer
+  International Publishing: Cham, Switzerland, 2023; pp. 19--35.
+
+\bibitem[Islam et~al.(2023)Islam, Reinstädtler, Kowshik, Akther, Newaz,
+  Gnauck, and Eslamian]{ISLAM2023167}
+Islam, S.N.; Reinstädtler, S.; Kowshik, M.H.; Akther, S.; Newaz, M.N.; Gnauck,
+  A.; Eslamian, S.
+\newblock {Chapter 11---GIS Application in floods mapping in the Ganges--Padma
+  River basins in Bangladesh}. In {\em Handbook of Hydroinformatics}; Eslamian,
+  S., Eslamian, F., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} %We added the location of publisher. Please confirm
+  2023; pp. 167--183.
+\newblock {\url{https://doi.org/10.1016/B978-0-12-821962-1.00010-6}}.
+
+\bibitem[Rana et~al.(2023)Rana, Habib, Sharifee, Sultana, and Rahman]{RANA2023}
+Rana, S.S.; Habib, S.A.; Sharifee, M.N.H.; Sultana, N.; Rahman, S.H.
+\newblock {Flood risk mapping of the flood-prone Rangpur division of Bangladesh
+  using remote sensing and multi-criteria analysis}.
+\newblock {\em Nat. Hazards Res.} {\bf 2023}, \hl{\emph{4}, 20--31.}
+\newblock {\url{https://doi.org/10.1016/j.nhres.2023.09.012}}.
+
+\bibitem[Chakma and Akter(2021)]{ChakmaAkter}
+Chakma, P.; Akter, A.
+\newblock {Flood Mapping in the Coastal Region of Bangladesh Using Sentinel-1
+  SAR Images: A Case Study of Super Cyclone Amphan}.
+\newblock {\em J. Civ. Eng. Forum} {\bf 2021}, {\em
+  7},~267--278.
+\newblock {\url{https://doi.org/10.22146/jcef.64497}}.
+
+\bibitem[Singha et~al.(2020)Singha, Dong, Sarmah, You, Zhou, Zhang, Doughty,
+  and Xiao]{SINGHA2020278}
+Singha, M.; Dong, J.; Sarmah, S.; You, N.; Zhou, Y.; Zhang, G.; Doughty, R.;
+  Xiao, X.
+\newblock Identifying floods and flood-affected paddy rice fields in Bangladesh
+  based on Sentinel-1 imagery and Google Earth Engine.
+\newblock {\em ISPRS J. Photogramm. Remote. Sens.} {\bf 2020}, {\em
+  166},~278--293.
+\newblock {\url{https://doi.org/10.1016/j.isprsjprs.2020.06.011}}.
+
+\bibitem[Yang et~al.(2020)Yang, Ahmed, Schulthess, Kamal, and
+  Rai]{YANG2020100413}
+Yang, R.; Ahmed, Z.U.; Schulthess, U.C.; Kamal, M.; Rai, R.
+\newblock Detecting functional field units from satellite images in smallholder
+  farming systems using a deep learning based computer vision approach: A case
+  study from Bangladesh.
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf 2020}, {\em 20},~100413.
+\newblock {\url{https://doi.org/10.1016/j.rsase.2020.100413}}.
+
+\bibitem[Lemenkova(2023)]{Lemenkova202322}
+Lemenkova, P.
+\newblock {Monitoring Seasonal Fluctuations in Saline Lakes of Tunisia Using
+  Earth Observation Data Processed by GRASS GIS}.
+\newblock {\em Land} {\bf 2023}, {\em 12},~1995.
+\newblock {\url{https://doi.org/10.3390/land12111995}}.
+
+\bibitem[Beveridge et~al.(2020)Beveridge, Hossain, Biswas, Haque, Ahmad,
+  Biswas, Hossain, and Bhuyan]{BEVERIDGE2020104843}
+Beveridge, C.; Hossain, F.; Biswas, R.K.; Haque, A.A.; Ahmad, S.K.; Biswas,
+  N.K.; Hossain, M.A.; Bhuyan, M.A.
+\newblock Stakeholder-driven development of a cloud-based, satellite remote
+  sensing tool to monitor suspended sediment concentrations in major Bangladesh
+  rivers.
+\newblock {\em Environ. Model. Softw.} {\bf 2020}, {\em 133},~104843.
+\newblock {\url{https://doi.org/10.1016/j.envsoft.2020.104843}}.
+
+\bibitem[Sadiq et~al.(2023)Sadiq, Sarkar, and Raisa]{SADIQ2023111233}
+Sadiq, M.A.; Sarkar, S.K.; Raisa, S.S.
+\newblock Meteorological drought assessment in northern Bangladesh: A machine
+  learning-based approach considering remote sensing indices.
+\newblock {\em Ecol. Indic.} {\bf 2023}, {\em 157},~111233.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2023.111233}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202227}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+  and SRTM DEM Data on Côte d’Ivoire, West Africa}.
+\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+\newblock {\url{https://doi.org/10.3390/jimaging8120317}}.
+
+\bibitem[Zhao et~al.(2021)Zhao, Pang, Xu, Cui, Wang, Zuo, and
+  Peng]{ZHAO2021126777}
+Zhao, G.; Pang, B.; Xu, Z.; Cui, L.; Wang, J.; Zuo, D.; Peng, D.
+\newblock {Improving urban flood susceptibility mapping using transfer
+  learning}.
+\newblock {\em J. Hydrol.} {\bf 2021}, {\em 602},~126777.
+\newblock {\url{https://doi.org/10.1016/j.jhydrol.2021.126777}}.
+
+\bibitem[Roy et~al.(2014)Roy, Routaray, Ghosh, and Ghosh]{6493388}
+Roy, M.; Routaray, D.; Ghosh, S.; Ghosh, A.
+\newblock Ensemble of Multilayer Perceptrons for Change Detection in Remotely
+  Sensed Images.
+\newblock {\em IEEE Geosci. Remote Sens. Lett.} {\bf 2014}, {\em 11},~49--53.
+\newblock {\url{https://doi.org/10.1109/LGRS.2013.2245855}}.
+
+\bibitem[Roy et~al.(2012)Roy, Routaray, and Ghosh]{6422192}
+Roy, M.; Routaray, D.; Ghosh, S.
+\newblock Change detection in remotely sensed images using an ensemble of
+  multilayer perceptrons.
+\newblock In Proceedings of the 2012 International Conference on
+  Communications, Devices and Intelligent Systems (CODIS), \hl{Kolkata, India, 28--29 December   2012;} pp. 278--281.
+\newblock {\url{https://doi.org/10.1109/CODIS.2012.6422192}}.
+
+\bibitem[Chakraborty and Roy(2016)]{7507955}
+Chakraborty, S.; Roy, M.
+\newblock Domain adaptation for land-cover classification of remotely sensed
+  images using ensemble of Multilayer Perceptrons.
+\newblock In Proceedings of the 2016 3rd International Conference on Recent
+  Advances in Information Technology (RAIT), \hl{Dhanbad, India, 3--5 March 2016}; pp. 523--528.
+\newblock {\url{https://doi.org/10.1109/RAIT.2016.7507955}}.
+
+\bibitem[Kalpoma et~al.(2020)Kalpoma, Ali, Rahman, and Islam]{9324433}
+Kalpoma, K.A.; Ali, R.; Rahman, A.; Islam, A.
+\newblock Use of Remote Sensing Satellite Images in Rice Area Monitoring System
+  of Bangladesh.
+\newblock In Proceedings of the IGARSS 2020---2020 International Geoscience and Remote Sensing Symposium
+  (IGARSS), \hl{Waikoloa, HI, USA, 26 September--2 October 2020; }pp. 4665--4668.
+\newblock {\url{https://doi.org/10.1109/IGARSS39084.2020.9324433}}.
+
+\bibitem[Lemenkova(2023)]{Lemenkova202313}
+Lemenkova, P.
+\newblock {A GRASS GIS Scripting Framework for Monitoring Changes in the
+  Ephemeral Salt Lakes of Chotts Melrhir and Merouane, Algeria}.
+\newblock {\em Appl. Syst. Innov.} {\bf 2023}, {\em 6},~61.
+\newblock {\url{https://doi.org/10.3390/asi6040061}}.
+
+\bibitem[Kalpoma et~al.(2023)Kalpoma, Sarker~Aurgho, Bondhon, Hossan~Ani, and
+  Islam~Shizan]{10281789}
+Kalpoma, K.A.; Sarker~Aurgho, A.; Bondhon, A.R.; Hossan~Ani, F.; Islam~Shizan,
+  M.M.
+\newblock Road Quality Measurement System Using Satellite Images for National
+  Highways of Bangladesh.
+\newblock In Proceedings of the IGARSS 2023---2023 International Geoscience and Remote Sensing Symposium
+  (IGARSS), \hl{Pasadena, CA, USA, 16--21 July 2023; }pp. 6912--6915.
+\newblock {\url{https://doi.org/10.1109/IGARSS52108.2023.10281789}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{jmse11040871}
+Lemenkova, P.; Debeir, O.
+\newblock {Computing Vegetation Indices from the Satellite Images Using GRASS
+  GIS Scripts for Monitoring Mangrove Forests in the Coastal Landscapes of
+  Niger Delta, Nigeria}.
+\newblock {\em J. Mar. Sci. Eng.} {\bf 2023}, {\em 11}, 871.
+\newblock {\url{https://doi.org/10.3390/jmse11040871}}.
+
+\bibitem[Kalpoma et~al.(2019)Kalpoma, Nawar~Arony, Chowdhury, Nowshin, and
+  Kudoh]{8899013}
+Kalpoma, K.A.; Nawar~Arony, N.; Chowdhury, A.; Nowshin, M.; Kudoh, J.i.
+\newblock Boro Rice Model for HAOR Region of Bangladesh Based on Modis NDVI
+  Images.
+\newblock In Proceedings of the IGARSS 2019---2019 International Geoscience and Remote Sensing Symposium
+  (IGARSS), \hl{Yokohama, Japan, 28 July--2 August 2019}; pp. 7326--7329.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2019.8899013}}.
+
+\bibitem[Lemenkova(2020)]{Lemenkova202021}
+Lemenkova, P.
+\newblock {Sentinel-2 for High Resolution Mapping of Slope-Based Vegetation
+  Indices Using Machine Learning by SAGA GIS}.
+\newblock {\em Transylv. Rev. Syst. Ecol. Res.}
+  {\bf 2020}, {\em 22},~17--34.
+\newblock {\url{https://doi.org/10.2478/trser-2020-0015}}.
+
+\bibitem[Onim et~al.(2020)Onim, Ehtesham, Anbar, Nazrul~Islam, and
+  Mahbubur~Rahman]{9333522}
+Onim, M.S.H.; Ehtesham, A.R.B.; Anbar, A.; Nazrul~Islam, A.K.M.;
+  Mahbubur~Rahman, A.K.M.
+\newblock LULC classification by semantic segmentation of satellite images
+  using FastFCN.
+\newblock In Proceedings of the 2020 2nd International Conference on Advanced
+  Information and Communication Technology (ICAICT), \hl{Dhaka, Bangladesh, 28--29 November  2020;} pp. 471--475.
+\newblock {\url{https://doi.org/10.1109/ICAICT51780.2020.9333522}}.
+
+\bibitem[Sarmin et~al.(2020)Sarmin, Zaman, and Sarkar]{9392684}
+Sarmin, F.J.; Zaman, M.S.U.; Sarkar, A.R.
+\newblock Monitoring land deformation due to groundwater extraction using
+  Sentinel-1 satellite images: a case study from Chapai Nawabgonj, Bangladesh.
+\newblock In Proceedings of the 2020 23rd International Conference on Computer
+  and Information Technology (ICCIT), \hl{Dhaka, Bangladesh, 19--21 Decembe 2020}; pp. 1--6.
+\newblock {\url{https://doi.org/10.1109/ICCIT51783.2020.9392684}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202324}
+Lemenkova, P.; Debeir, O.
+\newblock {Time Series Analysis of Landsat Images for Monitoring Flooded Areas
+  in the Inner Niger Delta, Mali}.
+\newblock {\em Artif. Satell.} {\bf 2023}, {\em 58},~278--313.
+\newblock {\url{https://doi.org/10.2478/arsa-2023-0011}}.
+
+\bibitem[Kalpoma et~al.(2023)Kalpoma, Aurgho, Shizan, Ani, and
+  Bondhon]{10282693}
+Kalpoma, K.A.; Aurgho, A.S.; Shizan, M.M.I.; Ani, F.H.; Bondhon, A.R.
+\newblock Deep Learning Image Segmentation for Satellite Images of National
+  Highways of Bangladesh.
+\newblock In Proceedings of the IGARSS 2023---2023 International Geoscience and Remote Sensing Symposium
+  (IGARSS), \hl{Pasadena, CA, USA,  16--21 July 2023;} pp. 6894--6897.
+\newblock {\url{https://doi.org/10.1109/IGARSS52108.2023.10282693}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202301}
+Lemenkova, P.; Debeir, O.
+\newblock {Quantitative Morphometric 3D Terrain Analysis of Japan Using Scripts
+  of GMT and R}.
+\newblock {\em Land} {\bf 2023}, {\em 12},~261.
+\newblock {\url{https://doi.org/10.3390/land12010261}}.
+
+\bibitem[Islam et~al.(2023)Islam, Khatun, and Popy]{10441504}
+Islam, R.; Khatun, M.; Popy, S.H.
+\newblock TL-GAN: Transfer Learning with Generative Adversarial Network Model
+  for Satellite Image Resolution Enhancement.
+\newblock In Proceedings of the 2023 26th International Conference on Computer
+  and Information Technology (ICCIT), \hl{Cox's Bazar, Bangladesh, 13--15 December  2023; }pp. 1--5.
+\newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441504}}.
+
+\bibitem[{GEBCO Compilation Group}(2023)]{GEBCO}
+{GEBCO Compilation Group}.
+\newblock {GEBCO 2023 Grid}. 2023.
+\newblock Available online:  
+\newblock 
+  {\url{https://doi.org/10.5285/f98b053b-0cbc-6c23-e053-6c86abc0af7b}} (accessed on 2 March 2024).
+
+\bibitem[Tozer et~al.(2019)Tozer, Sandwell, Smith, Olson, Beale, and
+  Wessel]{Tozer}
+Tozer, B.; Sandwell, D.T.; Smith, W.H.F.; Olson, C.; Beale, J.R.; Wessel, P.
+\newblock Global Bathymetry and Topography at 15 Arc Sec: SRTM15+.
+\newblock {\em Earth Space Sci.} {\bf 2019}, {\em 6},~1847--1864.
+\newblock {\url{https://doi.org/10.1029/2019EA000658}}.
+
+\bibitem[Wessel et~al.(2019)Wessel, Luis, Uieda, Scharroo, Wobbe, Smith, and
+  Tian]{Wessel}
+Wessel, P.; Luis, J.F.; Uieda, L.; Scharroo, R.; Wobbe, F.; Smith, W.H.F.;
+  Tian, D.
+\newblock {The Generic Mapping Tools Version 6}.
+\newblock {\em Geochem. Geophys. Geosystems
+} {\bf 2019}, {\em 20},~5556--5564.
+\newblock {\url{https://doi.org/10.1029/2019GC008515}}.
+
+\bibitem[Bhardwaj and Singh(2022)]{Bhardwaj2022}
+Bhardwaj, P.; Singh, O.  Understanding the Development and Progress of
+  Extremely Severe Cyclonic Storm ``Fani'' Over the Bay of Bengal.
+\newblock In {\em Geospatial Technology for Environmental Hazards: Modeling and
+  Management in Asian Countries}; Chapter Geospatial Technology for Environmental Hazards; Springer International Publishing: Cham, Switzerland,
+  2022; pp. 263--277.
+
+\bibitem[Islam(2016)]{Islam}
+Islam, S.N.
+\newblock {Deltaic floodplains development and wetland ecosystems management in
+  the Ganges–Brahmaputra–Meghna Rivers Delta in Bangladesh}.
+\newblock {\em Sustain. Water Resour. Manag.} {\bf 2016}, {\em 2},~237--256.
+\newblock {\url{https://doi.org/10.1007/s40899-016-0047-6}}.
+
+\bibitem[Datta and Subramanian(1997)]{Datta}
+Datta, D.; Subramanian, V.
+\newblock {Texture and mineralogy of sediments from the
+  Ganges-Brahmaputra-Meghna river system in the Bengal Basin, Bangladesh and
+  their environmental implications}.
+\newblock {\em Environ. Geol.} {\bf 1997}, {\em 30},~181--188.
+\newblock {\url{https://doi.org/10.1007/s002540050145}}.
+
+\bibitem[Khan et~al.(2019)Khan, Liu, Liu, Seddique, Cao, and
+  Rahman]{KHAN201927}
+Khan, M.H.R.; Liu, J.; Liu, S.; Seddique, A.A.; Cao, L.; Rahman, A.
+\newblock Clay mineral compositions in surface sediments of the
+  Ganges-Brahmaputra-Meghna river system of Bengal Basin, Bangladesh.
+\newblock {\em Mar. Geol.} {\bf 2019}, {\em 412},~27--36.
+\newblock {\url{https://doi.org/10.1016/j.margeo.2019.03.007}}.
+
+\bibitem[Lemenkova(2020)]{Lemenkova202029}
+Lemenkova, P.
+\newblock {Sediment thickness in the Bay of Bengal and Andaman Sea compared
+  with topography and geophysical settings by GMT}.
+\newblock {\em Ovidius Univ. Ann. Constanta Ser. Civ. Eng.} {\bf 2020}, {\em 22},~13--22.
+\newblock {\url{https://doi.org/10.2478/ouacsce-2020-0002}}.
+
+\bibitem[Jerin et~al.(2023)Jerin, Chowdhury, Azad, Zaman, Mahmood, Islam, and
+  {Mohammad Jobayer}]{JERIN2023}
+Jerin, T.; Chowdhury, M.A.; Azad, M.A.K.; Zaman, S.; Mahmood, S.; Islam,
+  S.L.U.; {Mohammad Jobayer}, H.
+\newblock {Extreme weather events (EWEs)-Related health complications in
+  Bangladesh: A gender-based analysis on the 2017 catastrophic floods}.
+\newblock {\em Nat. Hazards Res.} { 2023}, \emph{ ahead of print}.
+\newblock {\url{https://doi.org/10.1016/j.nhres.2023.10.006}}.
+
+\bibitem[Mukherjee and Pal(2021)]{MUKHERJEE2021106961}
+Mukherjee, K.; Pal, S.
+\newblock Hydrological and landscape dynamics of floodplain wetlands of the
+  Diara region, Eastern India.
+\newblock {\em Ecol. Indic.} {\bf 2021}, {\em 121},~106961.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2020.106961}}.
+
+\bibitem[Abedin and Hosenuzzaman(2023)]{ABEDIN2023315}
+Abedin, M.A.; Hosenuzzaman, M.
+\newblock {Chapter 19---Change in cropping pattern and soil health in relation
+  to climate change and salinity in coastal Bangladesh}. In {\em Multi-Hazard
+  Vulnerability and Resilience Building}; Pal, I., Shaw, R., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} %We added the location of publisher. Please confirm
+  2023; pp. 315--332.
+\newblock {\url{https://doi.org/10.1016/B978-0-323-95682-6.00006-1}}.
+
+\bibitem[{Al Masud} et~al.(2020){Al Masud}, Gain, and Azad]{ALMASUD2020104443}
+{Al Masud}, M.M.; Gain, A.K.; Azad, A.K.
+\newblock {Tidal river management for sustainable agriculture in the
+  Ganges-Brahmaputra delta: Implication for land use policy}.
+\newblock {\em Land Use Policy} {\bf 2020}, {\em 92},~104443.
+\newblock {\url{https://doi.org/10.1016/j.landusepol.2019.104443}}.
+
+\bibitem[Sarker et~al.(2024)Sarker, Krug, Islam, Basak, Huda, Hossain, Das,
+  Riya, Liyana, and Chowdhury]{SARKER2024169718}
+Sarker, S.; Krug, L.A.; Islam, K.M.; Basak, S.C.; Huda, A.S.; Hossain, M.S.;
+  Das, N.; Riya, S.C.; Liyana, E.; Chowdhury, G.W.
+\newblock {An integrated coastal ecosystem monitoring strategy: Pilot case in
+  Naf-Saint Martin Peninsula, Bangladesh}.
+\newblock {\em Sci. Total Environ.} {\bf 2024}, {\em 913},~169718.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2023.169718}}.
+
+\bibitem[Mainuddin and Kirby(2021)]{MAINUDDIN2021105740}
+Mainuddin, M.; Kirby, J.M.
+\newblock {Impact of flood inundation and water management on water and salt
+  balance of the polders and islands in the Ganges delta}.
+\newblock {\em Ocean. Coast. Manag.} {\bf 2021}, {\em 210},~105740.
+\newblock {\url{https://doi.org/10.1016/j.ocecoaman.2021.105740}}.
+
+\bibitem[Hasan et~al.(2023)Hasan, Mayeesha, and Razzak]{HASAN2023101028}
+Hasan, M.A.; Mayeesha, A.N.; Razzak, M.Z.A.
+\newblock {Evaluating geomorphological changes and coastal flood vulnerability
+  of the Nijhum Dwip Island using remote sensing techniques}.
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf 2023}, {\em 32},~101028.
+\newblock {\url{https://doi.org/10.1016/j.rsase.2023.101028}}.
+
+\bibitem[Singha et~al.(2020)Singha, Das, Talukdar, and Pal]{SINGHA2020106825}
+Singha, P.; Das, P.; Talukdar, S.; Pal, S.
+\newblock {Modeling livelihood vulnerability in erosion and flooding induced
+  river island in Ganges riparian corridor, India}.
+\newblock {\em Ecol. Indic.} {\bf 2020}, {\em 119},~106825.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2020.106825}}.
+
+\bibitem[Rumpa et~al.(2023)Rumpa, Real, and Razi]{RUMPA2023104047}
+Rumpa, N.T.; Real, H.R.K.; Razi, M.A.
+\newblock {Disaster risk reduction in Bangladesh: A comparison of three major
+  floods for assessing progress towards resilience}.
+\newblock {\em Int. J. Disaster Risk Reduct.} {\bf 2023}, {\em 97},~104047.
+\newblock {\url{https://doi.org/10.1016/j.ijdrr.2023.104047}}.
+
+\bibitem[Jerin et~al.(2023)Jerin, Azad, and Khan]{JERIN2023103851}
+Jerin, T.; Azad, M.A.K.; Khan, M.N.
+\newblock Climate change-triggered vulnerability assessment of the flood-prone
+  communities in Bangladesh: A gender perspective.
+\newblock {\em Int. J. Disaster Risk Reduct.} {\bf 2023}, {\em 95},~103851.
+\newblock {\url{https://doi.org/10.1016/j.ijdrr.2023.103851}}.
+
+\bibitem[Nahin et~al.(2023)Nahin, Islam, Mahmud, and Hossain]{NAHIN2023e14520}
+Nahin, K.T.K.; Islam, S.B.; Mahmud, S.; Hossain, I.
+\newblock Flood vulnerability assessment in the Jamuna river floodplain using
+  multi-criteria decision analysis: A case study in Jamalpur district,
+  Bangladesh.
+\newblock {\em Heliyon} {\bf 2023}, {\em 9},~e14520.
+\newblock {\url{https://doi.org/10.1016/j.heliyon.2023.e14520}}.
+
+\bibitem[Das et~al.(2021)Das, Hazra, Haque, Rahman, Nicholls, Ghosh, Ghosh,
+  Salehin, and {Safra de Campos}]{DAS2021101983}
+Das, S.; Hazra, S.; Haque, A.; Rahman, M.; Nicholls, R.J.; Ghosh, A.; Ghosh,
+  T.; Salehin, M.; {Safra de Campos}, R.
+\newblock {Social vulnerability to environmental hazards in the
+  Ganges-Brahmaputra-Meghna delta, India and Bangladesh}.
+\newblock {\em Int. J. Disaster Risk Reduct.} {\bf 2021}, {\em 53},~101983.
+\newblock {\url{https://doi.org/10.1016/j.ijdrr.2020.101983}}.
+
+\bibitem[Ali et~al.(2019)Ali, Bhattacharya, Islam, Islam, Hossain, and
+  Khan]{Alietal}
+Ali, M.; Bhattacharya, B.; Islam, A.; Islam, G.; Hossain, M.; Khan, A.
+\newblock Challenges for flood risk management in flood-prone Sirajganj region
+  of Bangladesh.
+\newblock {\em J. Flood Risk Manag.} {\bf 2019}, {\em 12},~e12450.
+\newblock {\url{https://doi.org/10.1111/jfr3.12450}}.
+
+\bibitem[Azad and Pritchard(2023)]{AZAD2023100498}
+Azad, M.J.; Pritchard, B.
+\newblock Bonding, bridging, linking social capital as mutually reinforcing
+  elements in adaptive capacity development to flood hazard: Insights from
+  rural Bangladesh.
+\newblock {\em Clim. Risk Manag.} {\bf 2023}, {\em 40},~100498.
+\newblock {\url{https://doi.org/10.1016/j.crm.2023.100498}}.
+
+\bibitem[Nicholls et~al.(2016)Nicholls, Hutton, Lázár, Allan, Adger, Adams,
+  Wolf, Rahman, and Salehin]{NICHOLLS2016370}
+Nicholls, R.; Hutton, C.; Lázár, A.; Allan, A.; Adger, W.; Adams, H.; Wolf,
+  J.; Rahman, M.; Salehin, M.
+\newblock Integrated assessment of social and environmental sustainability
+  dynamics in the Ganges-Brahmaputra-Meghna delta, Bangladesh.
+\newblock {\em Estuarine  Coast. Shelf Sci.
+} {\bf 2016}, {\em 183},~370--\hl{381.} %MDPI: Information is complete, we removed no need part, please confirm.
+\newblock 
+  {\url{https://doi.org/10.1016/j.ecss.2016.08.017}}.
+
+\bibitem[{GRASS Development Team}(2022)]{GRASS_GIS_software}
+{GRASS Development Team}.
+\newblock {\em {Geographic Resources Analysis Support System (GRASS GIS)
+  Software}}, Version 8.2;
+\newblock Open Source Geospatial Foundation: \hl{Beaverton, OR, USA,} %MDPI: We added the location of the publisher. Please confirm.
+ 2022.
+
+\bibitem[{Inkscape Project Development Team}()]{Inkscape}
+{Inkscape Project Development Team}.
+\newblock \emph{Inkscape},
+\newblock Software version 1.2; Inkscape Project Development \hl{Team}%MDPI: Please add ``Publisher: Place of Publication, Year''.
+.
+
+\bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
+  Grisel, Blondel, Prettenhofer, Weiss, Dubourg, et~al.]{pedregosa2011scikit}
+Pedregosa, F.; Varoquaux, G.; Gramfort, A.; Michel, V.; Thirion, B.; Grisel,
+  O.; Blondel, M.; Prettenhofer, P.; Weiss, R.; Dubourg, V.;  et~al.
+\newblock Scikit-learn: Machine learning in Python.
+\newblock {\em J. Mach. Learn. Res.} {\bf 2011}, {\em 12},~2825--2830.
+
+\bibitem[Van~Rossum and Drake~Jr(1995)]{van1995python}
+Van~Rossum, G.; Drake~F.L., Jr.
+\newblock {\em Python Reference Manual}; Centrum voor Wiskunde en Informatica:
+  Amsterdam, The Netherlands,
+ 1995.
+
+\bibitem[Neteler et~al.(2012)Neteler, Bowman, Landa, and Metz]{NETELER2012124}
+Neteler, M.; Bowman, M.H.; Landa, M.; Metz, M.
+\newblock GRASS GIS: A multi-purpose open source GIS.
+\newblock {\em Environ. Model. Softw.} {\bf 2012}, {\em 31},~124--130.
+\newblock {\url{https://doi.org/10.1016/j.envsoft.2011.11.014}}.
+
+\bibitem[Mitasova and Neteler(2004)]{MitasovaNeteler}
+Mitasova, H.; Neteler, M.
+\newblock GRASS as Open Source Free Software GIS: Accomplishments and
+  Perspectives.
+\newblock {\em Trans. GIS} {\bf 2004}, {\em 8},~145--154.
+\newblock {\url{https://doi.org/10.1111/j.1467-9671.2004.00172.x}}.
+
+\bibitem[Ahamed et~al.(2023)Ahamed, Bin~Syed, Chatterjee, and
+  Bin~Habib]{10441152}
+Ahamed, M.Y.; Bin~Syed, M.A.; Chatterjee, P.; Bin~Habib, A.Z.S.
+\newblock A Deep Learning Approach for Satellite and Debris Detection: YOLO in
+  Action.
+\newblock In Proceedings of the 2023 26th International Conference on Computer
+  and Information Technology (ICCIT), \hl{Cox's Bazar, Bangladesh,  13--15 December 2023; }pp. 1--6.
+\newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441152}}.
+
+\bibitem[Ahmed et~al.(2024)Ahmed, Jui, Sharma, Ahmed, Raj, and
+  Bose]{AHMED2024167234}
+Ahmed, A.A.M.; Jui, S.J.J.; Sharma, E.; Ahmed, M.H.; Raj, N.; Bose, A.
+\newblock An advanced deep learning predictive model for air quality index
+  forecasting with remote satellite-derived hydro-climatological variables.
+\newblock {\em Sci. Total. Environ.
+} {\bf 2024}, {\em 906},~167234.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2023.167234}}.
+
+\bibitem[Hassan et~al.(2023)Hassan, Gomes, and Bhuiyan]{HASSAN2023100399}
+Hassan, M.S.; Gomes, R.F.; Bhuiyan, M.A.H.
+\newblock Seasonal distribution of AOT and its relationship with air pollutants
+  in central Bangladesh using remote sensing and machine learning tools.
+\newblock {\em Case Stud. Chem. Environ. Eng.} {\bf 2023}, {\em 8},~100399.
+\newblock {\url{https://doi.org/10.1016/j.cscee.2023.100399}}.
+
+\bibitem[Shakib and Al~Mamun(2023)]{10441576}
+Shakib, M.F.; Al~Mamun, M.
+\newblock Bushfire Classification from Satellite Imagery using Deep Learning.
+\newblock In Proceedings of the 2023 26th International Conference on Computer
+  and Information Technology (ICCIT),  \hl{Cox's Bazar, Bangladesh,  13-15 December 2023; }pp. 1--5.
+\newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441576}}.
+
+\bibitem[Sanchez et~al.(2020)Sanchez, Rios, Alanis, Arana-Daniel, and
+  Lopez-Franco]{202017}
+Sanchez, E.N.; Rios, J.D.; Alanis, A.Y.; Arana-Daniel, N.; Lopez-Franco, C.
+\newblock Chapter 3---Neural identification using recurrent high-order neural
+  networks for discrete nonlinear systems with unknown time delays. In {\em
+  Neural Networks Modeling and Control}; Academic Press:  \hl{Cambridge, MA, USA,} %We added the location of publisher. Please confirm
+  2020; pp. 17--33.
+\newblock {\url{https://doi.org/10.1016/B978-0-12-817078-6.00011-8}}.
+
+\bibitem[Hecht-Nielsen(1992)]{HECHTNIELSEN199265}
+Hecht-Nielsen, R.
+\newblock III.3---Theory of the Backpropagation Neural Network**Based on
+  “nonindent” by Robert Hecht-Nielsen, which appeared in Proceedings of the
+  International Joint Conference on Neural Networks 1, 593–611, June 1989. ©
+  1989 IEEE. In {\em Neural Networks for Perception}; Wechsler, H., Ed.;
+  Academic Press:  \hl{Cambridge, MA, USA,} %We added the location of publisher. Please confirm
+  1992; pp. 65--93.
+\newblock {\url{https://doi.org/10.1016/B978-0-12-741252-8.50010-8}}.
+
+\bibitem[Shekhar et~al.(1992)Shekhar, Amin, and Khandelwal]{SHEKHAR199213}
+Shekhar, S.; Amin, M.B.; Khandelwal, P.
+\newblock Generalization Performance of Feed-Forward Neural Networks. In {\em
+  Neural Networks}; Gelenbe, E., Ed.; North-Holland: Amsterdam,  The Netherlands, 1992; pp.
+  13--38.
+\newblock {\url{https://doi.org/10.1016/B978-0-444-89330-7.50005-3}}.
+
+\bibitem[Biswas et~al.(2023)Biswas, Jobaer, Haque, {Islam Shozib}, and
+  Limon]{BISWAS2023e21245}
+Biswas, J.; Jobaer, M.A.; Haque, S.F.; {Islam Shozib}, M.S.; Limon, Z.A.
+\newblock Mapping and monitoring land use land cover dynamics employing Google
+  Earth Engine and machine learning algorithms on Chattogram, Bangladesh.
+\newblock {\em Heliyon} {\bf 2023}, {\em 9},~e21245.
+\newblock {\url{https://doi.org/10.1016/j.heliyon.2023.e21245}}.
+
+\bibitem[Lemenkova(2023)]{Lemenkova202320}
+Lemenkova, P.
+\newblock {Image Segmentation of the Sudd Wetlands in South Sudan for
+  Environmental Analytics by GRASS GIS Scripts}.
+\newblock {\em Analytics} {\bf 2023}, {\em 2},~745--780.
+\newblock {\url{https://doi.org/10.3390/analytics2030040}}.
+
+\bibitem[Raisa et~al.(2024)Raisa, Sarkar, and Sadiq]{RAISA2024101128}
+Raisa, S.S.; Sarkar, S.K.; Sadiq, M.A.
+\newblock Advancing groundwater vulnerability assessment in Bangladesh: A
+  comprehensive machine learning approach.
+\newblock {\em Groundw. Sustain. Dev.} {\bf 2024},  \emph{25}, 101128.
+\newblock {\url{https://doi.org/10.1016/j.gsd.2024.101128}}.
+
+\bibitem[Rudra and Sarkar(2023)]{RUDRA2023e16459}
+Rudra, R.R.; Sarkar, S.K.
+\newblock Artificial neural network for flood susceptibility mapping in
+  Bangladesh.
+\newblock {\em Heliyon} {\bf 2023}, {\em 9},~e16459.
+\newblock {\url{https://doi.org/10.1016/j.heliyon.2023.e16459}}.
+
+\bibitem[Iannone and Roy(2024)]{DiagrammeR}
+Iannone, R.; Roy, O.
+\newblock { DiagrammeR: Graph/Network Visualization}.  2024.
+\newblock R package version 1.0.11.9000. Available \hl{online: } %MDPI: We cannot open this weblink, please try to revise.
+  \url{https://github.com/rich-iannone/DiagrammeR} (accessed on 25 February 2024).
+
+\bibitem[Chen et~al.(2008)Chen, Wang, and Shang]{4736879}
+Chen, Q.; Wang, L.; Shang, Z.
+\newblock {MRGIS: A MapReduce-Enabled High Performance Workflow System for
+  GIS}.
+\newblock In Proceedings of the 2008 IEEE Fourth International Conference on
+  eScience,  \hl{Indianapolis, IN, USA, 7--12 December 2008;} pp. 646--651.
+\newblock {\url{https://doi.org/10.1109/eScience.2008.169}}.
+
+\bibitem[Song and Liu(2008)]{5070195}
+Song, X.; Liu, J.
+\newblock {Scheduling Geo-processing Workflow Applications with QoS}.
+\newblock In Proceedings of the 2008 International Workshop on Education
+  Technology and Training \& 2008 International Workshop on Geoscience and
+  Remote Sensing, \hl{Shanghai, China,  21--22 December 2008;} Volume~1, pp. 460--463.
+\newblock {\url{https://doi.org/10.1109/ETTandGRS.2008.98}}.
+
+\bibitem[Delogu et~al.(2023)Delogu, Caputi, Perretta, Ripa, and
+  Boccia]{su151813786}
+Delogu, G.; Caputi, E.; Perretta, M.; Ripa, M.N.; Boccia, L.
+\newblock {Using PRISMA Hyperspectral Data for Land Cover Classification with
+  Artificial Intelligence Support}.
+\newblock {\em Sustainability} {\bf 2023}, {\em 15}, 13786.
+\newblock {\url{https://doi.org/10.3390/su151813786}}.
+
+\bibitem[Crivellaro et~al.(2024)Crivellaro, Vitti, Zolezzi, and
+  Bertoldi]{rs16010184}
+Crivellaro, M.; Vitti, A.; Zolezzi, G.; Bertoldi, W.
+\newblock {Characterization of Active Riverbed Spatiotemporal Dynamics through
+  the Definition of a Framework for Remote Sensing Procedures}.
+\newblock {\em Remote Sens.} {\bf 2024}, {\em 16}, 184.
+\newblock {\url{https://doi.org/10.3390/rs16010184}}.
+
+\bibitem[Huang et~al.(2018)Huang, xin CHEN, YU, zhi HUANG, and
+  fa~GU]{HUANG20181915}
+Huang, Y.; Chen, Z.-x.; Yu, T.; Huang, X.-z.; Gu, X.-f.
+\newblock {Agricultural remote sensing big data: Management and applications}.
+\newblock {\em J. Integr. Agric.} {\bf 2018}, {\em 17},~1915--1931.
+\newblock {\url{https://doi.org//10.1016/S2095-3119(17)61859-8}}.
+
+\bibitem[Yin et~al.(2021)Yin, Dong, Hamm, Li, Wang, Xing, and
+  Fu]{YIN2021102514}
+Yin, J.; Dong, J.; Hamm, N.A.; Li, Z.; Wang, J.; Xing, H.; Fu, P.
+\newblock {Integrating remote sensing and geospatial big data for urban land
+  use mapping: A review}.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2021}, {\em 103},~102514.
+\newblock {\url{https://doi.org/10.1016/j.jag.2021.102514}}.
+
+\bibitem[Houska(2012)]{USGSPublication}
+Houska, T.
+\newblock \emph{Earth Explorer};
+\newblock Report; U.S. Geological Survey: Reston, VA,  USA, 2012.
+\newblock {\url{https://doi.org/10.3133/gip136}}.
+
+\bibitem[Survey(2023)]{Landsat}
+Survey, U.G.
+\newblock {\emph{Landsat Collection 2 U.S. Analysis Ready Data}};
+\newblock Report; U.S. Geological Survey: Reston, VA,  USA, 2023.
+\newblock {\url{https://doi.org/10.3133/fs20233015}}.
+
+\bibitem[Sheonty and Nayeem(2022)]{Sheonty}
+Sheonty, S.R.; Nayeem, J.
+\newblock Drought Risk Mapping in the North-West Region of Bangladesh Using
+  Landsat Time Series Satellite Images.
+\newblock In Proceedings of the Climate Change and Water Security, Singapore,
+  \hl{2022;} %MDPI: Please add the date of the conference, same as follows. 
+ pp. 221--229.
+
+\bibitem[Islam et~al.(2016)Islam, Miah, and Inoue]{Islam2016}
+Islam, M.R.; Miah, M.G.; Inoue, Y.
+\newblock Analysis of Land use and Land Cover Changes in the Coastal Area of
+  Bangladesh using Landsat Imagery.
+\newblock {\em Land Degrad. Dev.} {\bf 2016}, {\em 27},~899--909.
+\newblock {\url{https://doi.org/10.1002/ldr.2339}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202229}
+Lemenkova, P.; Debeir, O.
+\newblock {R Libraries for Remote Sensing Data Classification by k-means
+  Clustering and NDVI Computation in Congo River Basin, DRC}.
+\newblock {\em Appl. Sci.} {\bf 2022}, {\em 12},~12554.
+\newblock {\url{https://doi.org/10.3390/app122412554}}.
+
+\bibitem[Ferdous and Rahman(2019)]{Ferdous}
+Ferdous, J.; Rahman, M.T.U.
+\newblock Applicability of Landsat TM Images to Detect Soil Salinity of Coastal
+  Areas in Bangladesh.
+\newblock In Proceedings of the Advances in Remote Sensing and Geo Informatics
+  Applications, Cham, Switzerland,  \hl{2019}; pp. 219--221.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202321}
+Lemenkova, P.; Debeir, O.
+\newblock {Environmental mapping of Burkina Faso using TerraClimate data and
+  satellite images by GMT and R scripts}.
+\newblock {\em Adv. Geod. Geoinf.} {\bf 2023}, {\em
+  72},~1--32.
+\newblock {\url{https://doi.org/10.24425/agg.2023.146157}}.
+
+\bibitem[Lemenkova(2023)]{Lemenkova202323}
+Lemenkova, P.
+\newblock {Using open-source software GRASS GIS for analysis of the
+  environmental patterns in Lake Chad, Central Africa}.
+\newblock {\em Die Bodenkultur J. Land Manag. Food Environ.} {\bf 2023}, {\em 74},~49--64.
+\newblock {\url{https://doi.org/10.2478/boku-2023-0005}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{technologies11020046}
+Lemenkova, P.; Debeir, O.
+\newblock {GDAL and PROJ Libraries Integrated with GRASS GIS for Terrain
+  Modelling of the Georeferenced Raster Image}.
+\newblock {\em Technologies} {\bf 2023}, {\em 11}, 46.
+\newblock {\url{https://doi.org/10.3390/technologies11020046}}.
+
+\bibitem[Wessel and Smith(1991)]{WesselSmith}
+Wessel, P.; Smith, W.H.F.
+\newblock Free software helps map and display data.
+\newblock {\em Eos Trans. Am. Geophys. Union} {\bf 1991}, {\em 72},~441--446.
+\newblock {\url{https://doi.org/10.1029/90EO00319}}.
+
+\bibitem[Rahman et~al.(2020)Rahman, Ghosh, Salehin, Ghosh, Haque, Hossain, Das,
+  Hazra, Islam, Sarker, Nicholls, and Hutton]{Rahman2020}
+Rahman, M.M.; Ghosh, T.; Salehin, M.; Ghosh, A.; Haque, A.; Hossain, M.A.; Das,
+  S.; Hazra, S.; Islam, N.; Sarker, M.H.;  et~al., Ganges-Brahmaputra-Meghna
+  Delta, Bangladesh and India: A Transnational Mega-Delta.
+\newblock In {\em Deltas in the Anthropocene}; Springer International
+  Publishing: Cham,  Switzerland, 2020; pp. 23--51.
+\newblock {\url{https://doi.org/10.1007/978-3-030-23517-8_2}}.
+
+\bibitem[Sousa and Small(2021)]{rs13234799}
+Sousa, D.; Small, C.
+\newblock Land Cover Dynamics on the Lower Ganges–Brahmaputra Delta:
+  Agriculture–Aquaculture Transitions, 1972–2017.
+\newblock {\em Remote Sens.} {\bf 2021}, {\em 13}, 4799.
+\newblock {\url{https://doi.org/10.3390/rs13234799}}.
+
+\bibitem[Paszkowski et~al.(2021)Paszkowski, Goodbred, Borgomeo, Khan, and
+  Hall]{Paszkowski2021}
+Paszkowski, A.; Goodbred, S.; Borgomeo, E.; Khan, M.S.A.; Hall, J.W.
+\newblock Geomorphic change in the Ganges--Brahmaputra--Meghna delta.
+\newblock {\em Nat. Rev. Earth Environ.} {\bf 2021}, {\em 2},~763--780.
+\newblock {\url{https://doi.org/10.1038/s43017-021-00213-4}}.
+
+\bibitem[Szabo et~al.(2016)Szabo, Brondizio, Renaud, Hetrick, Nicholls,
+  Matthews, Tessler, Tejedor, Sebesvari, Foufoula-Georgiou, da~Costa, and
+  Dearing]{Szabo}
+Szabo, S.; Brondizio, E.; Renaud, F.G.; Hetrick, S.; Nicholls, R.J.; Matthews,
+  Z.; Tessler, Z.; Tejedor, A.; Sebesvari, Z.; Foufoula-Georgiou, E.;  et~al.
+\newblock {Population dynamics, delta vulnerability and environmental change:
+  comparison of the Mekong, Ganges–Brahmaputra and Amazon delta regions}.
+\newblock {\em Sustain. Sci.} {\bf 2016}, {\em 11},~539--554.
+\newblock {\url{https://doi.org/10.1007/s11625-016-0372-6}}.
+
+\end{thebibliography}
+\PublishersNote{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+\end{document}
