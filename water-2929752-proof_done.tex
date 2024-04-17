@@ -743,13 +743,13 @@ A time series analysis of the Ganges River Delta was used to plot and graphicall
 The time series flood data made using scripting models of GRASS GIS with open-source specifications catalyse further innovation in risk management and represent solutions for state-of-the-art mapping of floods using programming approaches and {ML} modules. The following 10 land cover types were identified around the Ganges River Delta, Bangladesh: (1) water, %MDPI: Please confirm if the italics should be retained. % Author's reply: italic can be removed (I removed it).
  (2) wetlands and mudflats, (3) mangrove forests, (4) sandy areas, (5) forests,(6) croplands, (7) grasslands, (8) urban settlements, (9) orchards and (10) aquaculture. Information on land cover types was derived from Rahman et al. \cite{Rahman2020}, Sousa and \mbox{Small \cite{rs13234799}} and Paszkowski et al. \cite{Paszkowski2021} and applied to the extent of the current study area. The presented maps of floods can be used as a broad base for environmental applications and flood hazard assessment. Their application potential ranges from academia and research, industry and development to governmental and social services for risk prevention. 
 
-The maps derived using the deep learning approach were produced from the cloud-free Landsat scenes collected between the March and November periods and are shown in \mbox{Figures \ref{fig11} and \ref{fig12}.} The presented land cover maps are intended for potential flood damage assessment in southern Bangladesh. Corrections of the presented framework and the Python-based algorithm of GRASS GIS derived using a machine learning (ML) approach with the deep learning (DL) MLPClassifier represent an advanced tool for automated recognition of land cover types in satellite images and the monitoring of floods in flood-prone regions of southern Bangladesh%Please check intended meaning has been retained
-. The percentage of correctly classified images was calculated summarised in the matrices showing class separability (\hl{Figure} %MDPI: Please confirm this revision according to our rule, we keep the figure label for figures 13-15
+The maps derived using the deep learning approach were produced from the cloud-free Landsat scenes collected between the March and November periods and are shown in \mbox{Figures \ref{fig11} and \ref{fig12}.} The presented land cover maps are intended for potential flood damage assessment in southern Bangladesh. Corrections of the presented framework and the Python-based algorithm of GRASS GIS derived using a machine learning (ML) approach with the deep learning (DL) MLPClassifier represent an advanced tool for automated recognition of land cover types in satellite images and the monitoring of floods in flood-prone regions of southern Bangladesh%Please check intended meaning has been retained % Author's reply: yes, retained.
+. The percentage of correctly classified images was calculated summarised in the matrices showing class separability (Figure %MDPI: Please confirm this revision according to our rule, we keep the figure label for figures 13-15 % Author's reply: yes, I confirm.
  \ref{fig13}, Figure \ref{fig14} and Figure \ref{fig15}
 %Matrix \ref{eq1}, Matrix \ref{eq2} and Matrix \ref{eq3}
  for the years 2021, 2022 and 2023, respectively) and evaluated in the accuracy assessment. 
 
-The class separability matrices of land cover classes identified in the Ganges River Delta are presented in {Figures }\ref{fig13}--\ref{fig15}. \mbox{\hl{Figure} \ref{fig13}} shows class separability matrices for March and November 2021, \hl{Figure} \ref{fig14} shows class separability matrices for March and November 2022 and \hl{Figure} \ref{fig15} shows class separability matrices for March and November 2023. The covariance matrices signify the values of class separability, which are composed of the cluster means based on the values of the spectral signatures of pixels. They demonstrate the results of the cluster's means {obtained from the computed} covariance matrices{. The matrices} were generated {using} the `i.maxlik' function of GRASS GIS during the image classification process. The columns {signify} 10 generated land cover classes, and the rows signify the number of pixels correctly assigned to those classes. Hence, the class separability matrices show the error matrix for {the} pixel-based maximum-likelihood classification, which indicates the correctness of the pixels assigned to the {land cover }classes from 1 to 10. The results of {image} clustering{ }using values of spectral classes are related to {the} land cover types identified in the Ganges River Delta and {the} surroundings. 
+The class separability matrices of land cover classes identified in the Ganges River Delta are presented in {Figures }\ref{fig13}--\ref{fig15}. \mbox{Figure \ref{fig13}} shows class separability matrices for March and November 2021, Figure \ref{fig14} shows class separability matrices for March and November 2022 and Figure \ref{fig15} shows class separability matrices for March and November 2023. The covariance matrices signify the values of class separability, which are composed of the cluster means based on the values of the spectral signatures of pixels. They demonstrate the results of the cluster's means {obtained from the computed} covariance matrices{. The matrices} were generated {using} the `i.maxlik' function of GRASS GIS during the image classification process. The columns {signify} 10 generated land cover classes, and the rows signify the number of pixels correctly assigned to those classes. Hence, the class separability matrices show the error matrix for {the} pixel-based maximum-likelihood classification, which indicates the correctness of the pixels assigned to the {land cover }classes from 1 to 10. The results of {image} clustering{ }using values of spectral classes are related to {the} land cover types identified in the Ganges River Delta and {the} surroundings. 
 
 The matrices consist of ten classes and computed pixels for each land cover class. The land categories are defined as follows: water bodies, wetlands and mudflats indicating inundated areas, mangrove forests and associated swamps, sandy areas on riverbanks, forests (e.g., tree cover, hill forests), croplands and homestead croplands, grasslands, urban and rural settlements, orchards and aquaculture. Class separability matrices evaluate the assignment of pixels to various land cover classes in the landscapes of the Ganges River Delta. Hence, the matrices serve the function of regularisation parameters used to determine the distinguishability of pixels according to their spectral reflectances. In this way, class separability matrices perform iterative searches for cells within the raster matrix of the image considering a range of values of pixels assigned to different land cover types.
 
@@ -786,7 +786,7 @@ The matrices consist of ten classes and computed pixels for each land cover clas
 10 & 3.5 & 3.3 & 2.6 & 1.5 & 2.3 & 2.3 & 1.8 & 1.5 & 0.9 & 0 \\       
  \end{vmatrix} \nonumber
 \end{equation}
-\caption{\hl{Class} %MDPI: we removed the equations numbering for figures 13-15
+\caption{Class %MDPI: we removed the equations numbering for figures 13-15 % Author's reply: yes, I confirm.
  separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2021.}
 \label{fig13}
 \end{figure}
@@ -824,7 +824,7 @@ The matrices consist of ten classes and computed pixels for each land cover clas
 10 & 3.0 & 2.8 & 1.2 & 2.3 & 2.3 & 2.4 & 1.8 & 1.7 & 0.8 & 0 \\       
  \end{vmatrix} \nonumber
 \end{equation}
-\caption{{\hl{Class} separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2022.}}
+\caption{{Class separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2022.}} 
 \label{fig14}
 \end{figure}
 
@@ -861,7 +861,7 @@ The matrices consist of ten classes and computed pixels for each land cover clas
 10 & 3.1 & 2.7 & 1.6 & 2.2 & 1.9 & 1.9 & 1.0 & 1.6 & 0.9 & 0 \\       
  \end{vmatrix} \nonumber
 \end{equation}
-\caption{{\hl{Class} separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2023.}}
+\caption{{Class separability matrices computed for classified Landsat 8-9 OLI/TIRS satellite images for March and November 2023.}}
 \label{fig15}
 \end{figure}
 
@@ -898,7 +898,7 @@ Importantly, this paper presents a case of flood mapping in the Ganges River Del
 
 
 
-\funding{\hl{~~~} %MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
+\funding{The APC was funded by MDPI and University of Salzburg, IOAP Participant.  %MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding. % Author's reply: information is added.
 }
 
 \institutionalreview{Not applicable.}
@@ -909,7 +909,7 @@ Importantly, this paper presents a case of flood mapping in the Ganges River Del
 %{https://github.com/paulinelemenkova/Floods_Ganges_GRASS_GIS_DL_Image_Analysis}
  (accessed on 5 April 2024).}
 
-\acknowledgments{\hl{The} %MDPI: Please ensure that all individuals included in this section have consented to the acknowledgement.
+\acknowledgments{The %MDPI: Please ensure that all individuals included in this section have consented to the acknowledgement. % Author's reply: yes, consented.
  author thanks the reviewers for reading and review of this manuscript.}
 
 \conflictsofinterest{The author declares that they have no known competing financial interests or personal relationships that could have influenced the work reported in this article.} 
@@ -954,7 +954,7 @@ WRS &~~~~~~~~~~~~~~~~~~Worldwide Reference System
 \section[\appendixname~\thesection]{Metadata for Satellite Images }\label{app1}
 \begin{table}[H]
 \small
-\caption{\hl{Metadata} %MDPI: 1. Please confirm the alignment changed. 2. We removed double lines.
+\caption{Metadata %MDPI: 1. Please confirm the alignment changed. 2. We removed double lines. % Author's reply: yes, I confirm.
  for the Landsat 8-9 OLI/TIRS images obtained from the USGS.} \label{tabApp}
 \begin{adjustwidth}{-\extralength}{0cm}
     \begin{tabularx}{\fulllength}{lCCC}
@@ -962,7 +962,7 @@ WRS &~~~~~~~~~~~~~~~~~~Worldwide Reference System
        	\textbf{Dataset Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \midrule
       {{Landsat Scene Identifier} 
 } & LC81370442023066LGN00 & LC81370442022079LGN00 & LC81370442021076LGN00 \\ \midrule
-      \hl{Date Acquired} %MDPI: We removed the bold. Please confirm this revision.
+      Date Acquired %MDPI: We removed the bold. Please confirm this revision. % Author's reply: yes, I confirm.
  & {7 March 2023} & {20 March 2022} & {17 March 2021} \\ \midrule
       {{Roll Angle}} & $-$1 & 0 & 0 \\ \midrule
       {{Start Time}} & 7 March 2023 04:24:33 & 20 March 2022 04:24:26.058914 & 17 March 2021 04:24:23.120295 \\ \midrule
@@ -1192,7 +1192,7 @@ Jaramillo, E.; Portnoy, I.; Torregroza-Espinosa, A.C.; Larios-Giraldo, P.
 Zuo, J.; Jiang, W.; Li, Q.; Du, Y.
 \newblock Remote sensing dynamic monitoring of the flood season area of Poyang
   Lake over the past two decades.
-\newblock {\em Nat. Hazards Res.} {\bf 2024}, \hl{\emph{4}, 8--19.} %MDPI: Newly added information. Please confirm.
+\newblock {\em Nat. Hazards Res.} {\bf 2024}, \emph{4}, 8--19.%MDPI: Newly added information. Please confirm. % Author's reply: yes, I confirm.
 \newblock {\url{https://doi.org/10.1016/j.nhres.2023.12.017}}.
 
 \bibitem[Singha and Pal(2023)]{SINGHA2023316}
@@ -1290,7 +1290,7 @@ Kalpoma, K.A.; Robin, G.M.R.K.; Ferdaus, J.; Mitul, M.M.R.; Rahman, A.
 \newblock Satellite Image Database Creation for Road Quality Measurement of
   National Highways of Bangladesh.
 \newblock In Proceedings of the IGARSS 2022---2022 International Geoscience and Remote Sensing Symposium
-  (IGARSS), \hl{Kuala Lumpur, Malaysia, 17--22 July 2022;} %MDPI: We added the location and date of the conference. Please confirm.
+  (IGARSS), Kuala Lumpur, Malaysia, 17--22 July 2022; %MDPI: We added the location and date of the conference. Please confirm. % Author's reply: yes, I confirm.
  pp. 3047--3050.
 \newblock {\url{https://doi.org/10.1109/IGARSS46834.2022.9883389}}.
 
@@ -1314,7 +1314,7 @@ Islam, S.N.; Reinstädtler, S.; Kowshik, M.H.; Akther, S.; Newaz, M.N.; Gnauck,
   A.; Eslamian, S.
 \newblock {Chapter 11---GIS Application in floods mapping in the Ganges--Padma
   River basins in Bangladesh}. In {\em Handbook of Hydroinformatics}; Eslamian,
-  S., Eslamian, F., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} %We added the location of publisher. Please confirm
+  S., Eslamian, F., Eds.; Elsevier: Amsterdam, The Netherlands, %We added the location of publisher. Please confirm. % Author's reply: yes, I confirm.
   2023; pp. 167--183.
 \newblock {\url{https://doi.org/10.1016/B978-0-12-821962-1.00010-6}}.
 
@@ -1322,7 +1322,7 @@ Islam, S.N.; Reinstädtler, S.; Kowshik, M.H.; Akther, S.; Newaz, M.N.; Gnauck,
 Rana, S.S.; Habib, S.A.; Sharifee, M.N.H.; Sultana, N.; Rahman, S.H.
 \newblock {Flood risk mapping of the flood-prone Rangpur division of Bangladesh
   using remote sensing and multi-criteria analysis}.
-\newblock {\em Nat. Hazards Res.} {\bf 2023}, \hl{\emph{4}, 20--31.}
+\newblock {\em Nat. Hazards Res.} {\bf 2023}, \emph{4}, 20--31.
 \newblock {\url{https://doi.org/10.1016/j.nhres.2023.09.012}}.
 
 \bibitem[Chakma and Akter(2021)]{ChakmaAkter}
@@ -1403,7 +1403,7 @@ Roy, M.; Routaray, D.; Ghosh, S.
 \newblock Change detection in remotely sensed images using an ensemble of
   multilayer perceptrons.
 \newblock In Proceedings of the 2012 International Conference on
-  Communications, Devices and Intelligent Systems (CODIS), \hl{Kolkata, India, 28--29 December   2012;} pp. 278--281.
+  Communications, Devices and Intelligent Systems (CODIS), Kolkata, India, 28--29 December  2012; pp. 278--281.
 \newblock {\url{https://doi.org/10.1109/CODIS.2012.6422192}}.
 
 \bibitem[Chakraborty and Roy(2016)]{7507955}
@@ -1411,7 +1411,7 @@ Chakraborty, S.; Roy, M.
 \newblock Domain adaptation for land-cover classification of remotely sensed
   images using ensemble of Multilayer Perceptrons.
 \newblock In Proceedings of the 2016 3rd International Conference on Recent
-  Advances in Information Technology (RAIT), \hl{Dhanbad, India, 3--5 March 2016}; pp. 523--528.
+  Advances in Information Technology (RAIT), Dhanbad, India, 3--5 March 2016; pp. 523--528.
 \newblock {\url{https://doi.org/10.1109/RAIT.2016.7507955}}.
 
 \bibitem[Kalpoma et~al.(2020)Kalpoma, Ali, Rahman, and Islam]{9324433}
@@ -1419,7 +1419,7 @@ Kalpoma, K.A.; Ali, R.; Rahman, A.; Islam, A.
 \newblock Use of Remote Sensing Satellite Images in Rice Area Monitoring System
   of Bangladesh.
 \newblock In Proceedings of the IGARSS 2020---2020 International Geoscience and Remote Sensing Symposium
-  (IGARSS), \hl{Waikoloa, HI, USA, 26 September--2 October 2020; }pp. 4665--4668.
+  (IGARSS), Waikoloa, HI, USA, 26 September--2 October 2020; pp. 4665--4668.
 \newblock {\url{https://doi.org/10.1109/IGARSS39084.2020.9324433}}.
 
 \bibitem[Lemenkova(2023)]{Lemenkova202313}
@@ -1436,7 +1436,7 @@ Kalpoma, K.A.; Sarker~Aurgho, A.; Bondhon, A.R.; Hossan~Ani, F.; Islam~Shizan,
 \newblock Road Quality Measurement System Using Satellite Images for National
   Highways of Bangladesh.
 \newblock In Proceedings of the IGARSS 2023---2023 International Geoscience and Remote Sensing Symposium
-  (IGARSS), \hl{Pasadena, CA, USA, 16--21 July 2023; }pp. 6912--6915.
+  (IGARSS), Pasadena, CA, USA, 16--21 July 2023; pp. 6912--6915.
 \newblock {\url{https://doi.org/10.1109/IGARSS52108.2023.10281789}}.
 
 \bibitem[Lemenkova and Debeir(2023)]{jmse11040871}
@@ -1453,7 +1453,7 @@ Kalpoma, K.A.; Nawar~Arony, N.; Chowdhury, A.; Nowshin, M.; Kudoh, J.i.
 \newblock Boro Rice Model for HAOR Region of Bangladesh Based on Modis NDVI
   Images.
 \newblock In Proceedings of the IGARSS 2019---2019 International Geoscience and Remote Sensing Symposium
-  (IGARSS), \hl{Yokohama, Japan, 28 July--2 August 2019}; pp. 7326--7329.
+  (IGARSS), Yokohama, Japan, 28 July--2 August 2019; pp. 7326--7329.
 \newblock {\url{https://doi.org/10.1109/IGARSS.2019.8899013}}.
 
 \bibitem[Lemenkova(2020)]{Lemenkova202021}
@@ -1471,7 +1471,7 @@ Onim, M.S.H.; Ehtesham, A.R.B.; Anbar, A.; Nazrul~Islam, A.K.M.;
 \newblock LULC classification by semantic segmentation of satellite images
   using FastFCN.
 \newblock In Proceedings of the 2020 2nd International Conference on Advanced
-  Information and Communication Technology (ICAICT), \hl{Dhaka, Bangladesh, 28--29 November  2020;} pp. 471--475.
+  Information and Communication Technology (ICAICT), Dhaka, Bangladesh, 28--29 November  2020; pp. 471--475.
 \newblock {\url{https://doi.org/10.1109/ICAICT51780.2020.9333522}}.
 
 \bibitem[Sarmin et~al.(2020)Sarmin, Zaman, and Sarkar]{9392684}
@@ -1479,7 +1479,7 @@ Sarmin, F.J.; Zaman, M.S.U.; Sarkar, A.R.
 \newblock Monitoring land deformation due to groundwater extraction using
   Sentinel-1 satellite images: a case study from Chapai Nawabgonj, Bangladesh.
 \newblock In Proceedings of the 2020 23rd International Conference on Computer
-  and Information Technology (ICCIT), \hl{Dhaka, Bangladesh, 19--21 Decembe 2020}; pp. 1--6.
+  and Information Technology (ICCIT), Dhaka, Bangladesh, 19--21 December 2020; pp. 1--6.
 \newblock {\url{https://doi.org/10.1109/ICCIT51783.2020.9392684}}.
 
 \bibitem[Lemenkova and Debeir(2023)]{Lemenkova202324}
@@ -1495,7 +1495,7 @@ Kalpoma, K.A.; Aurgho, A.S.; Shizan, M.M.I.; Ani, F.H.; Bondhon, A.R.
 \newblock Deep Learning Image Segmentation for Satellite Images of National
   Highways of Bangladesh.
 \newblock In Proceedings of the IGARSS 2023---2023 International Geoscience and Remote Sensing Symposium
-  (IGARSS), \hl{Pasadena, CA, USA,  16--21 July 2023;} pp. 6894--6897.
+  (IGARSS), Pasadena, CA, USA,  16--21 July 2023; pp. 6894--6897.
 \newblock {\url{https://doi.org/10.1109/IGARSS52108.2023.10282693}}.
 
 \bibitem[Lemenkova and Debeir(2023)]{Lemenkova202301}
@@ -1510,7 +1510,7 @@ Islam, R.; Khatun, M.; Popy, S.H.
 \newblock TL-GAN: Transfer Learning with Generative Adversarial Network Model
   for Satellite Image Resolution Enhancement.
 \newblock In Proceedings of the 2023 26th International Conference on Computer
-  and Information Technology (ICCIT), \hl{Cox's Bazar, Bangladesh, 13--15 December  2023; }pp. 1--5.
+  and Information Technology (ICCIT), Cox's Bazar, Bangladesh, 13--15 December  2023; pp. 1--5.
 \newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441504}}.
 
 \bibitem[{GEBCO Compilation Group}(2023)]{GEBCO}
@@ -1593,7 +1593,7 @@ Mukherjee, K.; Pal, S.
 Abedin, M.A.; Hosenuzzaman, M.
 \newblock {Chapter 19---Change in cropping pattern and soil health in relation
   to climate change and salinity in coastal Bangladesh}. In {\em Multi-Hazard
-  Vulnerability and Resilience Building}; Pal, I., Shaw, R., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} %We added the location of publisher. Please confirm
+  Vulnerability and Resilience Building}; Pal, I., Shaw, R., Eds.; Elsevier:  Amsterdam, The Netherlands, %We added the location of publisher. Please confirm % Author's reply: yes, I confirm.
   2023; pp. 315--332.
 \newblock {\url{https://doi.org/10.1016/B978-0-323-95682-6.00006-1}}.
 
@@ -1688,7 +1688,7 @@ Nicholls, R.; Hutton, C.; Lázár, A.; Allan, A.; Adger, W.; Adams, H.; Wolf,
 \newblock Integrated assessment of social and environmental sustainability
   dynamics in the Ganges-Brahmaputra-Meghna delta, Bangladesh.
 \newblock {\em Estuarine  Coast. Shelf Sci.
-} {\bf 2016}, {\em 183},~370--\hl{381.} %MDPI: Information is complete, we removed no need part, please confirm.
+} {\bf 2016}, {\em 183},~370--381. %MDPI: Information is complete, we removed no need part, please confirm. % Author's reply: yes, I confirm.
 \newblock 
   {\url{https://doi.org/10.1016/j.ecss.2016.08.017}}.
 
@@ -1696,7 +1696,7 @@ Nicholls, R.; Hutton, C.; Lázár, A.; Allan, A.; Adger, W.; Adams, H.; Wolf,
 {GRASS Development Team}.
 \newblock {\em {Geographic Resources Analysis Support System (GRASS GIS)
   Software}}, Version 8.2;
-\newblock Open Source Geospatial Foundation: \hl{Beaverton, OR, USA,} %MDPI: We added the location of the publisher. Please confirm.
+\newblock Open Source Geospatial Foundation: Beaverton, OR, USA, %MDPI: We added the location of the publisher. Please confirm. % Author's reply: yes, I confirm.
  2022.
 
 \bibitem[{Inkscape Project Development Team}()]{Inkscape}
@@ -1737,7 +1737,7 @@ Ahamed, M.Y.; Bin~Syed, M.A.; Chatterjee, P.; Bin~Habib, A.Z.S.
 \newblock A Deep Learning Approach for Satellite and Debris Detection: YOLO in
   Action.
 \newblock In Proceedings of the 2023 26th International Conference on Computer
-  and Information Technology (ICCIT), \hl{Cox's Bazar, Bangladesh,  13--15 December 2023; }pp. 1--6.
+  and Information Technology (ICCIT), Cox's Bazar, Bangladesh, 13--15 December 2023; pp. 1--6.
 \newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441152}}.
 
 \bibitem[Ahmed et~al.(2024)Ahmed, Jui, Sharma, Ahmed, Raj, and
@@ -1760,7 +1760,7 @@ Hassan, M.S.; Gomes, R.F.; Bhuiyan, M.A.H.
 Shakib, M.F.; Al~Mamun, M.
 \newblock Bushfire Classification from Satellite Imagery using Deep Learning.
 \newblock In Proceedings of the 2023 26th International Conference on Computer
-  and Information Technology (ICCIT),  \hl{Cox's Bazar, Bangladesh,  13-15 December 2023; }pp. 1--5.
+  and Information Technology (ICCIT), Cox's Bazar, Bangladesh, 13-15 December 2023; pp. 1--5.
 \newblock {\url{https://doi.org/10.1109/ICCIT60459.2023.10441576}}.
 
 \bibitem[Sanchez et~al.(2020)Sanchez, Rios, Alanis, Arana-Daniel, and
@@ -1768,7 +1768,7 @@ Shakib, M.F.; Al~Mamun, M.
 Sanchez, E.N.; Rios, J.D.; Alanis, A.Y.; Arana-Daniel, N.; Lopez-Franco, C.
 \newblock Chapter 3---Neural identification using recurrent high-order neural
   networks for discrete nonlinear systems with unknown time delays. In {\em
-  Neural Networks Modeling and Control}; Academic Press:  \hl{Cambridge, MA, USA,} %We added the location of publisher. Please confirm
+  Neural Networks Modeling and Control}; Academic Press: Cambridge, MA, USA, %We added the location of publisher. Please confirm % Author's reply: yes, I confirm.
   2020; pp. 17--33.
 \newblock {\url{https://doi.org/10.1016/B978-0-12-817078-6.00011-8}}.
 
@@ -1778,7 +1778,7 @@ Hecht-Nielsen, R.
   “nonindent” by Robert Hecht-Nielsen, which appeared in Proceedings of the
   International Joint Conference on Neural Networks 1, 593–611, June 1989. ©
   1989 IEEE. In {\em Neural Networks for Perception}; Wechsler, H., Ed.;
-  Academic Press:  \hl{Cambridge, MA, USA,} %We added the location of publisher. Please confirm
+  Academic Press: Cambridge, MA, USA, %We added the location of publisher. Please confirm % Author's reply: yes, I confirm.
   1992; pp. 65--93.
 \newblock {\url{https://doi.org/10.1016/B978-0-12-741252-8.50010-8}}.
 
@@ -1821,15 +1821,15 @@ Rudra, R.R.; Sarkar, S.K.
 \bibitem[Iannone and Roy(2024)]{DiagrammeR}
 Iannone, R.; Roy, O.
 \newblock { DiagrammeR: Graph/Network Visualization}.  2024.
-\newblock R package version 1.0.11.9000. Available \hl{online: } %MDPI: We cannot open this weblink, please try to revise.
-  \url{https://github.com/rich-iannone/DiagrammeR} (accessed on 25 February 2024).
+\newblock R package version 1.0.11.9000. Available online: %MDPI: We cannot open this weblink, please try to revise. % Author's reply: the link is updated.
+  \url{https://cran.r-project.org/web/packages/DiagrammeR} (accessed on 5 March 2024).
 
 \bibitem[Chen et~al.(2008)Chen, Wang, and Shang]{4736879}
 Chen, Q.; Wang, L.; Shang, Z.
 \newblock {MRGIS: A MapReduce-Enabled High Performance Workflow System for
   GIS}.
 \newblock In Proceedings of the 2008 IEEE Fourth International Conference on
-  eScience,  \hl{Indianapolis, IN, USA, 7--12 December 2008;} pp. 646--651.
+  eScience,  Indianapolis, IN, USA, 7--12 December 2008; pp. 646--651.
 \newblock {\url{https://doi.org/10.1109/eScience.2008.169}}.
 
 \bibitem[Song and Liu(2008)]{5070195}
@@ -1837,7 +1837,7 @@ Song, X.; Liu, J.
 \newblock {Scheduling Geo-processing Workflow Applications with QoS}.
 \newblock In Proceedings of the 2008 International Workshop on Education
   Technology and Training \& 2008 International Workshop on Geoscience and
-  Remote Sensing, \hl{Shanghai, China,  21--22 December 2008;} Volume~1, pp. 460--463.
+  Remote Sensing, Shanghai, China,  21--22 December 2008; Volume~1, pp. 460--463.
 \newblock {\url{https://doi.org/10.1109/ETTandGRS.2008.98}}.
 
 \bibitem[Delogu et~al.(2023)Delogu, Caputi, Perretta, Ripa, and
@@ -1888,7 +1888,7 @@ Sheonty, S.R.; Nayeem, J.
 \newblock Drought Risk Mapping in the North-West Region of Bangladesh Using
   Landsat Time Series Satellite Images.
 \newblock In Proceedings of the Climate Change and Water Security, Singapore,
-  \hl{2022;} %MDPI: Please add the date of the conference, same as follows. 
+ ,  6 to 18 November 2022 ; %MDPI: Please add the date of the conference, same as follows.  % Author's reply: information is added
  pp. 221--229.
 
 \bibitem[Islam et~al.(2016)Islam, Miah, and Inoue]{Islam2016}
@@ -1910,7 +1910,7 @@ Ferdous, J.; Rahman, M.T.U.
 \newblock Applicability of Landsat TM Images to Detect Soil Salinity of Coastal
   Areas in Bangladesh.
 \newblock In Proceedings of the Advances in Remote Sensing and Geo Informatics
-  Applications, Cham, Switzerland,  \hl{2019}; pp. 219--221.
+  Applications, Tunisia, 12 to 15 November 2018, Cham, Switzerland, 2019; pp. 219--221.
 
 \bibitem[Lemenkova and Debeir(2023)]{Lemenkova202321}
 Lemenkova, P.; Debeir, O.
